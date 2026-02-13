@@ -1,4 +1,4 @@
-# Pauch Website - Инструкция для клиента (без технических знаний)
+# Pauch Website - Инструкция для клиента 
 
 **English version:** см. `README.md`
 
