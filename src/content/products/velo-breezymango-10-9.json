@@ -1,0 +1,26 @@
+{
+  "slug": "velo-breezymango-10-9",
+  "brand": "VELO",
+  "strength": 10.9,
+  "strengthCategory": "medium",
+  "flavorCategory": "tropical",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_breezymango_10.9.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Breezy Mango",
+      "description": "VELO Breezy Mango nicotine pouches with 10.9mg strength."
+    },
+    "ru": {
+      "name": "VELO Breezy Mango",
+      "description": "Никотиновые паучи VELO Breezy Mango крепостью 10.9 мг."
+    },
+    "ro": {
+      "name": "VELO Breezy Mango",
+      "description": "Pliculete cu nicotină VELO Breezy Mango cu tărie 10.9 mg."
+    }
+  }
+}

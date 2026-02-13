@@ -1,0 +1,26 @@
+{
+  "slug": "baron-eucalyptus-70",
+  "brand": "BARON",
+  "strength": 70,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/baron_eucalyptus_70.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "BARON Eucalyptus",
+      "description": "BARON Eucalyptus nicotine pouches with 70mg strength."
+    },
+    "ru": {
+      "name": "BARON Eucalyptus",
+      "description": "Никотиновые паучи BARON Eucalyptus крепостью 70 мг."
+    },
+    "ro": {
+      "name": "BARON Eucalyptus",
+      "description": "Pliculete cu nicotină BARON Eucalyptus cu tărie 70 mg."
+    }
+  }
+}

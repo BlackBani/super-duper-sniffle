@@ -1,0 +1,26 @@
+{
+  "slug": "baron-menthol-70",
+  "brand": "BARON",
+  "strength": 70,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/baron_menthol_70.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "BARON Menthol",
+      "description": "BARON Menthol nicotine pouches with 70mg strength."
+    },
+    "ru": {
+      "name": "BARON Menthol",
+      "description": "Никотиновые паучи BARON Menthol крепостью 70 мг."
+    },
+    "ro": {
+      "name": "BARON Menthol",
+      "description": "Pliculete cu nicotină BARON Menthol cu tărie 70 mg."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "velo-wintrywatermelon-10",
+  "brand": "VELO",
+  "strength": 10,
+  "strengthCategory": "medium",
+  "flavorCategory": "tropical",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_wintrywatermelon_10.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Wintry Watermelon",
+      "description": "VELO Wintry Watermelon nicotine pouches with 10mg strength."
+    },
+    "ru": {
+      "name": "VELO Wintry Watermelon",
+      "description": "Никотиновые паучи VELO Wintry Watermelon крепостью 10 мг."
+    },
+    "ro": {
+      "name": "VELO Wintry Watermelon",
+      "description": "Pliculete cu nicotină VELO Wintry Watermelon cu tărie 10 mg."
+    }
+  }
+}

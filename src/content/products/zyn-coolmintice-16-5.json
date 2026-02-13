@@ -1,0 +1,26 @@
+{
+  "slug": "zyn-coolmintice-16-5",
+  "brand": "ZYN",
+  "strength": 16.5,
+  "strengthCategory": "strong",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/zyn_coolmintice_16.5.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ZYN Cool Mint Ice",
+      "description": "ZYN Cool Mint Ice nicotine pouches with 16.5mg strength."
+    },
+    "ru": {
+      "name": "ZYN Cool Mint Ice",
+      "description": "Никотиновые паучи ZYN Cool Mint Ice крепостью 16.5 мг."
+    },
+    "ro": {
+      "name": "ZYN Cool Mint Ice",
+      "description": "Pliculete cu nicotină ZYN Cool Mint Ice cu tărie 16.5 mg."
+    }
+  }
+}

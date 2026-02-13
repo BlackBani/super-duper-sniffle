@@ -1,0 +1,26 @@
+{
+  "slug": "pablo-icecold-15",
+  "brand": "PABLO",
+  "strength": 15,
+  "strengthCategory": "strong",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/pablo_icecold_15.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "PABLO Ice Cold",
+      "description": "PABLO Ice Cold nicotine pouches with 15mg strength."
+    },
+    "ru": {
+      "name": "PABLO Ice Cold",
+      "description": "Никотиновые паучи PABLO Ice Cold крепостью 15 мг."
+    },
+    "ro": {
+      "name": "PABLO Ice Cold",
+      "description": "Pliculete cu nicotină PABLO Ice Cold cu tărie 15 mg."
+    }
+  }
+}

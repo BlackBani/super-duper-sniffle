@@ -1,0 +1,26 @@
+{
+  "slug": "velo-crispypeppermint-10",
+  "brand": "VELO",
+  "strength": 10,
+  "strengthCategory": "medium",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_crispypeppermint_10.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Crispypeppermint",
+      "description": "VELO Crispypeppermint nicotine pouches with 10mg strength."
+    },
+    "ru": {
+      "name": "VELO Crispypeppermint",
+      "description": "Никотиновые паучи VELO Crispypeppermint крепостью 10 мг."
+    },
+    "ro": {
+      "name": "VELO Crispypeppermint",
+      "description": "Pliculete cu nicotină VELO Crispypeppermint cu tărie 10 mg."
+    }
+  }
+}

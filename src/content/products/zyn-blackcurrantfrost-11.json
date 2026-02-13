@@ -1,0 +1,26 @@
+{
+  "slug": "zyn-blackcurrantfrost-11",
+  "brand": "ZYN",
+  "strength": 11,
+  "strengthCategory": "medium",
+  "flavorCategory": "berry",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/zyn_blackcurrantfrost_11.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ZYN Blackcurrant Frost",
+      "description": "ZYN Blackcurrant Frost nicotine pouches with 11mg strength."
+    },
+    "ru": {
+      "name": "ZYN Blackcurrant Frost",
+      "description": "Никотиновые паучи ZYN Blackcurrant Frost крепостью 11 мг."
+    },
+    "ro": {
+      "name": "ZYN Blackcurrant Frost",
+      "description": "Pliculete cu nicotină ZYN Blackcurrant Frost cu tărie 11 mg."
+    }
+  }
+}

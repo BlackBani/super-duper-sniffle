@@ -1,0 +1,26 @@
+{
+  "slug": "velo-groovygrape-10-9",
+  "brand": "VELO",
+  "strength": 10.9,
+  "strengthCategory": "medium",
+  "flavorCategory": "berry",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_groovygrape_10.9.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Groovy Grape",
+      "description": "VELO Groovy Grape nicotine pouches with 10.9mg strength."
+    },
+    "ru": {
+      "name": "VELO Groovy Grape",
+      "description": "Никотиновые паучи VELO Groovy Grape крепостью 10.9 мг."
+    },
+    "ro": {
+      "name": "VELO Groovy Grape",
+      "description": "Pliculete cu nicotină VELO Groovy Grape cu tărie 10.9 mg."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "zyn-mentholice-13-5",
+  "brand": "ZYN",
+  "strength": 13.5,
+  "strengthCategory": "strong",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/zyn_mentholice_13.5.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ZYN Menthol Ice",
+      "description": "ZYN Menthol Ice nicotine pouches with 13.5mg strength."
+    },
+    "ru": {
+      "name": "ZYN Menthol Ice",
+      "description": "Никотиновые паучи ZYN Menthol Ice крепостью 13.5 мг."
+    },
+    "ro": {
+      "name": "ZYN Menthol Ice",
+      "description": "Pliculete cu nicotină ZYN Menthol Ice cu tărie 13.5 mg."
+    }
+  }
+}

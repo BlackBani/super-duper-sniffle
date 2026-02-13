@@ -1,0 +1,26 @@
+{
+  "slug": "velo-orangespark-17",
+  "brand": "VELO",
+  "strength": 17,
+  "strengthCategory": "extra",
+  "flavorCategory": "citrus",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_orangespark_17.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Orange Spark",
+      "description": "VELO Orange Spark nicotine pouches with 17mg strength."
+    },
+    "ru": {
+      "name": "VELO Orange Spark",
+      "description": "Никотиновые паучи VELO Orange Spark крепостью 17 мг."
+    },
+    "ro": {
+      "name": "VELO Orange Spark",
+      "description": "Pliculete cu nicotină VELO Orange Spark cu tărie 17 mg."
+    }
+  }
+}

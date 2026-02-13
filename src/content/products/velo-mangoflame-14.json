@@ -1,0 +1,26 @@
+{
+  "slug": "velo-mangoflame-14",
+  "brand": "VELO",
+  "strength": 14,
+  "strengthCategory": "strong",
+  "flavorCategory": "tropical",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_mangoflame_14.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Mango Flame",
+      "description": "VELO Mango Flame nicotine pouches with 14mg strength."
+    },
+    "ru": {
+      "name": "VELO Mango Flame",
+      "description": "Никотиновые паучи VELO Mango Flame крепостью 14 мг."
+    },
+    "ro": {
+      "name": "VELO Mango Flame",
+      "description": "Pliculete cu nicotină VELO Mango Flame cu tărie 14 mg."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "velo-mightypeppermint-10-9",
+  "brand": "VELO",
+  "strength": 10.9,
+  "strengthCategory": "medium",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_mightypeppermint_10.9.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Mighty Peppermint",
+      "description": "VELO Mighty Peppermint nicotine pouches with 10.9mg strength."
+    },
+    "ru": {
+      "name": "VELO Mighty Peppermint",
+      "description": "Никотиновые паучи VELO Mighty Peppermint крепостью 10.9 мг."
+    },
+    "ro": {
+      "name": "VELO Mighty Peppermint",
+      "description": "Pliculete cu nicotină VELO Mighty Peppermint cu tărie 10.9 mg."
+    }
+  }
+}

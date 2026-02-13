@@ -1,0 +1,26 @@
+{
+  "slug": "zyn-blackcherry-11",
+  "brand": "ZYN",
+  "strength": 11,
+  "strengthCategory": "medium",
+  "flavorCategory": "berry",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/zyn_blackcherry_11.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ZYN Black Cherry",
+      "description": "ZYN Black Cherry nicotine pouches with 11mg strength."
+    },
+    "ru": {
+      "name": "ZYN Black Cherry",
+      "description": "Никотиновые паучи ZYN Black Cherry крепостью 11 мг."
+    },
+    "ro": {
+      "name": "ZYN Black Cherry",
+      "description": "Pliculete cu nicotină ZYN Black Cherry cu tărie 11 mg."
+    }
+  }
+}
