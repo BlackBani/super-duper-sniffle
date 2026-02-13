@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://blackbani.github.io',
-  base: '/super-duper-sniffle',
+  site: 'https://pauch.vip',
+  base: '/',
   integrations: [
     tailwind(),
     sitemap(),

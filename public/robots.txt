@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://blackbani.github.io/super-duper-sniffle/sitemap-index.xml
+Sitemap: https://pauch.vip/sitemap-index.xml
 
 # Disallow admin/api paths if any
 Disallow: /api/
