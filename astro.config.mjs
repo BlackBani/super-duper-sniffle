@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://pauch.netlify.app',
-  base: '/',
+  site: 'https://blackbani.github.io',
+  base: '/super-duper-sniffle',
   integrations: [
     tailwind(),
     sitemap(),
