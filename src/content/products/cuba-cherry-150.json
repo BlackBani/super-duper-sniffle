@@ -1,0 +1,26 @@
+{
+  "slug": "cuba-cherry-150",
+  "brand": "CUBA",
+  "strength": 150,
+  "strengthCategory": "extra",
+  "flavorCategory": "berry",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/cuba_cherry_150.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "CUBA Cherry",
+      "description": "CUBA Cherry nicotine pouches with 150mg strength."
+    },
+    "ru": {
+      "name": "CUBA Cherry",
+      "description": "Никотиновые паучи CUBA Cherry крепостью 150 мг."
+    },
+    "ro": {
+      "name": "CUBA Cherry",
+      "description": "Pliculete cu nicotină CUBA Cherry cu tărie 150 mg."
+    }
+  }
+}

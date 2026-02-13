@@ -1,0 +1,26 @@
+{
+  "slug": "cuba-applejuice-150",
+  "brand": "CUBA",
+  "strength": 150,
+  "strengthCategory": "extra",
+  "flavorCategory": "tropical",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/cuba_applejuice_150.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "CUBA Apple Juice",
+      "description": "CUBA Apple Juice nicotine pouches with 150mg strength."
+    },
+    "ru": {
+      "name": "CUBA Apple Juice",
+      "description": "Никотиновые паучи CUBA Apple Juice крепостью 150 мг."
+    },
+    "ro": {
+      "name": "CUBA Apple Juice",
+      "description": "Pliculete cu nicotină CUBA Apple Juice cu tărie 150 mg."
+    }
+  }
+}

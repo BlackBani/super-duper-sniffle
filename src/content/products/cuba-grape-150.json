@@ -1,0 +1,26 @@
+{
+  "slug": "cuba-grape-150",
+  "brand": "CUBA",
+  "strength": 150,
+  "strengthCategory": "extra",
+  "flavorCategory": "berry",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/cuba_grape_150.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "CUBA Grape",
+      "description": "CUBA Grape nicotine pouches with 150mg strength."
+    },
+    "ru": {
+      "name": "CUBA Grape",
+      "description": "Никотиновые паучи CUBA Grape крепостью 150 мг."
+    },
+    "ro": {
+      "name": "CUBA Grape",
+      "description": "Pliculete cu nicotină CUBA Grape cu tărie 150 mg."
+    }
+  }
+}
