@@ -12,21 +12,22 @@ interface Props {
 const { lang, showFilter = true } = Astro.props;
 const t = useTranslations(lang);
 
-// Flavor labels for building flavor names
-const flavorLabels: Record<string, Record<string, string>> = {
-  en: { mint: 'Mint', citrus: 'Citrus', berry: 'Berry', coffee: 'Coffee', tropical: 'Tropical' },
-  ru: { mint: 'Мята', citrus: 'Цитрус', berry: 'Ягода', coffee: 'Кофе', tropical: 'Тропик' },
-  ro: { mint: 'Mentă', citrus: 'Citrice', berry: 'Fructe', coffee: 'Cafea', tropical: 'Tropical' },
-};
-
 // Get all products
 const products = await getCollection('products');
+
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const getFlavorName = (brand: string, localizedName: string) => {
+  const withoutBrand = localizedName.replace(new RegExp(`^${escapeRegExp(brand)}\\s+`, 'i'), '').trim();
+  return withoutBrand || localizedName;
+};
 
 // Group products by brand + strength into ProductLines
 interface FlavorVariant {
   slug: string;
   flavorCategory: string;
   flavorName: string;
+  image: string;
   price: number;
 }
 
@@ -46,7 +47,8 @@ interface ProductLine {
 const productLinesMap = new Map<string, ProductLine>();
 
 products.forEach((product) => {
-  const { brand, strength, strengthCategory, pouchesPerCan, currency, image, slug, flavorCategory, price } = product.data;
+  const { brand, strength, strengthCategory, pouchesPerCan, currency, image, slug, flavorCategory, price, translations } = product.data;
+  const localizedName = translations[lang]?.name || slug;
   const lineId = `${brand}-${strength}`.toLowerCase().replace(/\s+/g, '-');
   
   if (!productLinesMap.has(lineId)) {
@@ -68,7 +70,8 @@ products.forEach((product) => {
   line.flavors.push({
     slug,
     flavorCategory,
-    flavorName: flavorLabels[lang]?.[flavorCategory] || flavorCategory,
+    flavorName: getFlavorName(brand, localizedName),
+    image,
     price,
   });
   

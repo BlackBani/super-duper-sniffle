@@ -1,0 +1,26 @@
+{
+  "slug": "velo-extra-spiffy-spearmint",
+  "brand": "VELO",
+  "strength": 17,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo-extra-spiffy-spearmint.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Spiffy Spearmint",
+      "description": "Extra strong spearmint flavor with a clean, cool finish."
+    },
+    "ru": {
+      "name": "VELO Spiffy Spearmint",
+      "description": "Экстра крепкий вкус сладкой мяты с чистым прохладным послевкусием."
+    },
+    "ro": {
+      "name": "VELO Spiffy Spearmint",
+      "description": "Aromă extra puternică de mentă spearmint cu final curat și răcoritor."
+    }
+  }
+}
