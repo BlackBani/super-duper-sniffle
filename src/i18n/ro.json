@@ -27,10 +27,10 @@
     "noProducts": "Niciun produs nu corespunde filtrelor"
   },
   "strengths": {
-    "low": "Ușoară",
+    "easy": "Ușoară",
     "medium": "Medie",
     "strong": "Puternică",
-    "extra": "Extra Puternică",
+    "hardcore": "Hardcore",
     "mg": "mg"
   },
   "flavors": {
@@ -145,7 +145,7 @@
     "deny": "Am sub 18 ani"
   },
   "telegram": {
-    "prefill": "Salut, vreau să comand:\n\nProdus: {product}\nTărie: {strength}mg\nCantitate: ___\n\nZona de livrare: ___"
+    "prefill": "Salut, vreau să comand:\n\nProdus: {product}\nTărie: {strength}\nCantitate: ___\n\nZona de livrare: ___"
   },
   "blog": {
     "title": "Blog",

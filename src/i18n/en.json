@@ -27,10 +27,10 @@
     "noProducts": "No products match your filters"
   },
   "strengths": {
-    "low": "Low",
+    "easy": "Easy",
     "medium": "Medium",
     "strong": "Strong",
-    "extra": "Extra Strong",
+    "hardcore": "Hardcore",
     "mg": "mg"
   },
   "flavors": {
@@ -145,7 +145,7 @@
     "deny": "I am under 18"
   },
   "telegram": {
-    "prefill": "Hi, I want to order:\n\nProduct: {product}\nStrength: {strength}mg\nQuantity: ___\n\nDelivery area: ___"
+    "prefill": "Hi, I want to order:\n\nProduct: {product}\nStrength: {strength}\nQuantity: ___\n\nDelivery area: ___"
   },
   "blog": {
     "title": "Blog",

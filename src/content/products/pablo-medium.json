@@ -1,0 +1,26 @@
+{
+  "slug": "pablo-medium",
+  "brand": "PABLO",
+  "strength": 2,
+  "strengthCategory": "medium",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/pablo_medium.png",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "PABLO Medium",
+      "description": "PABLO Medium nicotine pouches."
+    },
+    "ru": {
+      "name": "PABLO Средние",
+      "description": "Никотиновые паучи PABLO (Средние)."
+    },
+    "ro": {
+      "name": "PABLO Medie",
+      "description": "Pliculete cu nicotină PABLO (Medie)."
+    }
+  }
+}

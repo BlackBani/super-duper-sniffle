@@ -1,0 +1,26 @@
+{
+  "slug": "pablo-strong",
+  "brand": "PABLO",
+  "strength": 3,
+  "strengthCategory": "strong",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/pablo_strong.png",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "PABLO Strong",
+      "description": "PABLO Strong nicotine pouches."
+    },
+    "ru": {
+      "name": "PABLO Крепкие",
+      "description": "Никотиновые паучи PABLO (Крепкие)."
+    },
+    "ro": {
+      "name": "PABLO Puternică",
+      "description": "Pliculete cu nicotină PABLO (Puternică)."
+    }
+  }
+}

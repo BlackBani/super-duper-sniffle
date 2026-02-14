@@ -1,0 +1,26 @@
+{
+  "slug": "iceberg-strong",
+  "brand": "ICEBERG",
+  "strength": 3,
+  "strengthCategory": "strong",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/iceberg_strong.png",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ICEBERG Strong",
+      "description": "ICEBERG Strong nicotine pouches."
+    },
+    "ru": {
+      "name": "ICEBERG Крепкие",
+      "description": "Никотиновые паучи ICEBERG (Крепкие)."
+    },
+    "ro": {
+      "name": "ICEBERG Puternică",
+      "description": "Pliculete cu nicotină ICEBERG (Puternică)."
+    }
+  }
+}

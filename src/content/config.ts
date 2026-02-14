@@ -6,7 +6,7 @@ const productsCollection = defineCollection({
     slug: z.string(),
     brand: z.string(),
     strength: z.number(),
-    strengthCategory: z.enum(['low', 'medium', 'strong', 'extra']),
+    strengthCategory: z.enum(['easy', 'medium', 'strong', 'hardcore']),
     flavorCategory: z.enum(['mint', 'citrus', 'berry', 'coffee', 'tropical']),
     pouchesPerCan: z.number().default(20),
     price: z.number(),

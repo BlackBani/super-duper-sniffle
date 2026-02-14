@@ -10,23 +10,13 @@ const t = useTranslations(lang);
 
 // Short labels for compact display
 const strengthLabel = lang === 'ru' ? 'Крепость' : lang === 'ro' ? 'Tărie' : 'Strength';
-const flavorLabel = lang === 'ru' ? 'Вкус' : lang === 'ro' ? 'Aromă' : 'Flavor';
 
 const strengthOptions = [
   { value: 'all', label: `${strengthLabel}: ${t.catalog.filterAll}` },
-  { value: 'low', label: `${strengthLabel}: ${t.strengths.low}` },
+  { value: 'easy', label: `${strengthLabel}: ${t.strengths.easy}` },
   { value: 'medium', label: `${strengthLabel}: ${t.strengths.medium}` },
   { value: 'strong', label: `${strengthLabel}: ${t.strengths.strong}` },
-  { value: 'extra', label: `${strengthLabel}: ${t.strengths.extra}` },
-];
-
-const flavorOptions = [
-  { value: 'all', label: `${flavorLabel}: ${t.catalog.filterAll}` },
-  { value: 'mint', label: `${flavorLabel}: ${t.flavors.mint}` },
-  { value: 'citrus', label: `${flavorLabel}: ${t.flavors.citrus}` },
-  { value: 'berry', label: `${flavorLabel}: ${t.flavors.berry}` },
-  { value: 'coffee', label: `${flavorLabel}: ${t.flavors.coffee}` },
-  { value: 'tropical', label: `${flavorLabel}: ${t.flavors.tropical}` },
+  { value: 'hardcore', label: `${strengthLabel}: ${t.strengths.hardcore}` },
 ];
 ---
 
@@ -46,27 +36,11 @@ const flavorOptions = [
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
   </div>
-  
-  <!-- Flavor Filter Dropdown -->
-  <div class="relative">
-    <select 
-      id="flavor-filter" 
-      class="filter-select appearance-none bg-surface border-0 rounded-full px-2.5 py-2 md:px-3 md:py-2.5 pr-7 md:pr-8 text-xs font-medium text-primary cursor-pointer hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-accent min-h-[40px] md:min-h-[44px]"
-      data-filter="flavor"
-    >
-      {flavorOptions.map((option) => (
-        <option value={option.value}>{option.label}</option>
-      ))}
-    </select>
-    <svg class="absolute right-2 md:right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 md:w-4 md:h-4 text-muted pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>
-  </div>
 </div>
 
 <script>
   function initFilters() {
-    const filterSelects = document.querySelectorAll('.filter-select');
+    const strengthSelect = document.getElementById('strength-filter') as HTMLSelectElement | null;
     // ProductLine cards (new grouped structure)
     const productLineCards = document.querySelectorAll('.product-line-card');
     const productSlides = document.querySelectorAll('.product-slide');
@@ -74,10 +48,7 @@ const flavorOptions = [
     const productsTrack = document.getElementById('products-track');
     const productsGrid = document.getElementById('products-grid');
     
-    let activeFilters = {
-      strength: 'all',
-      flavor: 'all',
-    };
+    let activeStrength = 'all';
     
     function updateProducts() {
       let visibleCount = 0;
@@ -85,28 +56,11 @@ const flavorOptions = [
       // Filter desktop cards
       productLineCards.forEach((card) => {
         const cardStrength = card.getAttribute('data-strength');
-        // ProductLines have comma-separated flavors
-        const cardFlavors = card.getAttribute('data-flavors')?.split(',') || [];
-        
-        const matchesStrength = activeFilters.strength === 'all' || cardStrength === activeFilters.strength;
-        const matchesFlavor = activeFilters.flavor === 'all' || cardFlavors.includes(activeFilters.flavor);
-        
-        const isVisible = matchesStrength && matchesFlavor;
+        const isVisible = activeStrength === 'all' || cardStrength === activeStrength;
         
         if (isVisible) {
           (card as HTMLElement).style.display = '';
           visibleCount++;
-          
-          // Highlight matching flavor chip if flavor filter is active
-          const flavorChips = card.querySelectorAll('.flavor-chip');
-          flavorChips.forEach((chip) => {
-            const chipFlavor = chip.getAttribute('data-flavor');
-            if (activeFilters.flavor !== 'all' && chipFlavor === activeFilters.flavor) {
-              chip.classList.add('selected');
-            } else if (activeFilters.flavor === 'all') {
-              chip.classList.remove('selected');
-            }
-          });
         } else {
           (card as HTMLElement).style.display = 'none';
         }
@@ -115,12 +69,7 @@ const flavorOptions = [
       // Filter mobile slides
       productSlides.forEach((slide) => {
         const slideStrength = slide.getAttribute('data-strength');
-        const slideFlavors = slide.getAttribute('data-flavors')?.split(',') || [];
-        
-        const matchesStrength = activeFilters.strength === 'all' || slideStrength === activeFilters.strength;
-        const matchesFlavor = activeFilters.flavor === 'all' || slideFlavors.includes(activeFilters.flavor);
-        
-        const isVisible = matchesStrength && matchesFlavor;
+        const isVisible = activeStrength === 'all' || slideStrength === activeStrength;
         (slide as HTMLElement).style.display = isVisible ? '' : 'none';
       });
       
@@ -135,19 +84,13 @@ const flavorOptions = [
       }
     }
     
-    filterSelects.forEach((select) => {
-      select.addEventListener('change', (e) => {
+    if (strengthSelect) {
+      strengthSelect.addEventListener('change', (e) => {
         const target = e.target as HTMLSelectElement;
-        const filterType = target.getAttribute('data-filter') as 'strength' | 'flavor';
-        const filterValue = target.value;
-        
-        // Update filter state
-        activeFilters[filterType] = filterValue;
-        
-        // Filter products
+        activeStrength = target.value;
         updateProducts();
       });
-    });
+    }
   }
   
   // Initialize on page load

@@ -1,0 +1,26 @@
+{
+  "slug": "cuba-hardcore",
+  "brand": "CUBA",
+  "strength": 4,
+  "strengthCategory": "hardcore",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/cuba_hardcore.png",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "CUBA Hardcore",
+      "description": "CUBA Hardcore nicotine pouches."
+    },
+    "ru": {
+      "name": "CUBA Хардкор",
+      "description": "Никотиновые паучи CUBA (Хардкор)."
+    },
+    "ro": {
+      "name": "CUBA Hardcore",
+      "description": "Pliculete cu nicotină CUBA (Hardcore)."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "velo-easy",
+  "brand": "VELO",
+  "strength": 1,
+  "strengthCategory": "easy",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_easy.png",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO Easy",
+      "description": "VELO Easy nicotine pouches."
+    },
+    "ru": {
+      "name": "VELO Лёгкие",
+      "description": "Никотиновые паучи VELO (Лёгкие)."
+    },
+    "ro": {
+      "name": "VELO Ușoară",
+      "description": "Pliculete cu nicotină VELO (Ușoară)."
+    }
+  }
+}

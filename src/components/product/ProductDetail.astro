@@ -39,10 +39,10 @@ const imageSrc = product.image.startsWith('/')
 const placeholderSrc = `${baseClean}/images/products/placeholder.svg`;
 
 const strengthLabels: Record<string, string> = {
-  low: t.strengths.low,
+  easy: t.strengths.easy,
   medium: t.strengths.medium,
   strong: t.strengths.strong,
-  extra: t.strengths.extra,
+  hardcore: t.strengths.hardcore,
 };
 
 const flavorLabels: Record<string, string> = {
@@ -73,7 +73,7 @@ const productSchema = {
     {
       "@type": "PropertyValue",
       "name": "Nicotine Strength",
-      "value": `${product.strength}mg`,
+      "value": strengthLabels[product.strengthCategory],
     },
     {
       "@type": "PropertyValue",
@@ -144,7 +144,7 @@ const breadcrumbSchema = {
     <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
       <!-- Product Image -->
       <div class="relative">
-        <div class="aspect-square bg-surface rounded-3xl overflow-hidden">
+        <div class="product-image-shell aspect-square rounded-3xl overflow-hidden">
           <img
             src={imageSrc}
             alt={translation.name}
@@ -154,7 +154,7 @@ const breadcrumbSchema = {
         </div>
         <!-- Strength Badge -->
         <span class="absolute top-6 right-6 px-4 py-2 bg-white shadow-card text-body font-semibold rounded-full">
-          {product.strength}{t.strengths.mg}
+          {strengthLabels[product.strengthCategory]}
         </span>
       </div>
       
@@ -169,7 +169,7 @@ const breadcrumbSchema = {
         <div class="grid grid-cols-2 gap-4 mb-8">
           <div class="bg-surface rounded-xl p-4">
             <span class="text-caption text-muted block mb-1">{t.product.strength}</span>
-            <span class="text-body font-medium">{strengthLabels[product.strengthCategory]} ({product.strength}mg)</span>
+            <span class="text-body font-medium">{strengthLabels[product.strengthCategory]}</span>
           </div>
           <div class="bg-surface rounded-xl p-4">
             <span class="text-caption text-muted block mb-1">{t.product.flavor}</span>
@@ -201,3 +201,11 @@ const breadcrumbSchema = {
     </div>
   </div>
 </section>
+
+<style>
+  .product-image-shell {
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(246, 247, 249, 0.9) 45%, rgba(237, 239, 243, 0.85) 100%);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+</style>

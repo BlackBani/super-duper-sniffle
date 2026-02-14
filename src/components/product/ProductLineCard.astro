@@ -36,10 +36,10 @@ const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
 const withBase = (src: string) => (src.startsWith('/') ? `${baseClean}${src}` : src);
 
 const strengthLabels: Record<string, string> = {
-  low: t.strengths.low,
+  easy: t.strengths.easy,
   medium: t.strengths.medium,
   strong: t.strengths.strong,
-  extra: t.strengths.extra,
+  hardcore: t.strengths.hardcore,
 };
 
 // Product line title without flavor
@@ -47,7 +47,7 @@ const title = `${productLine.brand} ${strengthLabels[productLine.strengthCategor
 
 const defaultFlavor = productLine.flavors[0];
 const imageSrc = withBase(defaultFlavor?.image || productLine.image);
-const imageAlt = defaultFlavor?.flavorName ? `${title} ${defaultFlavor.flavorName}` : title;
+const imageAlt = title;
 const placeholderSrc = `${baseClean}/images/products/placeholder.svg`;
 
 const telegramOrderLink = getTelegramOrderLink(lang);
@@ -56,13 +56,12 @@ const telegramOrderLink = getTelegramOrderLink(lang);
 <article
   class="product-line-card group flex flex-col bg-surface rounded-xl p-3 md:p-4 hover:shadow-product transition-shadow overflow-hidden"
   data-strength={productLine.strengthCategory}
-  data-flavors={productLine.flavors.map(f => f.flavorCategory).join(',')}
   data-line-id={productLine.id}
   data-default-image={imageSrc}
   data-default-alt={imageAlt}
 >
   <!-- Product Image -->
-  <div class="relative aspect-square mb-3 overflow-hidden rounded-lg md:rounded-xl bg-white">
+  <div class="product-image-shell relative aspect-square mb-3 overflow-hidden rounded-lg md:rounded-xl">
     <img
       class="product-line-image w-full h-full object-contain p-3 md:p-4 transition-transform duration-300 group-hover:scale-105"
       src={imageSrc}
@@ -72,7 +71,7 @@ const telegramOrderLink = getTelegramOrderLink(lang);
     />
     <!-- Strength Badge -->
     <span class="absolute top-2 right-2 px-2 py-0.5 md:px-2.5 md:py-1 bg-white text-[10px] md:text-xs font-semibold text-primary rounded-full shadow-md border border-gray-100">
-      {productLine.strength}{t.strengths.mg}
+      {strengthLabels[productLine.strengthCategory]}
     </span>
   </div>
   
@@ -82,26 +81,28 @@ const telegramOrderLink = getTelegramOrderLink(lang);
     <h3 class="text-xs md:text-sm font-semibold text-primary mb-2">{title}</h3>
     
     <!-- Flavor Selection (optional) -->
-    <div class="mb-3">
-      <p class="text-[10px] md:text-xs text-muted mb-1.5">
-        {lang === 'ru' ? 'Вкус (опц.):' : lang === 'ro' ? 'Aromă (opț.):' : 'Flavor (opt.):'}
-      </p>
-      <div class="flavor-chips flex flex-wrap gap-1">
-        {productLine.flavors.map((flavor) => (
-          <button
-            type="button"
-            class="flavor-chip px-2 py-0.5 md:px-2.5 md:py-1 text-[10px] md:text-xs rounded-full bg-white border border-gray-200 text-muted hover:border-accent hover:text-accent transition-all"
-            data-flavor={flavor.flavorCategory}
-            data-slug={flavor.slug}
-            data-image={withBase(flavor.image)}
-            data-flavor-name={flavor.flavorName}
-            data-alt={`${title} ${flavor.flavorName}`}
-          >
-            {flavor.flavorName}
-          </button>
-        ))}
+    {productLine.flavors.length > 1 && (
+      <div class="mb-3">
+        <p class="text-[10px] md:text-xs text-muted mb-1.5">
+          {lang === 'ru' ? 'Вкус (опц.):' : lang === 'ro' ? 'Aromă (opț.):' : 'Flavor (opt.):'}
+        </p>
+        <div class="flavor-chips flex flex-wrap gap-1">
+          {productLine.flavors.map((flavor) => (
+            <button
+              type="button"
+              class="flavor-chip px-2 py-0.5 md:px-2.5 md:py-1 text-[10px] md:text-xs rounded-full bg-white border border-gray-200 text-muted hover:border-accent hover:text-accent transition-all"
+              data-flavor={flavor.flavorCategory}
+              data-slug={flavor.slug}
+              data-image={withBase(flavor.image)}
+              data-flavor-name={flavor.flavorName}
+              data-alt={`${title} ${flavor.flavorName}`}
+            >
+              {flavor.flavorName}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
+    )}
     
     <!-- Actions -->
     <div class="mt-auto flex flex-col gap-1.5">
@@ -127,6 +128,12 @@ const telegramOrderLink = getTelegramOrderLink(lang);
 </article>
 
 <style>
+  .product-image-shell {
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(246, 247, 249, 0.9) 45%, rgba(237, 239, 243, 0.85) 100%);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
   .flavor-chip.selected {
     @apply border-accent bg-accent/10 text-accent font-medium;
   }

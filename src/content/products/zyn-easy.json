@@ -1,0 +1,26 @@
+{
+  "slug": "zyn-easy",
+  "brand": "ZYN",
+  "strength": 1,
+  "strengthCategory": "easy",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/zyn_easy.png",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ZYN Easy",
+      "description": "ZYN Easy nicotine pouches."
+    },
+    "ru": {
+      "name": "ZYN Лёгкие",
+      "description": "Никотиновые паучи ZYN (Лёгкие)."
+    },
+    "ro": {
+      "name": "ZYN Ușoară",
+      "description": "Pliculete cu nicotină ZYN (Ușoară)."
+    }
+  }
+}

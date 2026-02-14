@@ -102,7 +102,7 @@ const productLines = Array.from(productLinesMap.values()).sort((a, b) => {
     <div class="products-carousel md:hidden">
       <div class="products-track" id="products-track">
         {productLines.map((line) => (
-          <div class="product-slide" data-strength={line.strengthCategory} data-flavors={line.flavors.map(f => f.flavorCategory).join(',')}>
+          <div class="product-slide" data-strength={line.strengthCategory}>
             <ProductLineCard lang={lang} productLine={line} />
           </div>
         ))}
