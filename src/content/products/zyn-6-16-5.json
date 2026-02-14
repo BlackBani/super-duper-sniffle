@@ -1,0 +1,26 @@
+{
+  "slug": "zyn-6-16-5",
+  "brand": "ZYN",
+  "strength": 16.5,
+  "strengthCategory": "strong",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/zyn_6_16.5.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "ZYN 6",
+      "description": "ZYN 6 nicotine pouches with 16.5mg strength."
+    },
+    "ru": {
+      "name": "ZYN 6",
+      "description": "Никотиновые паучи ZYN 6 крепостью 16.5 мг."
+    },
+    "ro": {
+      "name": "ZYN 6",
+      "description": "Pliculete cu nicotină ZYN 6 cu tărie 16.5 mg."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "pabloxxl-30",
+  "brand": "PABLO",
+  "strength": 30,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/pabloxxl_30.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "PABLO Xxl",
+      "description": "PABLO Xxl nicotine pouches with 30mg strength."
+    },
+    "ru": {
+      "name": "PABLO Xxl",
+      "description": "Никотиновые паучи PABLO Xxl крепостью 30 мг."
+    },
+    "ro": {
+      "name": "PABLO Xxl",
+      "description": "Pliculete cu nicotină PABLO Xxl cu tărie 30 mg."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "baron-77",
+  "brand": "BARON",
+  "strength": 77,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/baron_77.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "BARON 77",
+      "description": "BARON 77 nicotine pouches with 77mg strength."
+    },
+    "ru": {
+      "name": "BARON 77",
+      "description": "Никотиновые паучи BARON 77 крепостью 77 мг."
+    },
+    "ro": {
+      "name": "BARON 77",
+      "description": "Pliculete cu nicotină BARON 77 cu tărie 77 mg."
+    }
+  }
+}

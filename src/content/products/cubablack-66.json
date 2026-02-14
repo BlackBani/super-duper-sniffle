@@ -1,0 +1,26 @@
+{
+  "slug": "cubablack-66",
+  "brand": "CUBA",
+  "strength": 66,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/cubablack_66.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "CUBA Black",
+      "description": "CUBA Black nicotine pouches with 66mg strength."
+    },
+    "ru": {
+      "name": "CUBA Black",
+      "description": "Никотиновые паучи CUBA Black крепостью 66 мг."
+    },
+    "ro": {
+      "name": "CUBA Black",
+      "description": "Pliculete cu nicotină CUBA Black cu tărie 66 mg."
+    }
+  }
+}

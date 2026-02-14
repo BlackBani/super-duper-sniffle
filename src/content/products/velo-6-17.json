@@ -1,0 +1,26 @@
+{
+  "slug": "velo-6-17",
+  "brand": "VELO",
+  "strength": 17,
+  "strengthCategory": "extra",
+  "flavorCategory": "mint",
+  "pouchesPerCan": 20,
+  "price": 89,
+  "currency": "MDL",
+  "image": "/images/products/velo_6_17.jpg",
+  "featured": true,
+  "translations": {
+    "en": {
+      "name": "VELO 6",
+      "description": "VELO 6 nicotine pouches with 17mg strength."
+    },
+    "ru": {
+      "name": "VELO 6",
+      "description": "Никотиновые паучи VELO 6 крепостью 17 мг."
+    },
+    "ro": {
+      "name": "VELO 6",
+      "description": "Pliculete cu nicotină VELO 6 cu tărie 17 mg."
+    }
+  }
+}
