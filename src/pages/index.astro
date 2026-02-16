@@ -14,15 +14,15 @@ const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
       (function() {
         const supportedLangs = ['en', 'ru', 'ro'];
         const browserLang = navigator.language.split('-')[0];
-        const targetLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+        const targetLang = supportedLangs.includes(browserLang) ? browserLang : 'ro';
         window.location.replace(baseClean + '/' + targetLang + '/');
       })();
     </script>
     <noscript>
-      <meta http-equiv="refresh" content={`0; url=${baseClean}/en/`} />
+      <meta http-equiv="refresh" content={`0; url=${baseClean}/ro/`} />
     </noscript>
   </head>
   <body>
-    <p>Redirecting to <a href={`${baseClean}/en/`}>English version</a>...</p>
+    <p>Redirecting to <a href={`${baseClean}/ro/`}>Romanian version</a>...</p>
   </body>
 </html>
