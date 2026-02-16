@@ -20,6 +20,11 @@ const translation = post.translations[lang];
 const base = import.meta.env.BASE_URL || '/';
 const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
 const imageSrc = post.image ? `${baseClean}${post.image}` : null;
+const siteOrigin = Astro.site?.origin || 'https://pauch.vip';
+const siteUrl = `${siteOrigin}${baseClean}`;
+const articleUrl = `${siteUrl}/ru/blog/${translation.slug}/`;
+const articleImage = post.image ? `${siteUrl}${post.image}` : `${siteUrl}${baseClean}/images/og-default.jpg`;
+const publisherLogoUrl = `${siteUrl}${baseClean}/favicon.svg`;
 
 // Generate alternates with correct localized slugs for each language
 const alternates: Array<{ lang: Language; url: string }> = [
@@ -40,11 +45,26 @@ const articleSchema = {
   "@type": "Article",
   "headline": translation.title,
   "description": translation.metaDescription,
+  "url": articleUrl,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": articleUrl,
+  },
+  "inLanguage": "ru",
   "datePublished": post.publishedAt,
   "dateModified": post.updatedAt || post.publishedAt,
+  "image": articleImage,
   "author": {
     "@type": "Organization",
     "name": "Pauch"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pauch",
+    "logo": {
+      "@type": "ImageObject",
+      "url": publisherLogoUrl,
+    }
   }
 };
 
