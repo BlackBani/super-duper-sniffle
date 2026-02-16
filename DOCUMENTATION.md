@@ -16,6 +16,7 @@ File: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/astro.config.mjs`
 - `site: 'https://pauch.vip'`
 - `base: '/'`
 - i18n locales: `en`, `ru`, `ro`
+- i18n default locale: `ro`
 - `prefixDefaultLocale: true`
 - `redirectToDefaultLocale: false` (important: keeps custom `/` redirect page active)
 - build format: `directory`
@@ -54,6 +55,12 @@ Per page, the layout renders:
 - Twitter tags
 - JSON-LD schema
 
+Root page (`/`) behavior:
+
+- non-indexable (`noindex,follow`)
+- canonical points to `/ro/`
+- JS locale redirect (supported: `en`, `ru`, `ro`; fallback: `ro`)
+
 ### 4.2 `x-default` behavior
 
 `x-default` is now derived from the same page path (not hardcoded homepage):
@@ -88,8 +95,12 @@ Required fields include:
 - `strength` (number)
 - `strengthCategory`: `easy | medium | strong | hardcore`
 - `flavorCategory`: `mint | citrus | berry | coffee | tropical`
-- `price`, `currency`, `image`, `featured`
+- `pouchesPerCan`, `image`, `featured`
 - translated `name` and `description` for EN/RO/RU
+
+Notes:
+
+- Product price/offers are intentionally not part of the content schema or UI.
 
 ### 5.2 Blog
 
@@ -137,7 +148,7 @@ Each page:
 - resolves the translated post by locale slug
 - renders article metadata
 - renders article content from JSON text
-- outputs Article JSON-LD
+- outputs enriched Article JSON-LD (headline/description/url/mainEntityOfPage/inLanguage/image/publisher/author)
 - outputs FAQPage JSON-LD when FAQ exists
 
 ## 8. Deployment

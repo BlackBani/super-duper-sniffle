@@ -62,8 +62,11 @@ Important fields in each product JSON:
   - `berry`
   - `coffee`
   - `tropical`
+- `pouchesPerCan`: number (usually `20`)
 - `image`: example `"/images/products/velo_easy.png"`
 - `translations.en`, `translations.ro`, `translations.ru` with `name` and `description`
+
+There is no product price field in current site logic. Do not add pricing data.
 
 ### 4.3 Image format recommendation
 
@@ -121,6 +124,7 @@ Language-specific legal pages:
 - Canonical tags are generated per page.
 - `hreflang` alternates are generated per page for EN/RO/RU.
 - `x-default` points to the equivalent Romanian page (not hardcoded homepage).
+- Root `/` is intentionally non-indexable and canonicalized to `/ro/`.
 - Sitemap is generated at build time via Astro sitemap integration.
 
 ## 10. Deployments
