@@ -30,8 +30,7 @@
     "easy": "Easy",
     "medium": "Medium",
     "strong": "Strong",
-    "hardcore": "Hardcore",
-    "mg": "mg"
+    "hardcore": "Hardcore"
   },
   "flavors": {
     "mint": "Mint",
@@ -57,22 +56,22 @@
   },
   "strengthGuide": {
     "title": "Strength Guide",
-    "subtitle": "Find your perfect strength level",
-    "low": {
-      "title": "Low (4-6mg)",
-      "description": "Perfect for beginners or light users"
+    "subtitle": "Choose the strength category that fits your routine",
+    "easy": {
+      "title": "Easy",
+      "description": "Smooth and light for a comfortable start"
     },
     "medium": {
-      "title": "Medium (8-12mg)",
-      "description": "Balanced experience for regular users"
+      "title": "Medium",
+      "description": "Balanced effect for regular users"
     },
     "strong": {
-      "title": "Strong (14-18mg)",
-      "description": "Intense experience for experienced users"
+      "title": "Strong",
+      "description": "Pronounced intensity for experienced users"
     },
-    "extra": {
-      "title": "Extra Strong (20mg+)",
-      "description": "Maximum strength for heavy users only"
+    "hardcore": {
+      "title": "Hardcore",
+      "description": "Maximum intensity for high-tolerance users only"
     }
   },
   "faq": {
@@ -181,69 +180,149 @@
         "id": "experience",
         "text": "What is your current nicotine use?",
         "options": [
-          { "id": "none", "label": "I don't currently use nicotine", "value": 0 },
-          { "id": "light", "label": "Light smoker or occasional vaper", "value": 1 },
-          { "id": "regular", "label": "Regular smoker or daily vaper", "value": 2 },
-          { "id": "heavy", "label": "Heavy smoker (15+ cigarettes/day)", "value": 3 }
+          {
+            "id": "none",
+            "label": "I don't currently use nicotine",
+            "value": 0
+          },
+          {
+            "id": "light",
+            "label": "Light smoker or occasional vaper",
+            "value": 1
+          },
+          {
+            "id": "regular",
+            "label": "Regular smoker or daily vaper",
+            "value": 2
+          },
+          {
+            "id": "heavy",
+            "label": "Heavy smoker (15+ cigarettes/day)",
+            "value": 3
+          }
         ]
       },
       {
         "id": "cravings",
         "text": "How would you describe your typical cravings?",
         "options": [
-          { "id": "mild", "label": "Mild — easy to ignore or delay", "value": 0 },
-          { "id": "moderate", "label": "Moderate — noticeable but manageable", "value": 1 },
-          { "id": "strong", "label": "Strong — hard to ignore for long", "value": 2 },
-          { "id": "intense", "label": "Intense — need relief quickly", "value": 3 }
+          {
+            "id": "mild",
+            "label": "Mild — easy to ignore or delay",
+            "value": 0
+          },
+          {
+            "id": "moderate",
+            "label": "Moderate — noticeable but manageable",
+            "value": 1
+          },
+          {
+            "id": "strong",
+            "label": "Strong — hard to ignore for long",
+            "value": 2
+          },
+          {
+            "id": "intense",
+            "label": "Intense — need relief quickly",
+            "value": 3
+          }
         ]
       },
       {
         "id": "frequency",
         "text": "How often would you like to use nicotine throughout the day?",
         "options": [
-          { "id": "rarely", "label": "A few times (2-4 per day)", "value": 0 },
-          { "id": "sometimes", "label": "Several times (5-8 per day)", "value": 1 },
-          { "id": "often", "label": "Frequently (9-12 per day)", "value": 2 },
-          { "id": "very_often", "label": "Very often (12+ per day)", "value": 3 }
+          {
+            "id": "rarely",
+            "label": "A few times (2-4 per day)",
+            "value": 0
+          },
+          {
+            "id": "sometimes",
+            "label": "Several times (5-8 per day)",
+            "value": 1
+          },
+          {
+            "id": "often",
+            "label": "Frequently (9-12 per day)",
+            "value": 2
+          },
+          {
+            "id": "very_often",
+            "label": "Very often (12+ per day)",
+            "value": 3
+          }
         ]
       },
       {
         "id": "sensitivity",
         "text": "How sensitive are you to nicotine or stimulants like caffeine?",
         "options": [
-          { "id": "very", "label": "Very sensitive — small amounts affect me strongly", "value": 0 },
-          { "id": "somewhat", "label": "Somewhat sensitive — I notice effects easily", "value": 1 },
-          { "id": "average", "label": "Average — typical response", "value": 2 },
-          { "id": "tolerant", "label": "High tolerance — I need more to feel effects", "value": 3 }
+          {
+            "id": "very",
+            "label": "Very sensitive — small amounts affect me strongly",
+            "value": 0
+          },
+          {
+            "id": "somewhat",
+            "label": "Somewhat sensitive — I notice effects easily",
+            "value": 1
+          },
+          {
+            "id": "average",
+            "label": "Average — typical response",
+            "value": 2
+          },
+          {
+            "id": "tolerant",
+            "label": "High tolerance — I need more to feel effects",
+            "value": 3
+          }
         ]
       },
       {
         "id": "preference",
         "text": "What kind of experience are you looking for?",
         "options": [
-          { "id": "gentle", "label": "Gentle and subtle", "value": 0 },
-          { "id": "balanced", "label": "Balanced and noticeable", "value": 1 },
-          { "id": "strong", "label": "Strong and satisfying", "value": 2 },
-          { "id": "intense", "label": "Intense and powerful", "value": 3 }
+          {
+            "id": "gentle",
+            "label": "Gentle and subtle",
+            "value": 0
+          },
+          {
+            "id": "balanced",
+            "label": "Balanced and noticeable",
+            "value": 1
+          },
+          {
+            "id": "strong",
+            "label": "Strong and satisfying",
+            "value": 2
+          },
+          {
+            "id": "intense",
+            "label": "Intense and powerful",
+            "value": 3
+          }
         ]
       }
     ],
     "results": {
-      "low": {
-        "title": "Low Strength (4-6mg)",
-        "explanation": "Based on your answers, a low-strength pouch is a good starting point. This level offers a gentle nicotine experience with minimal intensity, ideal for building comfort before adjusting."
+      "easy": {
+        "title": "Easy",
+        "explanation": "Based on your answers, Easy is the right place to start. It gives a softer experience and helps you stay in control while you adjust."
       },
       "medium": {
-        "title": "Medium Strength (8-12mg)",
-        "explanation": "A medium-strength pouch should match your needs well. This level provides a balanced, noticeable effect without being overwhelming — suitable for most regular users."
+        "title": "Medium",
+        "explanation": "A Medium strength should fit your profile well. It offers a clear but balanced effect for day-to-day use."
       },
       "strong": {
-        "title": "Strong (14-18mg)",
-        "explanation": "Based on your experience and preferences, a strong pouch is likely to satisfy your needs. This level delivers a pronounced effect suited to experienced nicotine users."
+        "title": "Strong",
+        "explanation": "Your answers point to Strong as a good fit. It provides a more pronounced effect for experienced users."
       },
-      "extra": {
-        "title": "Extra Strong (20mg+)",
-        "explanation": "Your answers suggest you have significant nicotine experience and tolerance. Extra-strong pouches provide maximum intensity — recommended only for heavy, experienced users."
+      "hardcore": {
+        "title": "Hardcore",
+        "explanation": "Your profile suggests high tolerance and strong preferences. Hardcore delivers the highest intensity and is best for advanced users."
       }
     }
   }

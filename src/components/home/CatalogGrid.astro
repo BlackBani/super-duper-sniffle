@@ -28,7 +28,6 @@ interface FlavorVariant {
   flavorCategory: string;
   flavorName: string;
   image: string;
-  price: number;
 }
 
 interface ProductLine {
@@ -37,17 +36,14 @@ interface ProductLine {
   strength: number;
   strengthCategory: string;
   pouchesPerCan: number;
-  currency: string;
   image: string;
   flavors: FlavorVariant[];
-  minPrice: number;
-  maxPrice: number;
 }
 
 const productLinesMap = new Map<string, ProductLine>();
 
 products.forEach((product) => {
-  const { brand, strength, strengthCategory, pouchesPerCan, currency, image, slug, flavorCategory, price, translations } = product.data;
+  const { brand, strength, strengthCategory, pouchesPerCan, image, slug, flavorCategory, translations } = product.data;
   const localizedName = translations[lang]?.name || slug;
   const lineId = `${brand}-${strength}`.toLowerCase().replace(/\s+/g, '-');
   
@@ -58,11 +54,8 @@ products.forEach((product) => {
       strength,
       strengthCategory,
       pouchesPerCan,
-      currency,
       image,
       flavors: [],
-      minPrice: price,
-      maxPrice: price,
     });
   }
   
@@ -72,12 +65,7 @@ products.forEach((product) => {
     flavorCategory,
     flavorName: getFlavorName(brand, localizedName),
     image,
-    price,
   });
-  
-  // Update price range
-  line.minPrice = Math.min(line.minPrice, price);
-  line.maxPrice = Math.max(line.maxPrice, price);
 });
 
 // Convert to array and sort by brand then strength

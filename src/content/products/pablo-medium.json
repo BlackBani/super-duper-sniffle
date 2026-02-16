@@ -5,8 +5,6 @@
   "strengthCategory": "medium",
   "flavorCategory": "mint",
   "pouchesPerCan": 20,
-  "price": 89,
-  "currency": "MDL",
   "image": "/images/products/pablo_medium.png",
   "featured": true,
   "translations": {

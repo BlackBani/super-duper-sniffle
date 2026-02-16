@@ -5,8 +5,6 @@
   "strengthCategory": "strong",
   "flavorCategory": "mint",
   "pouchesPerCan": 20,
-  "price": 89,
-  "currency": "MDL",
   "image": "/images/products/iceberg_strong.png",
   "featured": true,
   "translations": {

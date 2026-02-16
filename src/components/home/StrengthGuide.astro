@@ -10,9 +10,9 @@ const t = useTranslations(lang);
 
 const strengthLevels = [
   {
-    level: 'low',
-    title: t.strengthGuide.low.title,
-    description: t.strengthGuide.low.description,
+    level: 'easy',
+    title: t.strengthGuide.easy.title,
+    description: t.strengthGuide.easy.description,
     dots: 1,
     color: 'bg-emerald-500',
     lightColor: 'bg-emerald-100',
@@ -34,9 +34,9 @@ const strengthLevels = [
     lightColor: 'bg-orange-100',
   },
   {
-    level: 'extra',
-    title: t.strengthGuide.extra.title,
-    description: t.strengthGuide.extra.description,
+    level: 'hardcore',
+    title: t.strengthGuide.hardcore.title,
+    description: t.strengthGuide.hardcore.description,
     dots: 4,
     color: 'bg-red-500',
     lightColor: 'bg-red-100',
@@ -73,8 +73,8 @@ const strengthLevels = [
     <div class="max-w-xs md:max-w-md mx-auto mt-6 md:mt-8">
       <div class="h-1.5 rounded-full bg-gradient-to-r from-emerald-500 via-amber-500 via-orange-500 to-red-500"></div>
       <div class="flex justify-between mt-1.5">
-        <span class="text-caption text-muted">Mild</span>
-        <span class="text-caption text-muted">Intense</span>
+        <span class="text-caption text-muted">{t.strengths.easy}</span>
+        <span class="text-caption text-muted">{t.strengths.hardcore}</span>
       </div>
     </div>
   </div>

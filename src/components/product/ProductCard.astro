@@ -9,8 +9,6 @@ interface Props {
     strength: number;
     strengthCategory: string;
     flavorCategory: string;
-    price: number;
-    currency: string;
     image: string;
     translations: {
       [key: string]: {
@@ -99,11 +97,6 @@ const telegramLink = getTelegramOrderLink(lang, {
         {flavorLabels[product.flavorCategory]}
       </span>
     </div>
-    
-    <!-- Price -->
-    <p class="text-base font-semibold text-primary mb-3">
-      {product.price} {product.currency}
-    </p>
     
     <!-- Actions -->
     <div class="mt-auto flex flex-col sm:flex-row gap-2">

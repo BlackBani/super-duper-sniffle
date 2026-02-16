@@ -9,20 +9,12 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const homeCatalogPath = `${getLocalizedPath('/', lang)}#catalog`;
 
-// Strength tier colors matching StrengthGuide
-const strengthColors = {
-  low: { bg: 'bg-emerald-500', light: 'bg-emerald-100', text: 'text-emerald-600' },
-  medium: { bg: 'bg-amber-500', light: 'bg-amber-100', text: 'text-amber-600' },
-  strong: { bg: 'bg-orange-500', light: 'bg-orange-100', text: 'text-orange-600' },
-  extra: { bg: 'bg-red-500', light: 'bg-red-100', text: 'text-red-600' },
-};
-
 // Collection URLs for strength tiers
 const strengthUrls = {
-  low: homeCatalogPath,
+  easy: homeCatalogPath,
   medium: homeCatalogPath,
   strong: homeCatalogPath,
-  extra: homeCatalogPath,
+  hardcore: homeCatalogPath,
 };
 
 const strengthGuideUrl = '#strength-guide';
@@ -199,10 +191,10 @@ const strengthGuideUrl = '#strength-guide';
     disclaimer: string;
     questions: Question[];
     results: {
-      low: { title: string; explanation: string };
+      easy: { title: string; explanation: string };
       medium: { title: string; explanation: string };
       strong: { title: string; explanation: string };
-      extra: { title: string; explanation: string };
+      hardcore: { title: string; explanation: string };
     };
     caution: string;
   }
@@ -242,13 +234,13 @@ const strengthGuideUrl = '#strength-guide';
       
       // Strength tier colors
       const tierColors: Record<string, { bg: string; light: string; fill: string }> = {
-        low: { bg: 'bg-emerald-500', light: 'bg-emerald-100', fill: 'bg-emerald-500' },
+        easy: { bg: 'bg-emerald-500', light: 'bg-emerald-100', fill: 'bg-emerald-500' },
         medium: { bg: 'bg-amber-500', light: 'bg-amber-100', fill: 'bg-amber-500' },
         strong: { bg: 'bg-orange-500', light: 'bg-orange-100', fill: 'bg-orange-500' },
-        extra: { bg: 'bg-red-500', light: 'bg-red-100', fill: 'bg-red-500' },
+        hardcore: { bg: 'bg-red-500', light: 'bg-red-100', fill: 'bg-red-500' },
       };
       
-      const tierDots: Record<string, number> = { low: 1, medium: 2, strong: 3, extra: 4 };
+      const tierDots: Record<string, number> = { easy: 1, medium: 2, strong: 3, hardcore: 4 };
       
       function renderQuestion() {
         const question = questions[currentStep];
@@ -332,19 +324,19 @@ const strengthGuideUrl = '#strength-guide';
         // Check if user has no nicotine experience (question 1, value 0)
         const noNicotineExperience = answers['experience'] === 0;
         
-        // If no nicotine experience, always recommend low
+        // If no nicotine experience, always recommend easy
         if (noNicotineExperience) {
-          return 'low';
+          return 'easy';
         }
         
         // Average score (0-3 scale)
         const avgScore = answerCount > 0 ? totalScore / answerCount : 0;
         
         // Map to strength tier
-        if (avgScore < 1) return 'low';
+        if (avgScore < 1) return 'easy';
         if (avgScore < 1.8) return 'medium';
         if (avgScore < 2.5) return 'strong';
-        return 'extra';
+        return 'hardcore';
       }
       
       function showResult() {

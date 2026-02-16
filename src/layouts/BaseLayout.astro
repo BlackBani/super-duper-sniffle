@@ -12,10 +12,11 @@ interface Props {
   image?: string;
   canonicalPath?: string;
   schema?: object;
+  ogType?: 'website' | 'article' | 'product';
   alternates?: Array<{ lang: Language; url: string }>;
 }
 
-const { title, description, image, canonicalPath, schema, alternates: customAlternates } = Astro.props;
+const { title, description, image, canonicalPath, schema, ogType = 'website', alternates: customAlternates } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url) as Language;
 const t = useTranslations(lang);
@@ -103,7 +104,7 @@ const combinedSchema = schema
     <link rel="icon" type="image/svg+xml" href={`${baseClean}/favicon.svg`} />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />

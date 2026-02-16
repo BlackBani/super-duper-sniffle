@@ -11,8 +11,6 @@ interface Props {
     strengthCategory: string;
     flavorCategory: string;
     pouchesPerCan: number;
-    price: number;
-    currency: string;
     image: string;
     translations: {
       [key: string]: {
@@ -32,9 +30,18 @@ const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
 const homePath = `${baseClean}/${lang}/`;
 const catalogPath = `${homePath}#catalog`;
 
+const siteOrigin = Astro.site?.origin || 'https://yourusername.github.io';
+const siteUrl = `${siteOrigin}${baseClean}`;
+const productAbsoluteUrl = `${siteUrl}/${lang}/product/${product.slug}/`;
+const homeAbsoluteUrl = `${siteUrl}/${lang}/`;
+const catalogAbsoluteUrl = `${siteUrl}/${lang}/`;
+
 // Prepend base to image path
 const imageSrc = product.image.startsWith('/') 
   ? `${baseClean}${product.image}` 
+  : product.image;
+const imageAbsoluteUrl = product.image.startsWith('/')
+  ? `${siteUrl}${product.image}`
   : product.image;
 const placeholderSrc = `${baseClean}/images/products/placeholder.svg`;
 
@@ -58,17 +65,25 @@ const telegramLink = getTelegramOrderLink(lang, {
   strength: product.strength,
 });
 
-// Generate product schema (no price per PRD)
+// Generate product schema without pricing/offers.
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": translation.name,
   "description": translation.description,
+  "url": productAbsoluteUrl,
+  "sku": product.slug,
+  "category": "Nicotine Pouches",
+  "itemCondition": "https://schema.org/NewCondition",
   "brand": {
     "@type": "Brand",
     "name": product.brand,
   },
-  "image": product.image,
+  "image": imageAbsoluteUrl,
+  "audience": {
+    "@type": "PeopleAudience",
+    "suggestedMinAge": 18,
+  },
   "additionalProperty": [
     {
       "@type": "PropertyValue",
@@ -97,18 +112,19 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": t.nav.home,
-      "item": getLocalizedPath('/', lang),
+      "item": homeAbsoluteUrl,
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": t.nav.catalog,
-      "item": catalogPath,
+      "item": catalogAbsoluteUrl,
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": translation.name,
+      "item": productAbsoluteUrl,
     },
   ],
 };

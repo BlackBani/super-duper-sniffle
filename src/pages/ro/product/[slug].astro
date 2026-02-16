@@ -23,6 +23,7 @@ const translation = product.translations[lang];
   title={`${translation.name} - ${t.site.title}`}
   description={translation.description}
   image={product.image}
+  ogType="product"
 >
   <ProductDetail lang={lang} product={product} />
 </BaseLayout>

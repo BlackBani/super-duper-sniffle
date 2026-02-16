@@ -9,8 +9,6 @@ const productsCollection = defineCollection({
     strengthCategory: z.enum(['easy', 'medium', 'strong', 'hardcore']),
     flavorCategory: z.enum(['mint', 'citrus', 'berry', 'coffee', 'tropical']),
     pouchesPerCan: z.number().default(20),
-    price: z.number(),
-    currency: z.string().default('MDL'),
     image: z.string(),
     featured: z.boolean().default(false),
     translations: z.object({

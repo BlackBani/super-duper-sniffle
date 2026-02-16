@@ -6,7 +6,6 @@ interface FlavorVariant {
   flavorCategory: string;
   flavorName: string;
   image: string;
-  price: number;
 }
 
 interface ProductLine {
@@ -15,11 +14,8 @@ interface ProductLine {
   strength: number;
   strengthCategory: string;
   pouchesPerCan: number;
-  currency: string;
   image: string;
   flavors: FlavorVariant[];
-  minPrice: number;
-  maxPrice: number;
 }
 
 interface Props {
