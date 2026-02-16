@@ -30,6 +30,13 @@ const pageImage = image || `${baseClean}/images/og-default.jpg`;
 const currentPath = Astro.url.pathname;
 const alternates = customAlternates || getAlternateUrls(currentPath);
 
+// x-default should point to the same page in the fallback locale, not to homepage.
+const xDefaultLocale: Language = 'ro';
+const xDefaultPath =
+  alternates.find(({ lang: altLang }) => altLang === xDefaultLocale)?.url ||
+  alternates[0]?.url ||
+  '/ro/';
+
 // Site URL without trailing slash
 const siteOrigin = Astro.site?.origin || 'https://yourusername.github.io';
 const siteUrl = `${siteOrigin}${baseClean}`;
@@ -90,7 +97,7 @@ const combinedSchema = schema
     {alternates.map(({ lang: altLang, url }) => (
       <link rel="alternate" hreflang={altLang} href={`${siteUrl}${url}`} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${xDefaultPath}`} />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={`${baseClean}/favicon.svg`} />

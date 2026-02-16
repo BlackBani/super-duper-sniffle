@@ -14,6 +14,8 @@ export default defineConfig({
     locales: ['en', 'ru', 'ro'],
     routing: {
       prefixDefaultLocale: true,
+      // Keep custom / index.astro locale redirect logic active.
+      redirectToDefaultLocale: false,
     },
   },
   build: {

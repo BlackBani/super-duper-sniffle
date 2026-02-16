@@ -1,207 +1,149 @@
-# Pauch Website - Инструкция для клиента (без технических знаний)
+# Pauch Website - Руководство для клиента
 
-**English version:** см. `README.md`
+**English version:** см. `/Users/nicolaecretu24/Desktop/pouchwebsite_2/README.md`
 
-Это руководство для нетехнического пользователя. Вы можете менять товары, статьи блога и тексты сайта прямо в GitHub через браузер.
+Это инструкция для нетехнического пользователя. Контент можно менять прямо в GitHub через браузер.
 
 ## 1. Что это за сайт
 
-Это статический мультиязычный сайт (English, Русский, Română) с каталогом никотиновых паучей и блогом.
+- Статический мультиязычный сайт (EN, RO, RU)
+- Каталог товаров + блог + юридические страницы
+- Заказы уходят в Telegram через единую deep-link ссылку
 
-Основной контент находится здесь:
+## 2. Основные файлы для редактирования
 
-- `src/content/products/` - товары
-- `src/content/blog/` - статьи блога (в каждом файле сразу 3 языка)
-- `src/content/hubs/` - категории блога
-- `src/i18n/en.json`, `src/i18n/ru.json`, `src/i18n/ro.json` - тексты интерфейса, меню, FAQ
-- `public/images/products/` - фото товаров
-- `public/images/blog/` - изображения статей
+- Товары: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/content/products/*.json`
+- Статьи блога: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/content/blog/*.json`
+- Категории блога: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/content/hubs/*.json`
+- Тексты интерфейса (меню, блоки главной, FAQ):
+  - `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/en.json`
+  - `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/ro.json`
+  - `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/ru.json`
+- Изображения товаров: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/public/images/products/`
+- Изображения блога: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/public/images/blog/`
+- Ссылка для заказа в Telegram: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/index.ts` (`TELEGRAM_DEEP_LINK`)
 
-## 2. Безопасный процесс публикации (без терминала)
+## 3. Безопасный процесс публикации (через GitHub)
 
-Используйте этот порядок каждый раз:
+1. Откройте нужный файл в GitHub.
+2. Нажмите `Edit this file` (иконка карандаша).
+3. Внесите изменения.
+4. Напишите понятное сообщение коммита.
+5. Выберите `Commit directly to the main branch`.
+6. Нажмите Commit.
+7. Дождитесь деплоя.
+8. Проверьте сайт.
 
-1. Откройте репозиторий в GitHub.
-2. Откройте файл, который хотите изменить.
-3. Нажмите на иконку карандаша (`Edit this file`).
-4. Внесите изменения.
-5. Внизу страницы укажите короткое сообщение коммита.
-6. Выберите `Commit directly to the main branch`.
-7. Нажмите `Commit changes`.
-8. Подождите деплой Netlify (обычно 1-3 минуты).
-9. Откройте сайт и проверьте изменения.
+Если нужно откатить изменение, сделайте `Revert` в истории коммитов.
 
-Если что-то пошло не так, можно откатить:
+## 4. Правила редактирования товаров
 
-1. Откройте `Commits`.
-2. Выберите последний коммит.
-3. Нажмите `Revert`.
+### 4.1 Что реально показывает каталог
 
-## 3. Что можно менять и где
+В каталоге отображаются только JSON-файлы из `/src/content/products/`.
 
-- Изменить название/описание/цену/крепость товара: `src/content/products/*.json`
-- Добавить или удалить товар: `src/content/products/`
-- Изменить текст статьи/SEO-заголовки/описания/slug: `src/content/blog/*.json`
-- Добавить или удалить статью: `src/content/blog/`
-- Изменить тексты главной страницы, FAQ, кнопки: `src/i18n/en.json`, `src/i18n/ru.json`, `src/i18n/ro.json`
-- Изменить юридические страницы: `src/pages/en/*.astro`, `src/pages/ru/*.astro`, `src/pages/ro/*.astro` (`terms.astro`, `privacy.astro`, `age-policy.astro`)
-- Изменить Telegram-ссылку: `src/i18n/index.ts` (`TELEGRAM_DEEP_LINK`)
-- Обновить изображения: `public/images/products/`, `public/images/blog/`
+Если картинка лежит в `/public/images/products/`, но на нее нет ссылки из JSON, на сайте она не появится.
 
-## 4. Редактирование товаров
+### 4.2 Обязательные поля товара
 
-### 4.1 Обновить существующий товар
+Ключевые поля в каждом JSON:
 
-1. Откройте любой файл в `src/content/products/` (например: `src/content/products/pablo-ice-cold.json`).
-2. Измените нужные значения:
-   - `price`
-   - `strength`
-   - `strengthCategory` (`low`, `medium`, `strong`, `extra`)
-   - `flavorCategory` (`mint`, `citrus`, `berry`, `coffee`, `tropical`)
-   - `translations.en.name`, `translations.ru.name`, `translations.ro.name`
-   - `translations.*.description`
-3. Сделайте commit.
+- `slug`: уникальный ключ URL
+- `brand`: название бренда
+- `strength`: числовой уровень (используется для сортировки)
+- `strengthCategory`: только одно из значений:
+  - `easy`
+  - `medium`
+  - `strong`
+  - `hardcore`
+- `flavorCategory`: только одно из значений:
+  - `mint`
+  - `citrus`
+  - `berry`
+  - `coffee`
+  - `tropical`
+- `image`: пример `"/images/products/velo_easy.png"`
+- `translations.en`, `translations.ro`, `translations.ru` с полями `name` и `description`
 
-### 4.2 Добавить новый товар
+### 4.3 Формат изображений товара
 
-1. В папке `src/content/products/` нажмите `Add file` -> `Create new file`.
-2. Назовите файл, например: `brand-flavor-strength.json`.
-3. Скопируйте структуру из существующего товарного JSON-файла.
-4. Заполните все поля.
-5. Загрузите изображение товара в `public/images/products/`.
-6. Укажите путь к картинке в поле:
-   - `"image": "/images/products/your-image.webp"`
-7. Сделайте commit.
+Рекомендуется использовать прозрачные `.png` изображения банок, потому что карточки стилизованы под такой тип изображений.
 
-## 5. Редактирование статей блога
+## 5. Правила редактирования блога
 
-Каждый файл статьи содержит **сразу 3 языка** (EN/RU/RO).
+Каждый файл блога содержит сразу 3 языка.
 
-### 5.1 Обновить существующую статью
+Важные поля внутри переводов:
 
-1. Откройте файл в `src/content/blog/`.
-2. Изменяйте блоки `translations.en`, `translations.ru`, `translations.ro`.
-3. Важные поля:
-   - `title` -> заголовок статьи
-   - `slug` -> часть URL (менять аккуратно)
-   - `metaTitle` -> SEO title
-   - `metaDescription` -> SEO description
-   - `excerpt` -> краткий текст на карточке
-   - `content` -> полный текст статьи
-   - `faq` -> блок вопросов/ответов (необязательно)
-4. Сделайте commit.
+- `title`
+- `slug`
+- `metaTitle`
+- `metaDescription`
+- `excerpt`
+- `content`
+- опционально `faq`
 
-### 5.2 Добавить новую статью
+Поля уровня статьи:
 
-1. Скопируйте любой существующий файл из `src/content/blog/`.
-2. Переименуйте в новый уникальный файл (например: `p013-new-topic.json`).
-3. Измените:
-   - `postId` на новый ID (`P013` и т.д.)
-   - `publishedAt` в формате `YYYY-MM-DD`
-   - `hub` (`switching`, `strength`, `selection`, `safety`)
-   - тексты для всех 3 языков
-4. Добавьте изображение в `public/images/blog/` и укажите:
-   - `"image": "/images/blog/filename.jpg"`
-5. Сделайте commit.
+- `postId` (уникальный)
+- `publishedAt` (`YYYY-MM-DD`)
+- `hub` (`switching`, `strength`, `selection`, `safety`)
+- `image` (пример `"/images/blog/your-image.png"`)
 
-## 6. Форматирование текста статьи
+## 6. Редактирование текстов интерфейса
 
-Внутри `translations.*.content` используйте простой markdown-формат:
+Меняйте только значения в:
 
-- `## Заголовок` для H2
-- `### Подзаголовок` для H3
-- `- Пункт` для маркированного списка
-- `1. Пункт` для нумерованного списка
-- `**жирный**` для выделения
+- `/src/i18n/en.json`
+- `/src/i18n/ro.json`
+- `/src/i18n/ru.json`
 
-### SEO-рекомендации для статей
+Ключи JSON переименовывать нельзя.
 
-- `metaTitle`: примерно 50-70 символов
-- `metaDescription`: примерно 140-160 символов
-- `slug` делайте коротким и понятным
-- заполняйте все 3 языка
+## 7. Юридические страницы
 
-## 7. Изменение текстов на главной странице (кнопки, секции, FAQ)
+- `/src/pages/en/terms.astro`, `/src/pages/en/privacy.astro`, `/src/pages/en/age-policy.astro`
+- `/src/pages/ro/terms.astro`, `/src/pages/ro/privacy.astro`, `/src/pages/ro/age-policy.astro`
+- `/src/pages/ru/terms.astro`, `/src/pages/ru/privacy.astro`, `/src/pages/ru/age-policy.astro`
 
-Тексты главной и части интерфейса находятся в:
+## 8. Текущее поведение языка и редиректа
 
-- `src/i18n/en.json`
-- `src/i18n/ru.json`
-- `src/i18n/ro.json`
+- Все локализованные страницы идут через `/en/`, `/ro/`, `/ru/`.
+- Корень `/` использует кастомный редирект:
+  - Если JS включен: выбор языка по языку браузера (`en`, `ro`, `ru`)
+  - Если язык браузера не поддерживается: переход на `/ro/`
+  - Если JS выключен: переход на `/ro/`
 
-Основные разделы для редактирования:
+## 9. Текущее SEO поведение
 
-- `hero`
-- `catalog`
-- `faq`
-- `shipping`
-- `about`
-- `strengthFinder`
-- `footer`
+- Canonical ставится для каждой страницы.
+- `hreflang` генерируется для EN/RO/RU на каждой странице.
+- `x-default` указывает на эквивалентную румынскую страницу, а не на главную.
+- Sitemap генерируется автоматически при сборке через Astro sitemap.
 
-Важно:
+## 10. Деплой
 
-- Меняйте только значения текста.
-- Не переименовывайте ключи (например `"hero"`, `"faq"`, `"title"`).
+В репозитории есть конфигурации для обеих платформ:
 
-## 8. Юридические страницы
+- GitHub Pages: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/.github/workflows/deploy.yml`
+- Netlify: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/netlify.toml`
 
-Юридические страницы отдельные для каждого языка:
+Используйте ту платформу, которая подключена в вашем аккаунте.
 
-- English: `src/pages/en/terms.astro`, `src/pages/en/privacy.astro`, `src/pages/en/age-policy.astro`
-- Русский: `src/pages/ru/terms.astro`, `src/pages/ru/privacy.astro`, `src/pages/ru/age-policy.astro`
-- Română: `src/pages/ro/terms.astro`, `src/pages/ro/privacy.astro`, `src/pages/ro/age-policy.astro`
+## 11. Чек-лист перед коммитом
 
-В этих файлах можно редактировать видимый текст напрямую.
+1. Редактировали нужный файл?
+2. Обновили все нужные языки (EN/RO/RU)?
+3. JSON валиден (запятые, кавычки, скобки)?
+4. Картинка загружена и путь совпадает?
+5. Slug корректный?
+6. Деплой прошел успешно?
 
-## 9. Изменение Telegram-ссылки
-
-Если нужно поменять ссылку для заказа:
-
-1. Откройте `src/i18n/index.ts`
-2. Обновите строку:
-   - `export const TELEGRAM_DEEP_LINK = 'https://...'`
-3. Сделайте commit.
-
-## 10. Правила для изображений
-
-- Фото товаров: `public/images/products/`
-- Фото для блога: `public/images/blog/`
-- Используйте простые имена файлов (нижний регистр, дефисы, без пробелов), например:
-  - `pablo-ice-cold.webp`
-  - `beginner-guide.jpg`
-- После загрузки проверьте, что путь в JSON совпадает с названием файла.
-
-## 11. Частые ошибки, которых нужно избегать
-
-- Не удаляйте запятые и кавычки в JSON.
-- Не переименовывайте ключи: `translations`, `title`, `metaTitle` и т.д.
-- Не оставляйте один язык пустым, если обновляете контент.
-- Не переименовывайте папки и не переносите файлы.
-
-Если после изменения деплой Netlify упал, чаще всего причина - ошибка JSON (лишняя/пропущенная запятая или скобка). Сравните с предыдущим рабочим коммитом.
-
-## 12. Чек-лист перед каждым commit
-
-1. Изменили нужный файл?
-2. Обновили EN + RU + RO, где требуется?
-3. JSON остался валидным (запятые/скобки/кавычки)?
-4. Изображение загружено, если есть ссылка на него?
-5. `slug` корректный?
-6. Деплой Netlify прошел успешно?
-
-## 13. Для разработчика (необязательно)
-
-Локальный запуск:
+## 12. Команды для разработчика (опционально)
 
 ```bash
 npm install
 npm run dev
-```
-
-Прод-сборка:
-
-```bash
 npm run build
 npm run preview
 ```
