@@ -10,7 +10,7 @@ export const languages = {
 
 export type Language = keyof typeof languages;
 
-export const defaultLang: Language = 'en';
+export const defaultLang: Language = 'ro';
 
 const translations = { en, ru, ro } as const;
 

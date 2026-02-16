@@ -7,10 +7,13 @@ export default defineConfig({
   base: '/',
   integrations: [
     tailwind(),
-    sitemap(),
+    sitemap({
+      filter: (page) => page !== 'https://pauch.vip/' && page !== 'https://pauch.vip',
+    }),
   ],
   i18n: {
-    defaultLocale: 'en',
+    // Romanian is the fallback locale for root redirect and x-default.
+    defaultLocale: 'ro',
     locales: ['en', 'ru', 'ro'],
     routing: {
       prefixDefaultLocale: true,
