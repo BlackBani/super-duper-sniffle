@@ -16,12 +16,19 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const translation = product.translations[lang];
+const strengthLabels: Record<string, string> = {
+  easy: t.strengths.easy,
+  medium: t.strengths.medium,
+  strong: t.strengths.strong,
+  hardcore: t.strengths.hardcore,
+};
+const strengthLabel = strengthLabels[product.strengthCategory] || product.strengthCategory;
+const productStrengthName = `${product.brand} ${strengthLabel}`;
 ---
 
 <BaseLayout
-  title={`${translation.name} - ${t.site.title}`}
-  description={translation.description}
+  title={`${productStrengthName} pliculețe cu nicotină în Moldova | Pauch`}
+  description={`Comandă ${productStrengthName} în Moldova cu livrare rapidă în Chișinău. Produse originale, tărie clară și comandă prin Telegram. 18+.`}
   image={product.image}
   ogType="product"
 >

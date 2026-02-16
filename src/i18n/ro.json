@@ -12,8 +12,8 @@
     "faq": "Întrebări"
   },
   "hero": {
-    "headline": "Pliculețe Premium,\nLivrate Rapid",
-    "subhead": "Pliculețe cu nicotină fără tutun. Doar produse originale. Livrare în 30-60 minute.",
+    "headline": "Pliculețe cu nicotină în Moldova, livrate rapid",
+    "subhead": "Pliculețe cu nicotină fără tutun. Doar produse originale. Livrare în Chișinău în 1-2 ore. Livrăm și în toată Moldova.",
     "ctaCatalog": "Vezi Catalogul",
     "ctaTelegram": "Comandă în Telegram"
   },
@@ -43,7 +43,7 @@
     "title": "De Ce Noi",
     "delivery": {
       "title": "Livrare Rapidă",
-      "description": "Livrare în 30-60 minute în oraș"
+      "description": "Livrare în Chișinău în 1-2 ore"
     },
     "original": {
       "title": "100% Original",
@@ -91,7 +91,7 @@
       },
       {
         "question": "Cât de rapidă este livrarea în Chișinău?",
-        "answer": "Livrăm comenzile în 30-60 minute după confirmare prin Telegram (depinde și de zonă și de încărcare). În timpul serii și în sărbători, timpii pot varia ușor."
+        "answer": "Livrăm comenzile în Chișinău în 1-2 ore după confirmare prin Telegram. Livrăm și în toată Moldova."
       },
       {
         "question": "Trebuie să arăt buletinul?",
@@ -118,11 +118,11 @@
   "shipping": {
     "title": "Livrare și Plată",
     "deliveryTitle": "Livrare",
-    "deliveryText": "Livrăm în 30-60 minute în centrul orașului. Alte zone în 1-2 ore.",
+    "deliveryText": "Livrare în Chișinău în 1-2 ore. Livrăm și în toată Moldova.",
     "paymentTitle": "Plată",
     "paymentText": "Numerar la livrare sau transfer bancar. Detaliile de plată sunt furnizate la confirmarea comenzii.",
     "areasTitle": "Zone de Livrare",
-    "areasText": "Livrăm în toate zonele din oraș."
+    "areasText": "Livrăm în Chișinău și în toată Moldova."
   },
   "about": {
     "title": "Despre Noi",
@@ -161,7 +161,7 @@
     "title": "Branduri de încredere"
   },
   "strengthFinder": {
-    "title": "Găsește tăria potrivită",
+    "title": "Găsește tăria potrivită la pliculețe cu nicotină",
     "subtitle": "Răspunde la câteva întrebări pentru o recomandare personalizată",
     "step": "Pasul {current} din {total}",
     "back": "Înapoi",

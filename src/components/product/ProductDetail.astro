@@ -51,6 +51,14 @@ const strengthLabels: Record<string, string> = {
   strong: t.strengths.strong,
   hardcore: t.strengths.hardcore,
 };
+const strengthLabel = strengthLabels[product.strengthCategory] || product.strengthCategory;
+
+const productHeading =
+  lang === 'ro'
+    ? `${product.brand} ${strengthLabel} pliculețe cu nicotină`
+    : lang === 'ru'
+      ? `${product.brand} ${strengthLabel} никотиновые паучи`
+      : `${product.brand} ${strengthLabel} Nicotine Pouches`;
 
 const flavorLabels: Record<string, string> = {
   mint: t.flavors.mint,
@@ -177,7 +185,7 @@ const breadcrumbSchema = {
       <!-- Product Info -->
       <div class="flex flex-col">
         <span class="text-caption text-muted mb-2">{product.brand}</span>
-        <h1 class="text-xl md:text-3xl font-semibold mb-3">{translation.name}</h1>
+        <h1 class="text-xl md:text-3xl font-semibold mb-3">{productHeading}</h1>
         
         <p class="text-sm md:text-base text-muted mb-5">{translation.description}</p>
         
