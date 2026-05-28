@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Pauch - Pliculețe Premium cu Nicotină",
-    "description": "Pliculețe premium cu nicotină cu livrare rapidă. Răsfoiește catalogul și comandă prin Telegram.",
+    "description": "Catalog și ghiduri despre pliculețe premium cu nicotină în Moldova. Pauch este temporar pe pauză, iar comenzile nu sunt disponibile.",
     "keywords": "pliculețe nicotină, snus, fără tutun, pliculețe mentă, nicotină puternică"
   },
   "nav": {
@@ -12,17 +12,17 @@
     "faq": "Întrebări"
   },
   "hero": {
-    "headline": "Pliculețe cu nicotină în Moldova, livrate rapid",
-    "subhead": "Pliculețe cu nicotină fără tutun. Doar produse originale. Livrare în Chișinău în 1-2 ore. Livrăm și în toată Moldova.",
+    "headline": "Pliculețe cu nicotină în Moldova",
+    "subhead": "Catalog de pliculețe cu nicotină fără tutun pentru adulți din Moldova. Pauch este temporar pe pauză, iar comenzile și livrarea nu sunt disponibile.",
     "ctaCatalog": "Vezi Catalogul",
-    "ctaTelegram": "Comandă în Telegram"
+    "ctaTelegram": "Comenzi în pauză"
   },
   "catalog": {
     "title": "Produsele Noastre",
     "filterAll": "Toate",
     "filterStrength": "Tărie",
     "filterFlavor": "Aromă",
-    "orderButton": "Comandă",
+    "orderButton": "Comenzi în pauză",
     "detailsButton": "Detalii",
     "noProducts": "Niciun produs nu corespunde filtrelor"
   },
@@ -42,8 +42,8 @@
   "whyUs": {
     "title": "De Ce Noi",
     "delivery": {
-      "title": "Livrare Rapidă",
-      "description": "Livrare în Chișinău în 1-2 ore"
+      "title": "Livrare în pauză",
+      "description": "Comenzile și livrarea sunt temporar indisponibile"
     },
     "original": {
       "title": "100% Original",
@@ -91,7 +91,7 @@
       },
       {
         "question": "Cât de rapidă este livrarea în Chișinău?",
-        "answer": "Livrăm comenzile în Chișinău în 1-2 ore după confirmare prin Telegram. Livrăm și în toată Moldova."
+        "answer": "Livrarea și procesarea comenzilor sunt temporar pe pauză. Catalogul și ghidurile rămân online pentru informare."
       },
       {
         "question": "Trebuie să arăt buletinul?",
@@ -99,11 +99,11 @@
       },
       {
         "question": "Cum plasez o comandă?",
-        "answer": "Apasă butonul «Comandă în Telegram». Managerul nostru te va contacta instantaneu pentru a clarifica detaliile."
+        "answer": "Comenzile sunt temporar indisponibile cât timp Pauch este pe pauză. Linkul de comandă a fost dezactivat."
       },
       {
         "question": "Aveți ridicare personală?",
-        "answer": "Funcționăm ca magazin online cu livrare rapidă pentru a-ți economisi timpul."
+        "answer": "Ridicarea personală și livrarea sunt temporar indisponibile cât timp Pauch este pe pauză."
       }
     ]
   },
@@ -112,30 +112,36 @@
     "flavor": "Aromă",
     "pouches": "pliculețe per cutie",
     "brand": "Brand",
-    "orderNow": "Comandă Acum",
+    "orderNow": "Comenzi în pauză",
     "backToCatalog": "Înapoi la Catalog"
   },
   "shipping": {
     "title": "Livrare și Plată",
     "deliveryTitle": "Livrare",
-    "deliveryText": "Livrare în Chișinău în 1-2 ore. Livrăm și în toată Moldova.",
+    "deliveryText": "Livrarea este temporar pe pauză cât timp Pauch este oprit.",
     "paymentTitle": "Plată",
-    "paymentText": "Numerar la livrare sau transfer bancar. Detaliile de plată sunt furnizate la confirmarea comenzii.",
+    "paymentText": "Plata nu este disponibilă cât timp comenzile sunt pe pauză.",
     "areasTitle": "Zone de Livrare",
-    "areasText": "Livrăm în Chișinău și în toată Moldova."
+    "areasText": "Informațiile despre zonele de livrare vor reveni când comenzile se reiau."
   },
   "about": {
     "title": "Despre Noi",
-    "text": "Suntem un furnizor de încredere de pliculețe premium cu nicotină. Misiunea noastră este să oferim produse autentice, de înaltă calitate, cu livrare rapidă și discretă.",
+    "text": "Pauch este un catalog de pliculețe premium cu nicotină în Moldova. Proiectul este temporar pe pauză, dar informațiile despre produse și ghidurile rămân disponibile pentru adulți.",
     "authenticityTitle": "Garanție de Autenticitate",
     "authenticityText": "Toate produsele sunt achiziționate direct de la distribuitori oficiali și vin în ambalaj original."
   },
   "footer": {
-    "telegram": "Comandă prin Telegram",
+    "telegram": "Comenzi în pauză",
     "rights": "Toate drepturile rezervate",
     "privacy": "Politica de Confidențialitate",
     "terms": "Termeni și Condiții",
     "agePolicy": "Politica de Vârstă"
+  },
+  "pause": {
+    "title": "Pauch este temporar pe pauză",
+    "message": "Comenzile și livrarea sunt temporar indisponibile. Catalogul și ghidurile rămân online pentru informare.",
+    "short": "Comenzi temporar indisponibile",
+    "ariaLabel": "Anunț despre pauza activității"
   },
   "ageGate": {
     "title": "Verificarea Vârstei",

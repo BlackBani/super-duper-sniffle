@@ -1,5 +1,5 @@
 ---
-import { useTranslations, getLocalizedPath, getTelegramOrderLink, type Language } from '@i18n/index';
+import { BUSINESS_PAUSED, useTranslations, getLocalizedPath, getTelegramOrderLink, type Language } from '@i18n/index';
 
 interface FlavorVariant {
   slug: string;
@@ -47,6 +47,7 @@ const imageAlt = title;
 const placeholderSrc = `${baseClean}/images/products/placeholder.svg`;
 
 const telegramOrderLink = getTelegramOrderLink(lang);
+const orderButtonClasses = 'order-btn flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 text-xs md:text-sm font-medium rounded-full transition-all';
 ---
 
 <article
@@ -102,17 +103,27 @@ const telegramOrderLink = getTelegramOrderLink(lang);
     
     <!-- Actions -->
     <div class="mt-auto flex flex-col gap-1.5">
-      <a
-        href={telegramOrderLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="order-btn flex items-center justify-center gap-1.5 px-3 py-2 md:px-4 md:py-2.5 bg-accent text-white text-xs md:text-sm font-medium rounded-full hover:bg-opacity-90 transition-all"
-      >
-        <svg class="w-3.5 h-3.5 md:w-4 md:h-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-        </svg>
-        {t.catalog.orderButton}
-      </a>
+      {BUSINESS_PAUSED ? (
+        <button
+          type="button"
+          class={`${orderButtonClasses} bg-gray-200 text-muted cursor-not-allowed`}
+          disabled
+        >
+          {t.catalog.orderButton}
+        </button>
+      ) : (
+        <a
+          href={telegramOrderLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`${orderButtonClasses} bg-accent text-white hover:bg-opacity-90`}
+        >
+          <svg class="w-3.5 h-3.5 md:w-4 md:h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          {t.catalog.orderButton}
+        </a>
+      )}
       <a
         href={getLocalizedPath(`/product/${productLine.flavors[0]?.slug || ''}`, lang)}
         class="details-btn text-center px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium text-muted hover:text-primary transition-colors"

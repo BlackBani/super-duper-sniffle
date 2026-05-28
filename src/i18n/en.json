@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Pauch - Premium Nicotine Pouches",
-    "description": "Premium nicotine pouches with fast delivery. Browse our catalog and order via Telegram.",
+    "description": "Premium nicotine pouch catalog and guides for Moldova. Pauch is currently paused, so orders are temporarily unavailable.",
     "keywords": "nicotine pouches, snus, tobacco-free, mint pouches, strong nicotine"
   },
   "nav": {
@@ -12,17 +12,17 @@
     "faq": "FAQ"
   },
   "hero": {
-    "headline": "Nicotine Pouches in Moldova, Delivered Fast",
-    "subhead": "Tobacco-free nicotine pouches. Original products only. Delivery in Chișinău in 1-2 hours. We also deliver across Moldova.",
+    "headline": "Nicotine Pouches in Moldova",
+    "subhead": "Tobacco-free nicotine pouch catalog for adults in Moldova. Pauch is currently paused, so orders and delivery are temporarily unavailable.",
     "ctaCatalog": "Browse Catalog",
-    "ctaTelegram": "Order in Telegram"
+    "ctaTelegram": "Orders paused"
   },
   "catalog": {
     "title": "Our Products",
     "filterAll": "All",
     "filterStrength": "Strength",
     "filterFlavor": "Flavor",
-    "orderButton": "Order",
+    "orderButton": "Orders paused",
     "detailsButton": "Details",
     "noProducts": "No products match your filters"
   },
@@ -42,8 +42,8 @@
   "whyUs": {
     "title": "Why Choose Us",
     "delivery": {
-      "title": "Fast Delivery",
-      "description": "1-2 hour delivery in Chișinău"
+      "title": "Delivery Paused",
+      "description": "Orders and delivery are temporarily unavailable"
     },
     "original": {
       "title": "100% Original",
@@ -91,7 +91,7 @@
       },
       {
         "question": "How fast is delivery in Chisinau?",
-        "answer": "We deliver orders in Chișinău in 1-2 hours after confirmation via Telegram. We also deliver across Moldova."
+        "answer": "Delivery and order fulfillment are temporarily paused while Pauch is on hold. The catalog and guides remain online for information."
       },
       {
         "question": "Do I need to show ID?",
@@ -99,11 +99,11 @@
       },
       {
         "question": "How do I place an order?",
-        "answer": "Simply click the 'Order in Telegram' button. Our manager will instantly contact you to clarify the details."
+        "answer": "Orders are temporarily unavailable while Pauch is paused. The order link has been disabled."
       },
       {
         "question": "Do you offer pickup?",
-        "answer": "We operate as an online store with fast delivery to save your time."
+        "answer": "Pickup and delivery are temporarily unavailable while Pauch is paused."
       }
     ]
   },
@@ -112,30 +112,36 @@
     "flavor": "Flavor",
     "pouches": "pouches per can",
     "brand": "Brand",
-    "orderNow": "Order Now",
+    "orderNow": "Orders paused",
     "backToCatalog": "Back to Catalog"
   },
   "shipping": {
     "title": "Shipping & Payment",
     "deliveryTitle": "Delivery",
-    "deliveryText": "Delivery in Chișinău in 1-2 hours. We also deliver across Moldova.",
+    "deliveryText": "Delivery is temporarily paused while Pauch is on hold.",
     "paymentTitle": "Payment",
-    "paymentText": "Cash on delivery or bank transfer. Payment details provided upon order confirmation.",
+    "paymentText": "Payment is unavailable while orders are paused.",
     "areasTitle": "Delivery Areas",
-    "areasText": "We deliver in Chișinău and across Moldova."
+    "areasText": "Delivery coverage information will return when orders resume."
   },
   "about": {
     "title": "About Us",
-    "text": "We are a trusted supplier of premium nicotine pouches. Our mission is to provide authentic, high-quality products with fast and discreet delivery.",
+    "text": "Pauch is a catalog for premium nicotine pouches in Moldova. The project is currently paused, but product information and guides remain available for adults.",
     "authenticityTitle": "Authenticity Guarantee",
     "authenticityText": "All products are sourced directly from official distributors and come with original packaging."
   },
   "footer": {
-    "telegram": "Order via Telegram",
+    "telegram": "Orders paused",
     "rights": "All rights reserved",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "agePolicy": "Age Policy"
+  },
+  "pause": {
+    "title": "Pauch is currently on pause",
+    "message": "Orders and delivery are temporarily unavailable. The catalog and guides remain online for information.",
+    "short": "Orders temporarily unavailable",
+    "ariaLabel": "Business pause notice"
   },
   "ageGate": {
     "title": "Age Verification",

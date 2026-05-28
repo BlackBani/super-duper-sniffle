@@ -14,6 +14,8 @@ export const defaultLang: Language = 'ro';
 
 const translations = { en, ru, ro } as const;
 
+export const BUSINESS_PAUSED = true;
+
 // Get the base URL from Astro (handles both dev and production)
 export function getBase(): string {
   // In components, use import.meta.env.BASE_URL
@@ -85,6 +87,7 @@ export function getTelegramOrderLink(
   _lang: Language,
   _product?: { name: string; strength: number }
 ): string {
+  if (BUSINESS_PAUSED) return '#orders-paused';
   return TELEGRAM_DEEP_LINK;
 }
 
