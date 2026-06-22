@@ -47,15 +47,12 @@
     @apply bg-background text-body font-sans;
     overflow-x: hidden;
     position: relative;
-  }
-
-  body.has-telegram-button {
     /* Bottom padding to prevent Telegram button overlap on mobile */
     padding-bottom: 4rem;
   }
   
   @media (min-width: 768px) {
-    body.has-telegram-button {
+    body {
       padding-bottom: 0;
     }
   }
