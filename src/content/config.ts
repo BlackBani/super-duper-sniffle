@@ -11,6 +11,27 @@ const productsCollection = defineCollection({
     pouchesPerCan: z.number().default(20),
     image: z.string(),
     featured: z.boolean().default(false),
+    productId: z.string().optional(),
+    brandId: z.string().optional(),
+    variantName: z.string().optional(),
+    aliases: z.array(z.string()).default([]),
+    manufacturer: z.string().optional(),
+    countryOfOrigin: z.string().optional(),
+    sku: z.string().optional(),
+    gtin: z.string().optional(),
+    nicotineMgPerPouch: z.number().positive().optional(),
+    nicotineMgPerGram: z.number().positive().optional(),
+    netWeightG: z.number().positive().optional(),
+    pouchWeightG: z.number().positive().optional(),
+    pouchFormat: z.enum(['mini', 'slim', 'regular', 'large']).optional(),
+    flavorTags: z.array(z.string()).default([]),
+    price: z.number().nonnegative().optional(),
+    currency: z.literal('MDL').optional(),
+    availability: z.enum(['in-stock', 'low-stock', 'out-of-stock', 'preorder', 'unknown']).default('unknown'),
+    orderUrl: z.string().url().optional(),
+    officialSourceUrls: z.array(z.string().url()).default([]),
+    verifiedAt: z.string().optional(),
+    productStatus: z.enum(['active', 'discontinued', 'unverified']).default('unverified'),
     translations: z.object({
       en: z.object({
         name: z.string(),
@@ -24,6 +45,34 @@ const productsCollection = defineCollection({
         name: z.string(),
         description: z.string(),
       }),
+    }),
+  }),
+});
+
+const localizedBrandSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+});
+
+const brandsCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    brandId: z.string(),
+    slug: z.string(),
+    displayName: z.string(),
+    aliases: z.array(z.string()).default([]),
+    manufacturer: z.string().optional(),
+    countryOfOrigin: z.string().optional(),
+    officialSourceUrls: z.array(z.string().url()).default([]),
+    verifiedAt: z.string(),
+    logo: z.string().optional(),
+    heroImage: z.string().optional(),
+    status: z.enum(['verified', 'partial', 'discontinued']),
+    representedProductSlugs: z.array(z.string()).default([]),
+    translations: z.object({
+      en: localizedBrandSchema,
+      ro: localizedBrandSchema,
+      ru: localizedBrandSchema,
     }),
   }),
 });
@@ -103,4 +152,5 @@ export const collections = {
   products: productsCollection,
   blog: blogCollection,
   hubs: hubCollection,
+  brands: brandsCollection,
 };

@@ -1,37 +1,26 @@
 ---
-import { useTranslations, type Language } from '@i18n/index';
+import { getCollection } from 'astro:content';
+import { getLocalizedPath, type Language } from '@i18n/index';
 
 interface Props {
   lang: Language;
 }
 
 const { lang } = Astro.props;
-const t = useTranslations(lang);
-
-// Brand names in uppercase for visibility
-const brands = [
-  { name: 'ZYN', color: '#1E3A5F' },
-  { name: 'VELO', color: '#00A0E3' },
-  { name: 'CUBA', color: '#8B4513' },
-  { name: 'STELLAR', color: '#6B5B95' },
-  { name: 'STREET', color: '#2C3E50' },
-  { name: 'PABLO', color: '#E31837' },
-  { name: 'NOIS', color: '#34495E' },
-  { name: 'KILLA', color: '#C0392B' },
-  { name: 'ICEBERG', color: '#3498DB' },
-  { name: 'BARON', color: '#8E44AD' },
-  { name: 'LYFT', color: '#00B5AD' },
-];
+const brands = (await getCollection('brands'))
+  .map(({ data }) => data)
+  .filter((brand) => brand.status !== 'discontinued' && brand.representedProductSlugs.length > 0)
+  .sort((a, b) => a.displayName.localeCompare(b.displayName));
 ---
 
 <section class="py-2 md:py-3 bg-white border-b border-border overflow-hidden">
   <!-- Scrolling brands marquee -->
   <div class="brands-marquee">
     <div class="brands-track">
-      {[...brands, ...brands, ...brands].map((brand) => (
-        <div class="brand-item">
-          <span class="brand-text" style={`color: ${brand.color}`}>{brand.name}</span>
-        </div>
+      {[...brands, ...brands, ...brands].map((brand, index) => (
+        <a class="brand-item" href={getLocalizedPath(`/brands/${brand.slug}/`, lang)} aria-hidden={index >= brands.length ? 'true' : undefined} tabindex={index >= brands.length ? '-1' : undefined}>
+          <span class="brand-text">{brand.displayName}</span>
+        </a>
       ))}
     </div>
   </div>
@@ -54,6 +43,7 @@ const brands = [
     flex-shrink: 0;
     opacity: 0.85;
     transition: opacity 0.3s;
+    text-decoration: none;
   }
   
   .brand-item:hover {
@@ -66,6 +56,7 @@ const brands = [
     white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: #1f2937;
   }
   
   @media (min-width: 768px) {
@@ -85,5 +76,9 @@ const brands = [
     100% {
       transform: translateX(-33.333%);
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brands-track { animation: none; }
   }
 </style>

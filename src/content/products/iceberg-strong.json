@@ -1,5 +1,9 @@
 {
   "slug": "iceberg-strong",
+  "productId": "iceberg-strong",
+  "brandId": "iceberg",
+  "variantName": "Strong",
+  "aliases": [],
   "brand": "ICEBERG",
   "strength": 3,
   "strengthCategory": "strong",
@@ -7,6 +11,9 @@
   "pouchesPerCan": 20,
   "image": "/images/products/iceberg_strong.png",
   "featured": true,
+  "availability": "unknown",
+  "officialSourceUrls": [],
+  "productStatus": "unverified",
   "translations": {
     "en": {
       "name": "ICEBERG Strong",

@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) => page !== 'https://pauch.vip/' && page !== 'https://pauch.vip',
+      filter: (page) => !/\/access-denied\/?$/.test(page),
     }),
   ],
   i18n: {

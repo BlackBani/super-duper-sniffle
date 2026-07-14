@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content';
+import HubPage from '../../../components/content/HubPage.astro';
+import type { Language } from '../../../i18n/index';
+export async function getStaticPaths() { const [hubs, posts] = await Promise.all([getCollection('hubs'), getCollection('blog')]); return hubs.map(({ data: hub }) => ({ params: { slug: hub.translations.en.slug }, props: { hub, posts: posts.filter(({ data }) => hub.featuredPosts.includes(data.postId)).map(({ data }) => data) } })); }
+const { hub, posts } = Astro.props; const alternates = (['en', 'ro', 'ru'] as Language[]).map((lang) => ({ lang, url: `/${lang}/guides/${hub.translations[lang].slug}/` }));
+---
+<HubPage lang="en" hub={hub} posts={posts} alternates={alternates} />

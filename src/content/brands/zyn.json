@@ -1,0 +1,16 @@
+{
+  "brandId": "zyn",
+  "slug": "zyn",
+  "displayName": "ZYN",
+  "aliases": [],
+  "officialSourceUrls": [],
+  "verifiedAt": "2026-07-14",
+  "logo": "/images/brands/zyn.svg",
+  "status": "partial",
+  "representedProductSlugs": ["zyn-easy"],
+  "translations": {
+    "en": { "name": "ZYN Nicotine Pouches", "description": "ZYN nicotine pouch products currently represented in the Pauch catalog. No ownership, endorsement, or official affiliation is implied." },
+    "ro": { "name": "Pliculețe cu nicotină ZYN", "description": "Produse ZYN cu nicotină reprezentate în prezent în catalogul Pauch. Nu este sugerată nicio afiliere sau aprobare oficială." },
+    "ru": { "name": "Никотиновые паучи ZYN", "description": "Никотиновые паучи ZYN, представленные сейчас в каталоге Pauch. Страница не подразумевает официальную связь или одобрение." }
+  }
+}

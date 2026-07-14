@@ -5,6 +5,10 @@ import Footer from '@components/layout/Footer.astro';
 import AgeGate from '@components/layout/AgeGate.astro';
 import TelegramButton from '@components/ui/TelegramButton.astro';
 import { getLangFromUrl, useTranslations, getAlternateUrls, type Language } from '@i18n/index';
+import { absoluteUrl, site } from '../config/site';
+import { buildInfo } from '../config/build';
+import { serializeJsonLd } from '../lib/seo/jsonld';
+import { getPublicImageMetadata } from '../lib/images/metadata';
 
 interface Props {
   title?: string;
@@ -26,20 +30,21 @@ const pageDescription = description || t.site.description;
 
 const base = import.meta.env.BASE_URL || '/';
 const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
-const pageImage = image || `${baseClean}/images/og-default.jpg`;
+const pageImage = image || site.defaultOgPath;
+const pageImageMetadata = getPublicImageMetadata(pageImage);
 
 const currentPath = Astro.url.pathname;
 const alternates = customAlternates || getAlternateUrls(currentPath);
 
 // x-default should point to the same page in the fallback locale, not to homepage.
 const xDefaultLocale: Language = 'ro';
-const xDefaultPath =
+const xDefaultPath = /^\/(en|ro|ru)\/$/.test(currentPath) ? '/' :
   alternates.find(({ lang: altLang }) => altLang === xDefaultLocale)?.url ||
   alternates[0]?.url ||
   '/ro/';
 
 // Site URL without trailing slash
-const siteOrigin = Astro.site?.origin || 'https://yourusername.github.io';
+const siteOrigin = Astro.site?.origin || site.origin;
 const siteUrl = `${siteOrigin}${baseClean}`;
 
 // Build canonical URL - remove base from currentPath if it starts with base
@@ -55,26 +60,24 @@ const canonicalUrl = canonicalPath
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Pauch",
-  "url": siteUrl,
-  "logo": `${siteUrl}/favicon.svg`,
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "availableLanguage": ["English", "Russian", "Romanian"]
-  }
+  "@id": site.organizationId,
+  "name": site.name,
+  "url": site.origin,
+  "logo": absoluteUrl(site.logoPath)
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Pauch",
-  "url": siteUrl,
+  "@id": site.websiteId,
+  "name": site.name,
+  "url": site.origin,
+  "publisher": { "@id": site.organizationId },
   "inLanguage": lang
 };
 
 const combinedSchema = schema 
-  ? [organizationSchema, websiteSchema, schema]
+  ? [organizationSchema, websiteSchema, ...(Array.isArray(schema) ? schema : [schema])]
   : [organizationSchema, websiteSchema];
 ---
 
@@ -84,6 +87,7 @@ const combinedSchema = schema
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="pauch-build" content={buildInfo.commit} />
     
     <!-- Primary Meta Tags -->
     <title>{pageTitle}</title>
@@ -103,10 +107,15 @@ const combinedSchema = schema
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={`${siteUrl}${pageImage}`} />
+    <meta property="og:image:width" content={String(pageImageMetadata.width)} />
+    <meta property="og:image:height" content={String(pageImageMetadata.height)} />
+    <meta property="og:image:type" content={pageImageMetadata.type} />
+    <meta property="og:image:alt" content={`${pageTitle} — Pauch`} />
     <meta property="og:locale" content={lang} />
     {alternates.filter(a => a.lang !== lang).map(({ lang: altLang }) => (
       <meta property="og:locale:alternate" content={altLang} />
@@ -118,12 +127,13 @@ const combinedSchema = schema
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={`${siteUrl}${pageImage}`} />
+    <meta name="twitter:image:alt" content={`${pageTitle} — Pauch`} />
     
     <!-- Preconnect for fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(combinedSchema)} />
+    <script is:inline type="application/ld+json" set:html={serializeJsonLd(combinedSchema)} />
     <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col">

@@ -1,0 +1,6 @@
+---
+import { getCollection } from 'astro:content';
+import BrandsIndex from '../../../components/content/BrandsIndex.astro';
+const brands = (await getCollection('brands')).map((entry) => entry.data).filter((brand) => brand.status !== 'discontinued').sort((a, b) => a.displayName.localeCompare(b.displayName));
+---
+<BrandsIndex lang="en" brands={brands} />

@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLocalizedPath, type Language } from '@i18n/index';
+import { site } from '../../config/site';
+
+interface Props { lang: Language; hub: CollectionEntry<'hubs'>['data']; posts: Array<CollectionEntry<'blog'>['data']>; alternates: Array<{ lang: Language; url: string }>; }
+const { lang, hub, posts, alternates } = Astro.props;
+const copy = hub.translations[lang];
+const labels = {
+  en: { home: 'Home', guides: 'Guides', articles: 'Articles in this guide', read: 'Read article', disclaimer: 'Adult-only general information. Nicotine is addictive. This is not medical advice.' },
+  ro: { home: 'Acasă', guides: 'Ghiduri', articles: 'Articole din acest ghid', read: 'Citește articolul', disclaimer: 'Informații generale numai pentru adulți. Nicotina creează dependență. Nu este sfat medical.' },
+  ru: { home: 'Главная', guides: 'Материалы', articles: 'Статьи в этом разделе', read: 'Читать статью', disclaimer: 'Общая информация только для взрослых. Никотин вызывает зависимость. Это не медицинская консультация.' },
+}[lang];
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: copy.title, description: copy.metaDescription, url: `${site.origin}/${lang}/guides/${copy.slug}/`, mainEntity: { '@type': 'ItemList', itemListElement: posts.map((post, index) => ({ '@type': 'ListItem', position: index + 1, name: post.translations[lang].title, url: `${site.origin}/${lang}/blog/${post.translations[lang].slug}/` })) } };
+---
+<BaseLayout title={`${copy.metaTitle} | Pauch`} description={copy.metaDescription} alternates={alternates} schema={schema}>
+  <article class="container py-10 md:py-16 max-w-4xl">
+    <nav aria-label="Breadcrumb" class="text-small text-muted mb-6"><a href={getLocalizedPath('/', lang)}>{labels.home}</a> / <span>{labels.guides}</span> / <span aria-current="page">{copy.title}</span></nav>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">{copy.title}</h1>
+    <p class="mt-4 text-muted leading-relaxed max-w-2xl">{copy.intro}</p>
+    <p class="mt-4 text-caption text-muted">{labels.disclaimer}</p>
+    <section class="mt-10" aria-labelledby="hub-articles"><h2 id="hub-articles" class="text-2xl font-semibold">{labels.articles}</h2><div class="grid sm:grid-cols-2 gap-5 mt-5">{posts.map((post) => <a class="rounded-2xl border border-border bg-white p-5 hover:border-accent" href={getLocalizedPath(`/blog/${post.translations[lang].slug}/`, lang)}><h3 class="font-semibold">{post.translations[lang].title}</h3><p class="text-small text-muted mt-2">{post.translations[lang].excerpt}</p><span class="inline-block mt-4 text-accent">{labels.read}</span></a>)}</div></section>
+  </article>
+</BaseLayout>

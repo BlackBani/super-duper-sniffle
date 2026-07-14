@@ -12,18 +12,29 @@ const currentYear = new Date().getFullYear();
 const base = import.meta.env.BASE_URL || '/';
 const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
 const homePath = `${baseClean}/${lang}/`;
+const directLabels = {
+  en: { brands: 'Brands', guide: 'Snus vs nicotine pouches' },
+  ro: { brands: 'Mărci', guide: 'Snus și pliculețe cu nicotină' },
+  ru: { brands: 'Бренды', guide: 'Снюс и никотиновые паучи' },
+}[lang];
+const terminologyPath = lang === 'en' ? '/guides/snus-vs-nicotine-pouches/' : lang === 'ro' ? '/guides/snus-sau-pliculete-cu-nicotina/' : '/guides/snyus-i-nikotinovye-pauchi/';
 
 const legalLinks = [
   { href: getLocalizedPath('/privacy', lang), label: t.footer.privacy },
   { href: getLocalizedPath('/terms', lang), label: t.footer.terms },
   { href: getLocalizedPath('/age-policy', lang), label: t.footer.agePolicy },
+  { href: getLocalizedPath('/editorial-policy', lang), label: t.footer.editorialPolicy },
+  { href: getLocalizedPath('/corrections-policy', lang), label: t.footer.correctionsPolicy },
 ];
 
 const navLinks = [
   { href: getLocalizedPath('/', lang), label: t.nav.home },
   { href: `${homePath}#catalog`, label: t.nav.catalog },
-  { href: `${homePath}#shipping`, label: t.nav.shipping },
-  { href: `${homePath}#about`, label: t.nav.about },
+  { href: getLocalizedPath('/shipping-payment', lang), label: t.nav.shipping },
+  { href: getLocalizedPath('/about', lang), label: t.nav.about },
+  { href: getLocalizedPath('/how-to-order', lang), label: t.footer.howToOrder },
+  { href: getLocalizedPath('/brands/', lang), label: directLabels.brands },
+  { href: getLocalizedPath(terminologyPath, lang), label: directLabels.guide },
   { href: `${homePath}#faq`, label: t.nav.faq },
 ];
 ---
@@ -97,6 +108,14 @@ const navLinks = [
           Contact
         </h4>
         <ul class="space-y-2.5">
+          <li>
+            <a
+              href={getLocalizedPath('/contact', lang)}
+              class="text-small text-muted hover:text-primary transition-colors"
+            >
+              {t.footer.contact}
+            </a>
+          </li>
           <li>
             <a
               href={getTelegramOrderLink(lang)}

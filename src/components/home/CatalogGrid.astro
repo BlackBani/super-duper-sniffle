@@ -79,9 +79,9 @@ const productLines = Array.from(productLinesMap.values()).sort((a, b) => {
   <div class="container">
     <h2 class="text-h2 text-center mb-2">{t.catalog.title}</h2>
     <p class="text-small text-muted text-center mb-4 md:mb-6 max-w-xl mx-auto">
-      {lang === 'en' && 'Browse our selection of premium nicotine pouches from top brands.'}
-      {lang === 'ru' && 'Просмотрите нашу подборку премиальных никотиновых подушечек от ведущих брендов.'}
-      {lang === 'ro' && 'Răsfoiți selecția noastră de pliculețe premium de la branduri de top.'}
+      {lang === 'en' && 'Browse the nicotine pouches currently listed in our catalog.'}
+      {lang === 'ru' && 'Просмотрите никотиновые паучи, представленные в каталоге.'}
+      {lang === 'ro' && 'Răsfoiește pliculețele cu nicotină listate în catalog.'}
     </p>
     
     {showFilter && <ProductFilter lang={lang} />}

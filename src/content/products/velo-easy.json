@@ -1,5 +1,9 @@
 {
   "slug": "velo-easy",
+  "productId": "velo-easy",
+  "brandId": "velo",
+  "variantName": "Easy",
+  "aliases": [],
   "brand": "VELO",
   "strength": 1,
   "strengthCategory": "easy",
@@ -7,6 +11,9 @@
   "pouchesPerCan": 20,
   "image": "/images/products/velo_easy.png",
   "featured": true,
+  "availability": "unknown",
+  "officialSourceUrls": [],
+  "productStatus": "unverified",
   "translations": {
     "en": {
       "name": "VELO Easy",

@@ -7,11 +7,14 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL || '/';
+const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
+const denialHref = `${baseClean}/${lang}/access-denied/`;
 ---
 
 <div
   id="age-gate"
-  class="fixed inset-0 z-[11000] flex items-center justify-center bg-black/60 backdrop-blur-sm hidden"
+  class="fixed inset-0 z-[11000] flex items-center justify-center bg-black/60 backdrop-blur-sm"
   role="dialog"
   aria-modal="true"
   aria-labelledby="age-gate-title"
@@ -41,12 +44,13 @@ const t = useTranslations(lang);
         >
           {t.ageGate.confirm}
         </button>
-        <button
+        <a
           id="age-deny"
           class="flex-1 btn-secondary py-4"
+          href={denialHref}
         >
           {t.ageGate.deny}
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -55,55 +59,83 @@ const t = useTranslations(lang);
 <script>
   const ageGate = document.getElementById('age-gate');
   const confirmBtn = document.getElementById('age-confirm');
-  const denyBtn = document.getElementById('age-deny');
-  
-  const AGE_VERIFIED_KEY = 'pouch_age_verified';
-  
-  // Check if already verified
-  function checkAgeVerification() {
-    const verified = localStorage.getItem(AGE_VERIFIED_KEY);
-    if (!verified) {
-      ageGate?.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      // Focus the confirm button
-      confirmBtn?.focus();
+  const AGE_VERIFIED_KEY = 'pauch_age_verification_v1';
+  const POLICY_VERSION = '2026-07-14';
+  const VERIFICATION_LIFETIME_MS = 30 * 24 * 60 * 60 * 1000;
+  const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  const previousBodyOverflow = document.body.style.overflow;
+  let scrollLocked = false;
+
+  function unlockPage() {
+    if (!scrollLocked) return;
+    document.body.style.overflow = previousBodyOverflow;
+    scrollLocked = false;
+  }
+
+  function hideGate(restoreFocus = false) {
+    ageGate?.classList.add('hidden');
+    unlockPage();
+    if (restoreFocus && previousFocus?.isConnected) previousFocus.focus();
+  }
+
+  function hasCurrentVerification() {
+    try {
+      const rawRecord = localStorage.getItem(AGE_VERIFIED_KEY);
+      if (!rawRecord) return false;
+      const record = JSON.parse(rawRecord);
+      const expiresAt = typeof record?.expiresAt === 'string' ? Date.parse(record.expiresAt) : Number.NaN;
+      return record?.policyVersion === POLICY_VERSION
+        && typeof record.verifiedAt === 'string'
+        && Number.isFinite(expiresAt)
+        && expiresAt > Date.now();
+    } catch {
+      return false;
     }
   }
-  
-  // Confirm age
+
+  if (hasCurrentVerification()) {
+    hideGate();
+  } else {
+    document.body.style.overflow = 'hidden';
+    scrollLocked = true;
+    confirmBtn?.focus();
+  }
+
   confirmBtn?.addEventListener('click', () => {
-    localStorage.setItem(AGE_VERIFIED_KEY, 'true');
-    ageGate?.classList.add('hidden');
-    document.body.style.overflow = '';
+    const verifiedAt = new Date();
+    try {
+      localStorage.setItem(AGE_VERIFIED_KEY, JSON.stringify({
+        policyVersion: POLICY_VERSION,
+        verifiedAt: verifiedAt.toISOString(),
+        expiresAt: new Date(verifiedAt.getTime() + VERIFICATION_LIFETIME_MS).toISOString(),
+      }));
+    } catch {
+      // Storage can be unavailable in private or restricted browsing. The
+      // visitor may continue for this page, but will be asked again later.
+    }
+    hideGate(true);
   });
-  
-  // Deny - redirect away
-  denyBtn?.addEventListener('click', () => {
-    window.location.href = 'https://www.google.com';
-  });
-  
-  // Trap focus within modal
+
   ageGate?.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
-      const focusableElements = ageGate.querySelectorAll('button');
+      const focusableElements = ageGate.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]');
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
-      
+
       if (e.shiftKey && document.activeElement === firstElement) {
         e.preventDefault();
-        (lastElement as HTMLElement).focus();
+        lastElement?.focus();
       } else if (!e.shiftKey && document.activeElement === lastElement) {
         e.preventDefault();
-        (firstElement as HTMLElement).focus();
+        firstElement?.focus();
       }
     }
-    
-    // Prevent escape from closing
+
     if (e.key === 'Escape') {
       e.preventDefault();
     }
   });
-  
-  // Run check on page load
-  checkAgeVerification();
+
+  window.addEventListener('pagehide', unlockPage, { once: true });
+  document.addEventListener('astro:before-swap', unlockPage, { once: true });
 </script>

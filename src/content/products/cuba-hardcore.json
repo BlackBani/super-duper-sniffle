@@ -1,5 +1,9 @@
 {
   "slug": "cuba-hardcore",
+  "productId": "cuba-hardcore",
+  "brandId": "cuba",
+  "variantName": "Hardcore",
+  "aliases": [],
   "brand": "CUBA",
   "strength": 4,
   "strengthCategory": "hardcore",
@@ -7,6 +11,9 @@
   "pouchesPerCan": 20,
   "image": "/images/products/cuba_hardcore.png",
   "featured": true,
+  "availability": "unknown",
+  "officialSourceUrls": [],
+  "productStatus": "unverified",
   "translations": {
     "en": {
       "name": "CUBA Hardcore",
