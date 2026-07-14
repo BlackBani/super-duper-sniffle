@@ -1,7 +1,9 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const productsCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/products' }),
   schema: z.object({
     slug: z.string(),
     brand: z.string(),
@@ -28,8 +30,8 @@ const productsCollection = defineCollection({
     price: z.number().nonnegative().optional(),
     currency: z.literal('MDL').optional(),
     availability: z.enum(['in-stock', 'low-stock', 'out-of-stock', 'preorder', 'unknown']).default('unknown'),
-    orderUrl: z.string().url().optional(),
-    officialSourceUrls: z.array(z.string().url()).default([]),
+    orderUrl: z.url().optional(),
+    officialSourceUrls: z.array(z.url()).default([]),
     verifiedAt: z.string().optional(),
     productStatus: z.enum(['active', 'discontinued', 'unverified']).default('unverified'),
     translations: z.object({
@@ -55,7 +57,7 @@ const localizedBrandSchema = z.object({
 });
 
 const brandsCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/brands' }),
   schema: z.object({
     brandId: z.string(),
     slug: z.string(),
@@ -63,7 +65,7 @@ const brandsCollection = defineCollection({
     aliases: z.array(z.string()).default([]),
     manufacturer: z.string().optional(),
     countryOfOrigin: z.string().optional(),
-    officialSourceUrls: z.array(z.string().url()).default([]),
+    officialSourceUrls: z.array(z.url()).default([]),
     verifiedAt: z.string(),
     logo: z.string().optional(),
     heroImage: z.string().optional(),
@@ -96,7 +98,7 @@ const blogTranslationSchema = z.object({
 });
 
 const blogCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/blog' }),
   schema: z.object({
     postId: z.string(), // Translation group ID (e.g., "P001")
     publishedAt: z.string(),
@@ -117,7 +119,7 @@ const blogCollection = defineCollection({
 
 // Hub page schema
 const hubCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/hubs' }),
   schema: z.object({
     hubId: z.string(),
     translations: z.object({

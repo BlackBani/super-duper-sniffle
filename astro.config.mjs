@@ -1,12 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://pauch.vip',
   base: '/',
   integrations: [
-    tailwind(),
     sitemap({
       filter: (page) => !/\/access-denied\/?$/.test(page),
     }),
