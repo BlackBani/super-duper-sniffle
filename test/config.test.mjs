@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 test('commerce remains active with one HTTPS Telegram order URL', () => {
   const source = readFileSync(new URL('../src/config/commerce.ts', import.meta.url), 'utf8');
   assert.match(source, /enabled:\s*true/);
-  assert.deepEqual([...source.matchAll(/orderUrl:\s*'(https:\/\/t\.me\/[^']+)'/g)].map((match) => match[1]), ['https://t.me/m/8ebhN3f-MDMy']);
+  assert.deepEqual([...source.matchAll(/orderUrl:\s*'(https:\/\/telegram\.me\/[^']+)'/g)].map((match) => match[1]), ['https://telegram.me/m/8ebhN3f-MDMy']);
 });
 
 test('payment is cash on delivery only in customer-facing sources', () => {
