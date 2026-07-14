@@ -16,3 +16,12 @@
 - Replaced the invalid OG asset, optimized legacy images in place, and generated responsive WebP variants while preserving URLs.
 - Converted GitHub Pages workflow to validation-only; prepared Netlify as the assumed sole production publisher pending owner confirmation.
 - No production deployment or external account action performed.
+
+## 2026-07-14 — Supported platform and final validation
+
+- Upgraded to Astro 7 and migrated collections to Content Layer glob loaders.
+- Standardized Node 22.12+, moved Tailwind to PostCSS, and updated the validation-only GitHub and Netlify runtimes.
+- Reduced the dependency audit from 10 baseline findings to zero.
+- Passed Astro diagnostics with zero errors/warnings/hints, TypeScript, nine tests, source validation, a 127-page build, SEO/output validation, and the 177-asset image inventory check.
+- Replaced machine-specific and obsolete deployment documentation.
+- The owner supplied `BlackBani/super-duper-sniffle` as the publication repository; publishing remains blocked by unavailable authenticated GitHub CLI tooling.
