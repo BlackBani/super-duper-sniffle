@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { useTranslations, getLocalizedPath, type Language } from '@i18n/index';
+import { getResponsiveImageData } from '../../lib/images/responsive';
 
 interface Props {
   lang: Language;
@@ -30,6 +31,7 @@ const posts = (await getCollection('blog'))
           const imageSrc = post.data.image 
             ? `${baseClean}${post.data.image}`
             : `${baseClean}/images/og-default.jpg`;
+          const responsiveImage = getResponsiveImageData(post.data.image || '/images/og-default.jpg', [320, 480, 640]);
           
           return (
             <article class="blog-slide group">
@@ -38,6 +40,12 @@ const posts = (await getCollection('blog'))
                   <img
                     src={imageSrc}
                     alt={translation.title}
+                    width={responsiveImage.width}
+                    height={responsiveImage.height}
+                    srcset={responsiveImage.srcset || undefined}
+                    sizes="80vw"
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     onerror={`this.style.display='none'`}
                   />
@@ -71,6 +79,7 @@ const posts = (await getCollection('blog'))
         const imageSrc = post.data.image 
           ? `${baseClean}${post.data.image}`
           : `${baseClean}/images/og-default.jpg`;
+        const responsiveImage = getResponsiveImageData(post.data.image || '/images/og-default.jpg', [320, 480, 640]);
         
         return (
           <article class="group">
@@ -79,6 +88,12 @@ const posts = (await getCollection('blog'))
                 <img
                   src={imageSrc}
                   alt={translation.title}
+                  width={responsiveImage.width}
+                  height={responsiveImage.height}
+                  srcset={responsiveImage.srcset || undefined}
+                  sizes="33vw"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   onerror={`this.style.display='none'`}
                 />

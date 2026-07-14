@@ -1,0 +1,16 @@
+{
+  "brandId": "velo",
+  "slug": "velo",
+  "displayName": "VELO",
+  "aliases": [],
+  "officialSourceUrls": [],
+  "verifiedAt": "2026-07-14",
+  "logo": "/images/brands/velo.svg",
+  "status": "partial",
+  "representedProductSlugs": ["velo-easy"],
+  "translations": {
+    "en": { "name": "VELO Nicotine Pouches", "description": "VELO nicotine pouch products currently represented in the Pauch catalog." },
+    "ro": { "name": "Pliculețe cu nicotină VELO", "description": "Produse VELO cu nicotină reprezentate în prezent în catalogul Pauch." },
+    "ru": { "name": "Никотиновые паучи VELO", "description": "Никотиновые паучи VELO, представленные сейчас в каталоге Pauch." }
+  }
+}

@@ -1,6 +1,6 @@
 # Pauch Website - Руководство для клиента
 
-**English version:** см. `/Users/nicolaecretu24/Desktop/pouchwebsite_2/README.md`
+**English version:** см. `README.md`
 
 Это инструкция для нетехнического пользователя. Контент можно менять прямо в GitHub через браузер.
 
@@ -12,16 +12,16 @@
 
 ## 2. Основные файлы для редактирования
 
-- Товары: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/content/products/*.json`
-- Статьи блога: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/content/blog/*.json`
-- Категории блога: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/content/hubs/*.json`
+- Товары: `src/content/products/*.json`
+- Статьи блога: `src/content/blog/*.json`
+- Категории блога: `src/content/hubs/*.json`
 - Тексты интерфейса (меню, блоки главной, FAQ):
-  - `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/en.json`
-  - `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/ro.json`
-  - `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/ru.json`
-- Изображения товаров: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/public/images/products/`
-- Изображения блога: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/public/images/blog/`
-- Ссылка для заказа в Telegram: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/src/i18n/index.ts` (`TELEGRAM_DEEP_LINK`)
+  - `src/i18n/en.json`
+  - `src/i18n/ro.json`
+  - `src/i18n/ru.json`
+- Изображения товаров: `public/images/products/`
+- Изображения блога: `public/images/blog/`
+- Настройки заказа и ссылка Telegram: `src/config/commerce.ts`
 
 ## 3. Безопасный процесс публикации (через GitHub)
 
@@ -29,10 +29,10 @@
 2. Нажмите `Edit this file` (иконка карандаша).
 3. Внесите изменения.
 4. Напишите понятное сообщение коммита.
-5. Выберите `Commit directly to the main branch`.
-6. Нажмите Commit.
-7. Дождитесь деплоя.
-8. Проверьте сайт.
+5. Создайте отдельную ветку и pull request.
+6. Дождитесь успешной проверки.
+7. Получите ревью и объедините изменения.
+8. Проверьте сайт через подключённого провайдера.
 
 Если нужно откатить изменение, сделайте `Revert` в истории коммитов.
 
@@ -109,30 +109,25 @@
 - `/src/pages/ro/terms.astro`, `/src/pages/ro/privacy.astro`, `/src/pages/ro/age-policy.astro`
 - `/src/pages/ru/terms.astro`, `/src/pages/ru/privacy.astro`, `/src/pages/ru/age-policy.astro`
 
-## 8. Текущее поведение языка и редиректа
+## 8. Текущее поведение языка
 
 - Все локализованные страницы идут через `/en/`, `/ro/`, `/ru/`.
-- Корень `/` использует кастомный редирект:
-  - Если JS включен: выбор языка по языку браузера (`en`, `ro`, `ru`)
-  - Если язык браузера не поддерживается: переход на `/ro/`
-  - Если JS выключен: переход на `/ro/`
+- Корень `/` — индексируемая нейтральная страница выбора языка без автоматического редиректа.
 
 ## 9. Текущее SEO поведение
 
 - Canonical ставится для каждой страницы.
 - `hreflang` генерируется для EN/RO/RU на каждой странице.
-- `x-default` указывает на эквивалентную румынскую страницу, а не на главную.
-- Корень `/` намеренно закрыт от индексации и canonical ведет на `/ro/`.
+- `x-default` для языковой точки входа указывает на корень `/`.
 - Sitemap генерируется автоматически при сборке через Astro sitemap.
 
 ## 10. Деплой
 
-В репозитории есть конфигурации для обеих платформ:
+GitHub Pages — production-хост для `pauch.vip`:
 
-- GitHub Pages: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/.github/workflows/deploy.yml`
-- Netlify: `/Users/nicolaecretu24/Desktop/pouchwebsite_2/netlify.toml`
+- Проверка и деплой GitHub Pages: `.github/workflows/deploy.yml`
 
-Используйте ту платформу, которая подключена в вашем аккаунте.
+Pull request проходит проверку без деплоя. После объединения в `main` workflow повторяет все проверки и публикует `dist` в GitHub Pages.
 
 ## 11. Чек-лист перед коммитом
 
@@ -146,8 +141,7 @@
 ## 12. Команды для разработчика (опционально)
 
 ```bash
-npm install
+npm ci
 npm run dev
-npm run build
-npm run preview
+npm run ci
 ```

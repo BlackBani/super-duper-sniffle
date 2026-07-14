@@ -1,7 +1,9 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const productsCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/products' }),
   schema: z.object({
     slug: z.string(),
     brand: z.string(),
@@ -11,6 +13,27 @@ const productsCollection = defineCollection({
     pouchesPerCan: z.number().default(20),
     image: z.string(),
     featured: z.boolean().default(false),
+    productId: z.string().optional(),
+    brandId: z.string().optional(),
+    variantName: z.string().optional(),
+    aliases: z.array(z.string()).default([]),
+    manufacturer: z.string().optional(),
+    countryOfOrigin: z.string().optional(),
+    sku: z.string().optional(),
+    gtin: z.string().optional(),
+    nicotineMgPerPouch: z.number().positive().optional(),
+    nicotineMgPerGram: z.number().positive().optional(),
+    netWeightG: z.number().positive().optional(),
+    pouchWeightG: z.number().positive().optional(),
+    pouchFormat: z.enum(['mini', 'slim', 'regular', 'large']).optional(),
+    flavorTags: z.array(z.string()).default([]),
+    price: z.number().nonnegative().optional(),
+    currency: z.literal('MDL').optional(),
+    availability: z.enum(['in-stock', 'low-stock', 'out-of-stock', 'preorder', 'unknown']).default('unknown'),
+    orderUrl: z.url().optional(),
+    officialSourceUrls: z.array(z.url()).default([]),
+    verifiedAt: z.string().optional(),
+    productStatus: z.enum(['active', 'discontinued', 'unverified']).default('unverified'),
     translations: z.object({
       en: z.object({
         name: z.string(),
@@ -24,6 +47,34 @@ const productsCollection = defineCollection({
         name: z.string(),
         description: z.string(),
       }),
+    }),
+  }),
+});
+
+const localizedBrandSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+});
+
+const brandsCollection = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/brands' }),
+  schema: z.object({
+    brandId: z.string(),
+    slug: z.string(),
+    displayName: z.string(),
+    aliases: z.array(z.string()).default([]),
+    manufacturer: z.string().optional(),
+    countryOfOrigin: z.string().optional(),
+    officialSourceUrls: z.array(z.url()).default([]),
+    verifiedAt: z.string(),
+    logo: z.string().optional(),
+    heroImage: z.string().optional(),
+    status: z.enum(['verified', 'partial', 'discontinued']),
+    representedProductSlugs: z.array(z.string()).default([]),
+    translations: z.object({
+      en: localizedBrandSchema,
+      ro: localizedBrandSchema,
+      ru: localizedBrandSchema,
     }),
   }),
 });
@@ -47,7 +98,7 @@ const blogTranslationSchema = z.object({
 });
 
 const blogCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/blog' }),
   schema: z.object({
     postId: z.string(), // Translation group ID (e.g., "P001")
     publishedAt: z.string(),
@@ -68,7 +119,7 @@ const blogCollection = defineCollection({
 
 // Hub page schema
 const hubCollection = defineCollection({
-  type: 'data',
+  loader: glob({ pattern: '**/*.json', base: './src/content/hubs' }),
   schema: z.object({
     hubId: z.string(),
     translations: z.object({
@@ -103,4 +154,5 @@ export const collections = {
   products: productsCollection,
   blog: blogCollection,
   hubs: hubCollection,
+  brands: brandsCollection,
 };

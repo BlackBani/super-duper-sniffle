@@ -1,0 +1,15 @@
+{
+  "brandId": "cuba",
+  "slug": "cuba",
+  "displayName": "CUBA",
+  "aliases": [],
+  "officialSourceUrls": [],
+  "verifiedAt": "2026-07-14",
+  "status": "partial",
+  "representedProductSlugs": ["cuba-hardcore"],
+  "translations": {
+    "en": { "name": "CUBA Nicotine Pouches", "description": "CUBA products currently represented in the Pauch catalog. This page does not imply manufacturer affiliation or distributor status." },
+    "ro": { "name": "Pliculețe cu nicotină CUBA", "description": "Produse CUBA reprezentate în prezent în catalogul Pauch. Pagina nu implică afiliere cu producătorul sau statut de distribuitor." },
+    "ru": { "name": "Никотиновые паучи CUBA", "description": "Продукты CUBA, представленные сейчас в каталоге Pauch. Страница не подразумевает связь с производителем или статус дистрибьютора." }
+  }
+}

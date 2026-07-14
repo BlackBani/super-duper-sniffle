@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLocalizedPath, type Language } from '@i18n/index';
+import { site } from '../../config/site';
+
+interface Props { lang: Language; brands: Array<CollectionEntry<'brands'>['data']>; }
+const { lang, brands } = Astro.props;
+const labels = {
+  en: { title: 'Nicotine Pouch Brands', description: 'Brands currently represented by product records in the Pauch catalog.', home: 'Home', open: 'View represented products' },
+  ro: { title: 'Mărci de pliculețe cu nicotină', description: 'Mărci reprezentate în prezent prin produse în catalogul Pauch.', home: 'Acasă', open: 'Vezi produsele reprezentate' },
+  ru: { title: 'Бренды никотиновых паучей', description: 'Бренды, товары которых сейчас представлены в каталоге Pauch.', home: 'Главная', open: 'Посмотреть представленные товары' },
+}[lang];
+const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: labels.title, url: `${site.origin}/${lang}/brands/`, mainEntity: { '@type': 'ItemList', itemListElement: brands.map((brand, index) => ({ '@type': 'ListItem', position: index + 1, name: brand.displayName, url: `${site.origin}/${lang}/brands/${brand.slug}/` })) } };
+---
+<BaseLayout title={`${labels.title} | Pauch`} description={labels.description} schema={schema}>
+  <main class="container py-10 md:py-16 max-w-4xl">
+    <nav aria-label="Breadcrumb" class="text-small text-muted mb-6"><a href={getLocalizedPath('/', lang)}>{labels.home}</a> / <span aria-current="page">{labels.title}</span></nav>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">{labels.title}</h1>
+    <p class="mt-4 text-muted">{labels.description}</p>
+    <div class="grid sm:grid-cols-2 gap-5 mt-8">
+      {brands.map((brand) => <a href={getLocalizedPath(`/brands/${brand.slug}/`, lang)} class="rounded-2xl border border-border bg-white p-6 hover:border-accent"><h2 class="text-xl font-semibold">{brand.translations[lang].name}</h2><p class="text-small text-muted mt-2">{brand.translations[lang].description}</p><span class="inline-block mt-4 text-accent">{labels.open}</span></a>)}
+    </div>
+  </main>
+</BaseLayout>

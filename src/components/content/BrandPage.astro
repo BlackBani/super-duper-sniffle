@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLocalizedPath, type Language } from '@i18n/index';
+import { site } from '../../config/site';
+import { getResponsiveImageData } from '../../lib/images/responsive';
+
+interface Props {
+  lang: Language;
+  brand: CollectionEntry<'brands'>['data'];
+  products: Array<CollectionEntry<'products'>['data']>;
+  alternates: Array<{ lang: Language; url: string }>;
+}
+
+const { lang, brand, products, alternates } = Astro.props;
+const copy = brand.translations[lang];
+const labels = {
+  en: { home: 'Home', brands: 'Brands', represented: 'Products represented in the catalog', details: 'View product details', verified: 'Catalog record reviewed', notice: 'Product names and trademarks belong to their respective owners. Pauch does not imply ownership, endorsement, or official affiliation.' },
+  ro: { home: 'Acasă', brands: 'Mărci', represented: 'Produse reprezentate în catalog', details: 'Vezi detaliile produsului', verified: 'Înregistrare de catalog verificată', notice: 'Denumirile și mărcile aparțin proprietarilor lor. Pauch nu sugerează proprietate, aprobare sau afiliere oficială.' },
+  ru: { home: 'Главная', brands: 'Бренды', represented: 'Товары, представленные в каталоге', details: 'Подробнее о товаре', verified: 'Запись каталога проверена', notice: 'Названия и товарные знаки принадлежат их владельцам. Pauch не подразумевает владение, одобрение или официальную связь.' },
+}[lang];
+const pageUrl = `${site.origin}/${lang}/brands/${brand.slug}/`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: copy.name,
+  url: pageUrl,
+  about: { '@type': 'Brand', name: brand.displayName },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: products.map((product, index) => ({
+      '@type': 'ListItem', position: index + 1,
+      url: `${site.origin}/${lang}/product/${product.slug}/`,
+      name: product.translations[lang].name,
+    })),
+  },
+};
+---
+
+<BaseLayout title={`${copy.name} in Moldova | Pauch`} description={copy.description} alternates={alternates} schema={schema}>
+  <article class="container py-10 md:py-16 max-w-4xl">
+    <nav aria-label="Breadcrumb" class="text-small text-muted mb-6">
+      <a href={getLocalizedPath('/', lang)}>{labels.home}</a> / <a href={getLocalizedPath('/brands/', lang)}>{labels.brands}</a> / <span aria-current="page">{brand.displayName}</span>
+    </nav>
+    <header class="max-w-2xl">
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">{copy.name}</h1>
+      <p class="mt-4 text-muted leading-relaxed">{copy.description}</p>
+      <p class="mt-3 text-caption text-muted">{labels.verified}: <time datetime={brand.verifiedAt}>{brand.verifiedAt}</time></p>
+    </header>
+    <section class="mt-10" aria-labelledby="represented-products">
+      <h2 id="represented-products" class="text-2xl font-semibold">{labels.represented}</h2>
+      <div class="grid sm:grid-cols-2 gap-5 mt-5">
+        {products.map((product) => (
+          <article class="rounded-2xl border border-border bg-white p-5">
+            <img src={product.image} alt={`${product.translations[lang].name} packaging`} width="320" height="320" srcset={getResponsiveImageData(product.image, [320, 480, 640]).srcset || undefined} sizes="(min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async" class="w-full aspect-square object-contain" />
+            <h3 class="font-semibold mt-3">{product.translations[lang].name}</h3>
+            <p class="text-small text-muted mt-2">{product.translations[lang].description}</p>
+            <a class="inline-block mt-4 text-accent hover:underline" href={getLocalizedPath(`/product/${product.slug}/`, lang)}>{labels.details}</a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <p class="mt-10 text-caption text-muted">{labels.notice}</p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,16 @@
+{
+  "brandId": "pablo",
+  "slug": "pablo",
+  "displayName": "PABLO",
+  "aliases": [],
+  "officialSourceUrls": [],
+  "verifiedAt": "2026-07-14",
+  "logo": "/images/brands/pablo.svg",
+  "status": "partial",
+  "representedProductSlugs": ["pablo-medium", "pablo-strong"],
+  "translations": {
+    "en": { "name": "PABLO Nicotine Pouches", "description": "PABLO products currently represented in the Pauch catalog. Product measurements and manufacturer details are shown only when verified." },
+    "ro": { "name": "Pliculețe cu nicotină PABLO", "description": "Produse PABLO reprezentate în prezent în catalogul Pauch. Măsurătorile și datele producătorului apar numai după verificare." },
+    "ru": { "name": "Никотиновые паучи PABLO", "description": "Продукты PABLO, представленные сейчас в каталоге Pauch. Характеристики и данные производителя публикуются только после проверки." }
+  }
+}

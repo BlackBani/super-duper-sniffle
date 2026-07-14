@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "Pauch - Pliculețe Premium cu Nicotină",
-    "description": "Pliculețe premium cu nicotină cu livrare rapidă. Răsfoiește catalogul și comandă prin Telegram.",
+    "title": "Pauch - Pliculețe cu Nicotină",
+    "description": "Pliculețe cu nicotină cu livrare în Chișinău și în toată Moldova. Răsfoiește catalogul și comandă prin Telegram.",
     "keywords": "pliculețe nicotină, snus, fără tutun, pliculețe mentă, nicotină puternică"
   },
   "nav": {
@@ -13,7 +13,7 @@
   },
   "hero": {
     "headline": "Pliculețe cu nicotină în Moldova, livrate rapid",
-    "subhead": "Pliculețe cu nicotină fără tutun. Doar produse originale. Livrare în Chișinău în 1-2 ore. Livrăm și în toată Moldova.",
+    "subhead": "Pliculețe cu nicotină fără tutun. Livrare în Chișinău în 1-2 ore, sub rezerva confirmării comenzii. Livrăm și în toată Moldova.",
     "ctaCatalog": "Vezi Catalogul",
     "ctaTelegram": "Comandă în Telegram"
   },
@@ -46,12 +46,12 @@
       "description": "Livrare în Chișinău în 1-2 ore"
     },
     "original": {
-      "title": "100% Original",
-      "description": "Doar produse autentice de la distribuitori oficiali"
+      "title": "Confirmarea comenzii",
+      "description": "Disponibilitatea și detaliile livrării se confirmă în Telegram"
     },
     "discreet": {
-      "title": "Ambalaj Discret",
-      "description": "Ambalaj simplu fără branding vizibil"
+      "title": "Opțiuni de plată",
+      "description": "Numerar la livrare sau transfer bancar, sub rezerva confirmării"
     }
   },
   "strengthGuide": {
@@ -99,7 +99,7 @@
       },
       {
         "question": "Cum plasez o comandă?",
-        "answer": "Apasă butonul «Comandă în Telegram». Managerul nostru te va contacta instantaneu pentru a clarifica detaliile."
+        "answer": "Apasă butonul «Comandă în Telegram» și trimite solicitarea. Disponibilitatea, plata și livrarea se stabilesc la confirmare."
       },
       {
         "question": "Aveți ridicare personală?",
@@ -118,7 +118,7 @@
   "shipping": {
     "title": "Livrare și Plată",
     "deliveryTitle": "Livrare",
-    "deliveryText": "Livrare în Chișinău în 1-2 ore. Livrăm și în toată Moldova.",
+    "deliveryText": "Livrare în Chișinău în 1-2 ore după confirmare. Livrăm și în toată Moldova.",
     "paymentTitle": "Plată",
     "paymentText": "Numerar la livrare sau transfer bancar. Detaliile de plată sunt furnizate la confirmarea comenzii.",
     "areasTitle": "Zone de Livrare",
@@ -126,16 +126,20 @@
   },
   "about": {
     "title": "Despre Noi",
-    "text": "Suntem un furnizor de încredere de pliculețe premium cu nicotină. Misiunea noastră este să oferim produse autentice, de înaltă calitate, cu livrare rapidă și discretă.",
-    "authenticityTitle": "Garanție de Autenticitate",
-    "authenticityText": "Toate produsele sunt achiziționate direct de la distribuitori oficiali și vin în ambalaj original."
+    "text": "Pauch este un catalog online pentru clienți adulți din Moldova. Comenzile se plasează prin Telegram și sunt supuse confirmării.",
+    "authenticityTitle": "Livrare și plată",
+    "authenticityText": "Livrarea în Chișinău durează de obicei 1-2 ore după confirmare. Livrarea națională, numerarul la livrare și transferul bancar sunt disponibile sub rezerva confirmării."
   },
   "footer": {
     "telegram": "Comandă prin Telegram",
     "rights": "Toate drepturile rezervate",
     "privacy": "Politica de Confidențialitate",
     "terms": "Termeni și Condiții",
-    "agePolicy": "Politica de Vârstă"
+    "agePolicy": "Politica de Vârstă",
+    "contact": "Contact",
+    "howToOrder": "Cum comanzi",
+    "editorialPolicy": "Politica editorială",
+    "correctionsPolicy": "Politica de corectare"
   },
   "ageGate": {
     "title": "Verificarea Vârstei",
@@ -153,12 +157,12 @@
     "latestPosts": "Ultimele Articole"
   },
   "trustBand": {
-    "secure": "100% Securizat",
-    "support": "Suport rapid",
-    "satisfaction": "99% Mulțumiți"
+    "secure": "Comandă prin Telegram",
+    "support": "Chișinău: 1-2 ore",
+    "satisfaction": "Livrare în toată Moldova"
   },
   "brands": {
-    "title": "Branduri de încredere"
+    "title": "Branduri din catalog"
   },
   "strengthFinder": {
     "title": "Găsește tăria potrivită la pliculețe cu nicotină",

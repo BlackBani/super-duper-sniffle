@@ -1,7 +1,7 @@
 {
   "site": {
-    "title": "Pauch - Premium Nicotine Pouches",
-    "description": "Premium nicotine pouches with fast delivery. Browse our catalog and order via Telegram.",
+    "title": "Pauch - Nicotine Pouches",
+    "description": "Nicotine pouches with delivery in Chișinău and across Moldova. Browse the catalog and order via Telegram.",
     "keywords": "nicotine pouches, snus, tobacco-free, mint pouches, strong nicotine"
   },
   "nav": {
@@ -13,7 +13,7 @@
   },
   "hero": {
     "headline": "Nicotine Pouches in Moldova, Delivered Fast",
-    "subhead": "Tobacco-free nicotine pouches. Original products only. Delivery in Chișinău in 1-2 hours. We also deliver across Moldova.",
+    "subhead": "Tobacco-free nicotine pouches. Delivery in Chișinău in 1-2 hours, subject to order confirmation. We also deliver across Moldova.",
     "ctaCatalog": "Browse Catalog",
     "ctaTelegram": "Order in Telegram"
   },
@@ -46,12 +46,12 @@
       "description": "1-2 hour delivery in Chișinău"
     },
     "original": {
-      "title": "100% Original",
-      "description": "Only authentic products from official distributors"
+      "title": "Order Confirmation",
+      "description": "Availability and delivery details are confirmed in Telegram"
     },
     "discreet": {
-      "title": "Discreet Packaging",
-      "description": "Plain packaging with no visible branding"
+      "title": "Payment Options",
+      "description": "Cash on delivery or bank transfer, subject to confirmation"
     }
   },
   "strengthGuide": {
@@ -99,7 +99,7 @@
       },
       {
         "question": "How do I place an order?",
-        "answer": "Simply click the 'Order in Telegram' button. Our manager will instantly contact you to clarify the details."
+        "answer": "Click the 'Order in Telegram' button and send your request. Product availability, payment, and delivery details are subject to confirmation."
       },
       {
         "question": "Do you offer pickup?",
@@ -118,7 +118,7 @@
   "shipping": {
     "title": "Shipping & Payment",
     "deliveryTitle": "Delivery",
-    "deliveryText": "Delivery in Chișinău in 1-2 hours. We also deliver across Moldova.",
+    "deliveryText": "Delivery in Chișinău in 1-2 hours after confirmation. We also deliver across Moldova.",
     "paymentTitle": "Payment",
     "paymentText": "Cash on delivery or bank transfer. Payment details provided upon order confirmation.",
     "areasTitle": "Delivery Areas",
@@ -126,16 +126,20 @@
   },
   "about": {
     "title": "About Us",
-    "text": "We are a trusted supplier of premium nicotine pouches. Our mission is to provide authentic, high-quality products with fast and discreet delivery.",
-    "authenticityTitle": "Authenticity Guarantee",
-    "authenticityText": "All products are sourced directly from official distributors and come with original packaging."
+    "text": "Pauch is an online catalog for adult customers in Moldova. Orders are placed through Telegram and remain subject to confirmation.",
+    "authenticityTitle": "Delivery and Payment",
+    "authenticityText": "Chișinău delivery is usually 1-2 hours after confirmation. Nationwide delivery, cash on delivery, and bank transfer are available subject to confirmation."
   },
   "footer": {
     "telegram": "Order via Telegram",
     "rights": "All rights reserved",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "agePolicy": "Age Policy"
+    "agePolicy": "Age Policy",
+    "contact": "Contact",
+    "howToOrder": "How to Order",
+    "editorialPolicy": "Editorial Policy",
+    "correctionsPolicy": "Corrections Policy"
   },
   "ageGate": {
     "title": "Age Verification",
@@ -153,12 +157,12 @@
     "latestPosts": "Latest Articles"
   },
   "trustBand": {
-    "secure": "100% Secure",
-    "support": "Fast Support",
-    "satisfaction": "99% Satisfied"
+    "secure": "Order via Telegram",
+    "support": "Chișinău: 1-2 hours",
+    "satisfaction": "Delivery across Moldova"
   },
   "brands": {
-    "title": "Trusted Brands We Carry"
+    "title": "Brands in the Catalog"
   },
   "strengthFinder": {
     "title": "Find Your Nicotine Pouch Strength",

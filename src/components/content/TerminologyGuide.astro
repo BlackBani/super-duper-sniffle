@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLocalizedPath, type Language } from '@i18n/index';
+
+interface Props { lang: Language; }
+const { lang } = Astro.props;
+const pages = {
+  en: {
+    title: 'Snus vs Nicotine Pouches', description: 'A clear explanation of the difference between traditional snus and tobacco-free nicotine pouches.', home: 'Home', guides: 'Guides',
+    intro: 'People sometimes use “snus” as a broad search term for products placed under the lip. The product categories are not the same.',
+    snusTitle: 'Traditional snus contains tobacco', snus: 'The U.S. Food and Drug Administration includes snus among smokeless tobacco products. Traditional snus contains tobacco material.',
+    pouchTitle: 'Nicotine pouches do not contain tobacco leaf', pouch: 'Nicotine pouches contain nicotine and other ingredients, but no tobacco leaf. Nicotine is addictive, and these products are not risk-free.',
+    catalogTitle: 'How Pauch uses the terms', catalog: 'Pauch uses “nicotine pouches” for the products represented in its current catalog. “Snus” may appear only to explain common search vocabulary and this category distinction.', sources: 'Sources', updated: 'Last reviewed: 14 July 2026',
+  },
+  ro: {
+    title: 'Snus sau pliculețe cu nicotină', description: 'Explicația diferenței dintre snusul tradițional și pliculețele cu nicotină fără tutun.', home: 'Acasă', guides: 'Ghiduri',
+    intro: 'Uneori, termenul „snus” este folosit în căutări pentru mai multe produse ținute sub buză. Categoriile nu sunt însă identice.',
+    snusTitle: 'Snusul tradițional conține tutun', snus: 'Administrația pentru Alimente și Medicamente din SUA include snusul în categoria produselor din tutun fără fum. Snusul tradițional conține material din tutun.',
+    pouchTitle: 'Pliculețele cu nicotină nu conțin frunze de tutun', pouch: 'Pliculețele conțin nicotină și alte ingrediente, dar nu frunze de tutun. Nicotina creează dependență, iar aceste produse nu sunt lipsite de riscuri.',
+    catalogTitle: 'Cum folosește Pauch termenii', catalog: 'Pauch folosește denumirea „pliculețe cu nicotină” pentru produsele reprezentate în catalogul actual. „Snus” apare numai pentru a explica vocabularul frecvent de căutare și diferența dintre categorii.', sources: 'Surse', updated: 'Ultima revizuire: 14 iulie 2026',
+  },
+  ru: {
+    title: 'Снюс и никотиновые паучи: в чём разница', description: 'Понятное объяснение разницы между традиционным табачным снюсом и никотиновыми паучами без табачного листа.', home: 'Главная', guides: 'Материалы',
+    intro: 'В поисковых запросах словом «снюс» иногда называют разные продукты, которые помещают под губу. Эти категории не одинаковы.',
+    snusTitle: 'Традиционный снюс содержит табак', snus: 'Управление по контролю качества пищевых продуктов и лекарственных средств США относит снюс к бездымным табачным изделиям. Традиционный снюс содержит табачный материал.',
+    pouchTitle: 'Никотиновые паучи не содержат табачного листа', pouch: 'Никотиновые паучи содержат никотин и другие ингредиенты, но не табачный лист. Никотин вызывает зависимость, и эти продукты не являются безрисковыми.',
+    catalogTitle: 'Как Pauch использует эти термины', catalog: 'Pauch называет товары в текущем каталоге «никотиновыми паучами». Слово «снюс» используется только для объяснения распространённого поискового запроса и различия категорий.', sources: 'Источники', updated: 'Последняя проверка: 14 июля 2026 г.',
+  },
+}[lang];
+const alternates = [
+  { lang: 'en' as const, url: '/en/guides/snus-vs-nicotine-pouches/' },
+  { lang: 'ro' as const, url: '/ro/guides/snus-sau-pliculete-cu-nicotina/' },
+  { lang: 'ru' as const, url: '/ru/guides/snyus-i-nikotinovye-pauchi/' },
+];
+---
+<BaseLayout title={`${pages.title} | Pauch`} description={pages.description} alternates={alternates}>
+  <article class="container py-10 md:py-16 max-w-3xl">
+    <nav aria-label="Breadcrumb" class="text-small text-muted mb-6"><a href={getLocalizedPath('/', lang)}>{pages.home}</a> / <span>{pages.guides}</span> / <span aria-current="page">{pages.title}</span></nav>
+    <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">{pages.title}</h1>
+    <p class="mt-5 text-body text-muted leading-relaxed">{pages.intro}</p>
+    <section class="mt-9"><h2 class="text-2xl font-semibold">{pages.snusTitle}</h2><p class="mt-3 text-muted leading-relaxed">{pages.snus}</p></section>
+    <section class="mt-9"><h2 class="text-2xl font-semibold">{pages.pouchTitle}</h2><p class="mt-3 text-muted leading-relaxed">{pages.pouch}</p></section>
+    <section class="mt-9"><h2 class="text-2xl font-semibold">{pages.catalogTitle}</h2><p class="mt-3 text-muted leading-relaxed">{pages.catalog}</p></section>
+    <section class="mt-9 border-t border-border pt-7"><h2 class="text-xl font-semibold">{pages.sources}</h2><ul class="list-disc pl-6 mt-3 space-y-2 text-small"><li><a class="text-accent hover:underline" href="https://www.fda.gov/tobacco-products/health-effects-tobacco-use/nicotine-why-tobacco-products-are-addictive" rel="noopener noreferrer">U.S. FDA — Nicotine and tobacco products</a></li><li><a class="text-accent hover:underline" href="https://www.cdc.gov/tobacco/nicotine-pouches/index.html" rel="noopener noreferrer">U.S. CDC — Nicotine pouches</a></li></ul><p class="text-caption text-muted mt-4">{pages.updated}</p></section>
+  </article>
+</BaseLayout>

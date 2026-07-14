@@ -1,6 +1,7 @@
 import en from './en.json';
 import ru from './ru.json';
 import ro from './ro.json';
+import { commerce } from '../config/commerce';
 
 export const languages = {
   en: 'English',
@@ -77,7 +78,7 @@ export function getBrowserLanguage(): Language {
 }
 
 // Telegram helper
-export const TELEGRAM_DEEP_LINK = 'https://t.me/m/8ebhN3f-MDMy';
+export const TELEGRAM_DEEP_LINK = commerce.orderUrl;
 // Legacy export kept for backwards compatibility.
 export const TELEGRAM_USERNAME = 'pauch';
 
@@ -104,3 +105,6 @@ export function getAlternateUrls(currentPath: string): Array<{ lang: Language; u
     url: `/${lang}${cleanPath}`,
   }));
 }
+
+export { getServicePage, servicePageSlugs } from './servicePages';
+export type { ServicePageContent, ServicePageSlug } from './servicePages';

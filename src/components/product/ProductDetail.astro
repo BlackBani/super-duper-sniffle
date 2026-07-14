@@ -1,6 +1,10 @@
 ---
 import Button from '@components/ui/Button.astro';
 import { useTranslations, getLocalizedPath, getTelegramOrderLink, type Language } from '@i18n/index';
+import { serializeJsonLd } from '../../lib/seo/jsonld';
+import { getPublicImageMetadata } from '../../lib/images/metadata';
+import { getResponsiveImageData } from '../../lib/images/responsive';
+import { site } from '../../config/site';
 
 interface Props {
   lang: Language;
@@ -30,7 +34,7 @@ const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
 const homePath = `${baseClean}/${lang}/`;
 const catalogPath = `${homePath}#catalog`;
 
-const siteOrigin = Astro.site?.origin || 'https://yourusername.github.io';
+const siteOrigin = Astro.site?.origin || site.origin;
 const siteUrl = `${siteOrigin}${baseClean}`;
 const productAbsoluteUrl = `${siteUrl}/${lang}/product/${product.slug}/`;
 const homeAbsoluteUrl = `${siteUrl}/${lang}/`;
@@ -44,6 +48,8 @@ const imageAbsoluteUrl = product.image.startsWith('/')
   ? `${siteUrl}${product.image}`
   : product.image;
 const placeholderSrc = `${baseClean}/images/products/placeholder.svg`;
+const imageMetadata = getPublicImageMetadata(product.image);
+const responsiveImage = getResponsiveImageData(product.image, [480, 640, 800, 900]);
 
 const strengthLabels: Record<string, string> = {
   easy: t.strengths.easy,
@@ -67,6 +73,11 @@ const flavorLabels: Record<string, string> = {
   coffee: t.flavors.coffee,
   tropical: t.flavors.tropical,
 };
+const verificationCopy = {
+  en: { status: 'Availability is confirmed in Telegram before delivery. Numeric nicotine measurements are not shown until a source is verified.', brand: 'View represented products from this brand', shipping: 'Shipping & payment details' },
+  ro: { status: 'Disponibilitatea este confirmată în Telegram înainte de livrare. Măsurătorile numerice ale nicotinei nu apar până la verificarea unei surse.', brand: 'Vezi produsele reprezentate ale acestei mărci', shipping: 'Detalii despre livrare și plată' },
+  ru: { status: 'Наличие подтверждается в Telegram до доставки. Числовые показатели никотина не публикуются до проверки источника.', brand: 'Товары этого бренда в каталоге', shipping: 'Условия доставки и оплаты' },
+}[lang];
 
 const telegramLink = getTelegramOrderLink(lang, {
   name: translation.name,
@@ -80,9 +91,7 @@ const productSchema = {
   "name": translation.name,
   "description": translation.description,
   "url": productAbsoluteUrl,
-  "sku": product.slug,
   "category": "Nicotine Pouches",
-  "itemCondition": "https://schema.org/NewCondition",
   "brand": {
     "@type": "Brand",
     "name": product.brand,
@@ -93,11 +102,6 @@ const productSchema = {
     "suggestedMinAge": 18,
   },
   "additionalProperty": [
-    {
-      "@type": "PropertyValue",
-      "name": "Nicotine Strength",
-      "value": strengthLabels[product.strengthCategory],
-    },
     {
       "@type": "PropertyValue",
       "name": "Flavor",
@@ -139,8 +143,8 @@ const breadcrumbSchema = {
 ---
 
 <!-- Schemas -->
-<script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script is:inline type="application/ld+json" set:html={serializeJsonLd(productSchema)} />
+<script is:inline type="application/ld+json" set:html={serializeJsonLd(breadcrumbSchema)} />
 
 <section class="py-12 md:py-20">
   <div class="container">
@@ -172,6 +176,11 @@ const breadcrumbSchema = {
           <img
             src={imageSrc}
             alt={translation.name}
+            width={imageMetadata.width}
+            height={imageMetadata.height}
+            decoding="async"
+            srcset={responsiveImage.srcset || undefined}
+            sizes="(min-width: 768px) 50vw, 100vw"
             class="w-full h-full object-contain p-8"
             onerror={`this.src='${placeholderSrc}'`}
           />
@@ -184,10 +193,11 @@ const breadcrumbSchema = {
       
       <!-- Product Info -->
       <div class="flex flex-col">
-        <span class="text-caption text-muted mb-2">{product.brand}</span>
+        <a class="text-caption text-muted mb-2 hover:text-accent" href={getLocalizedPath(`/brands/${product.brand.toLowerCase()}/`, lang)}>{product.brand}</a>
         <h1 class="text-xl md:text-3xl font-semibold mb-3">{productHeading}</h1>
         
         <p class="text-sm md:text-base text-muted mb-5">{translation.description}</p>
+        <p class="text-caption text-muted mb-5">{verificationCopy.status}</p>
         
         <!-- Specs -->
         <div class="grid grid-cols-2 gap-4 mb-8">
@@ -207,6 +217,10 @@ const breadcrumbSchema = {
             <span class="text-caption text-muted block mb-1">{t.product.pouches}</span>
             <span class="text-body font-medium">{product.pouchesPerCan}</span>
           </div>
+        </div>
+        <div class="flex flex-wrap gap-4 mb-7 text-small">
+          <a class="text-accent hover:underline" href={getLocalizedPath(`/brands/${product.brand.toLowerCase()}/`, lang)}>{verificationCopy.brand}</a>
+          <a class="text-accent hover:underline" href={getLocalizedPath('/shipping-payment/', lang)}>{verificationCopy.shipping}</a>
         </div>
         
         <!-- Actions -->

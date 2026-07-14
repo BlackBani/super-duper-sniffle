@@ -3,6 +3,7 @@ Allow: /
 
 # Sitemap
 Sitemap: https://pauch.vip/sitemap-index.xml
+Sitemap: https://pauch.vip/image-sitemap.xml
 
 # Disallow admin/api paths if any
 Disallow: /api/

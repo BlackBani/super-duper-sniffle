@@ -1,0 +1,15 @@
+{
+  "brandId": "iceberg",
+  "slug": "iceberg",
+  "displayName": "ICEBERG",
+  "aliases": [],
+  "officialSourceUrls": [],
+  "verifiedAt": "2026-07-14",
+  "status": "partial",
+  "representedProductSlugs": ["iceberg-strong"],
+  "translations": {
+    "en": { "name": "ICEBERG Nicotine Pouches", "description": "ICEBERG nicotine pouch products currently represented in the Pauch catalog." },
+    "ro": { "name": "Pliculețe cu nicotină ICEBERG", "description": "Produse ICEBERG cu nicotină reprezentate în prezent în catalogul Pauch." },
+    "ru": { "name": "Никотиновые паучи ICEBERG", "description": "Никотиновые паучи ICEBERG, представленные сейчас в каталоге Pauch." }
+  }
+}

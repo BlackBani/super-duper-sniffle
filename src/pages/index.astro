@@ -1,33 +1,75 @@
 ---
-// Root index - locale redirect entrypoint (not meant to be indexed).
-const base = import.meta.env.BASE_URL || '/';
-const baseClean = base.endsWith('/') ? base.slice(0, -1) : base;
-const siteOrigin = Astro.site?.origin || 'https://pauch.vip';
-const fallbackUrl = `${siteOrigin}${baseClean}/ro/`;
+import { site } from '../config/site';
+import { buildInfo } from '../config/build';
+import { serializeJsonLd } from '../lib/seo/jsonld';
+
+const title = 'Pauch — Nicotine Pouches in Moldova';
+const description = 'Choose English, Romanian, or Russian to browse Pauch product information and active Telegram ordering for adults 18+.';
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': site.organizationId,
+    name: site.name,
+    url: site.origin,
+    logo: new URL(site.logoPath, site.origin).toString(),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': site.websiteId,
+    name: site.name,
+    url: site.origin,
+    publisher: { '@id': site.organizationId },
+  },
+];
 ---
 
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
-    <meta name="robots" content="noindex,follow" />
-    <meta name="googlebot" content="noindex,follow" />
-    <link rel="canonical" href={fallbackUrl} />
-    <script is:inline define:vars={{ baseClean }}>
-      (function() {
-        const supportedLangs = ['en', 'ru', 'ro'];
-        const browserLang = navigator.language.split('-')[0];
-        const targetLang = supportedLangs.includes(browserLang) ? browserLang : 'ro';
-        window.location.replace(baseClean + '/' + targetLang + '/');
-      })();
-    </script>
-    <noscript>
-      <meta http-equiv="refresh" content={`0; url=${baseClean}/ro/`} />
-    </noscript>
+    <meta name="pauch-build" content={buildInfo.commit} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={`${site.origin}/`} />
+    <link rel="alternate" hreflang="x-default" href={`${site.origin}/`} />
+    <link rel="alternate" hreflang="en" href={`${site.origin}/en/`} />
+    <link rel="alternate" hreflang="ro" href={`${site.origin}/ro/`} />
+    <link rel="alternate" hreflang="ru" href={`${site.origin}/ru/`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pauch" />
+    <meta property="og:url" content={`${site.origin}/`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${site.origin}${site.defaultOgPath}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Pauch" />
+    <script is:inline type="application/ld+json" set:html={serializeJsonLd(schema)} />
+    <style>
+      :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #111827; background: #f8fafc; }
+      body { min-height: 100vh; margin: 0; display: grid; place-items: center; }
+      main { width: min(38rem, calc(100% - 2rem)); text-align: center; }
+      h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0 0 .75rem; letter-spacing: -.05em; }
+      p { color: #4b5563; line-height: 1.6; }
+      nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 2rem; }
+      a { padding: .9rem 1rem; border: 1px solid #dbe3ee; border-radius: 999px; color: #111827; text-decoration: none; background: white; font-weight: 600; }
+      a:hover, a:focus-visible { border-color: #0066cc; color: #0066cc; outline: none; }
+    </style>
   </head>
   <body>
-    <p>Redirecting to <a href={`${baseClean}/ro/`}>Romanian version</a>...</p>
+    <main>
+      <h1>Pauch</h1>
+      <p>Nicotine pouch information and ordering for adults 18+. Choose your language.</p>
+      <nav aria-label="Language">
+        <a href="/en/" lang="en">English</a>
+        <a href="/ro/" lang="ro">Română</a>
+        <a href="/ru/" lang="ru">Русский</a>
+      </nav>
+    </main>
   </body>
 </html>

@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+import BrandPage from '../../../components/content/BrandPage.astro';
+import type { Language } from '../../../i18n/index';
+export async function getStaticPaths() { const [brands, products] = await Promise.all([getCollection('brands'), getCollection('products')]); return brands.filter(({ data }) => data.status !== 'discontinued').map(({ data: brand }) => ({ params: { slug: brand.slug }, props: { brand, products: products.filter(({ data }) => brand.representedProductSlugs.includes(data.slug)).map(({ data }) => data) } })); }
+const { brand, products } = Astro.props;
+const alternates = (['en', 'ro', 'ru'] as Language[]).map((lang) => ({ lang, url: `/${lang}/brands/${brand.slug}/` }));
+---
+<BrandPage lang="en" brand={brand} products={products} alternates={alternates} />

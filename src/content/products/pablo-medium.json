@@ -1,5 +1,9 @@
 {
   "slug": "pablo-medium",
+  "productId": "pablo-medium",
+  "brandId": "pablo",
+  "variantName": "Medium",
+  "aliases": [],
   "brand": "PABLO",
   "strength": 2,
   "strengthCategory": "medium",
@@ -7,6 +11,9 @@
   "pouchesPerCan": 20,
   "image": "/images/products/pablo_medium.png",
   "featured": true,
+  "availability": "unknown",
+  "officialSourceUrls": [],
+  "productStatus": "unverified",
   "translations": {
     "en": {
       "name": "PABLO Medium",

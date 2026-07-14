@@ -1,5 +1,6 @@
 ---
 import Accordion from '@components/ui/Accordion.astro';
+import { serializeJsonLd } from '../../lib/seo/jsonld';
 import { useTranslations, type Language } from '@i18n/index';
 
 interface Props {
@@ -35,4 +36,4 @@ const faqSchema = {
 </section>
 
 <!-- FAQ Schema -->
-<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+<script is:inline type="application/ld+json" set:html={serializeJsonLd(faqSchema)} />

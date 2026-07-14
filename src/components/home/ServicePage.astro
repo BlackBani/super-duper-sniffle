@@ -1,0 +1,69 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Button from '@components/ui/Button.astro';
+import {
+  getLocalizedPath,
+  getServicePage,
+  getTelegramOrderLink,
+  type Language,
+  type ServicePageSlug,
+} from '@i18n/index';
+
+interface Props {
+  lang: Language;
+  slug: ServicePageSlug;
+}
+
+const { lang, slug } = Astro.props;
+const page = getServicePage(lang, slug);
+---
+
+<BaseLayout title={`${page.title} | Pauch`} description={page.description}>
+  <section class="py-10 md:py-16">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <nav class="flex items-center gap-2 text-caption text-muted mb-6" aria-label="Breadcrumb">
+          <a class="hover:text-primary transition-colors" href={getLocalizedPath('/', lang)}>{page.home}</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page" class="text-primary">{page.title}</span>
+        </nav>
+
+        <header class="mb-8 md:mb-10">
+          <h1 class="text-display text-primary mb-3">{page.title}</h1>
+          <p class="text-body text-muted max-w-2xl">{page.description}</p>
+        </header>
+
+        <aside class="bg-surface border border-border rounded-xl p-5 mb-8" aria-labelledby="page-navigation">
+          <h2 id="page-navigation" class="text-small font-semibold text-primary mb-3">{page.onThisPage}</h2>
+          <nav class="flex flex-wrap gap-x-5 gap-y-2">
+            {page.sections.map((section) => (
+              <a class="text-small text-accent hover:underline" href={`#${section.id}`}>{section.title}</a>
+            ))}
+          </nav>
+        </aside>
+
+        <div class="space-y-9">
+          {page.sections.map((section) => (
+            <section id={section.id} class="scroll-mt-28">
+              <h2 class="text-title font-semibold text-primary mb-3">{section.title}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p class="text-body text-muted leading-relaxed mb-3">{paragraph}</p>
+              ))}
+              {section.items && (
+                <ul class="list-disc pl-6 text-body text-muted space-y-2">
+                  {section.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </section>
+          ))}
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-border">
+          <Button href={getTelegramOrderLink(lang)} variant="primary" size="lg" external>
+            {page.orderCta}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
