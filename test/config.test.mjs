@@ -36,6 +36,25 @@ test('original FAQ ordering answers and clickable guide behavior are preserved',
   assert.match(accordion, /href=\{part\.value\}/);
 });
 
+test('original trust-band copy is preserved in all locales', () => {
+  const expected = {
+    en: { secure: '100% Secure', support: 'Fast Support', satisfaction: '99% Satisfied' },
+    ro: { secure: '100% Securizat', support: 'Suport rapid', satisfaction: '99% Mulțumiți' },
+    ru: { secure: 'Безопасно', support: 'Поддержка 24/7', satisfaction: '99% Довольны' },
+  };
+  for (const [locale, trustBand] of Object.entries(expected)) {
+    const content = JSON.parse(readFileSync(new URL(`../src/i18n/${locale}.json`, import.meta.url), 'utf8'));
+    assert.deepEqual(content.trustBand, trustBand);
+  }
+});
+
+test('mobile brand row renders one non-scrolling five-column set', () => {
+  const source = readFileSync(new URL('../src/components/home/BrandsSection.astro', import.meta.url), 'utf8');
+  assert.match(source, /grid-template-columns:\s*repeat\(5, minmax\(0, 1fr\)\)/);
+  assert.match(source, /\.brand-item:nth-child\(n \+ 6\)[\s\S]*?display:\s*none/);
+  assert.match(source, /@media \(min-width: 768px\)[\s\S]*?animation:\s*scroll-brands/);
+});
+
 test('canonical organization name is Pauch', () => {
   const source = readFileSync(new URL('../src/config/site.ts', import.meta.url), 'utf8');
   assert.match(source, /name:\s*'Pauch'/);
