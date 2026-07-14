@@ -33,17 +33,23 @@ const brands = (await getCollection('brands'))
   }
   
   .brands-track {
-    display: flex;
-    gap: 1.75rem;
-    animation: scroll-brands 30s linear infinite;
-    width: max-content;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.25rem;
+    width: 100%;
+    padding: 0 0.5rem;
   }
   
   .brand-item {
-    flex-shrink: 0;
+    min-width: 0;
+    text-align: center;
     opacity: 0.85;
     transition: opacity 0.3s;
     text-decoration: none;
+  }
+
+  .brand-item:nth-child(n + 6) {
+    display: none;
   }
   
   .brand-item:hover {
@@ -51,21 +57,36 @@ const brands = (await getCollection('brands'))
   }
   
   .brand-text {
-    font-size: 1rem;
+    display: block;
+    font-size: clamp(0.625rem, 2.7vw, 0.8rem);
     font-weight: 800;
     white-space: nowrap;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.01em;
     color: #1f2937;
   }
   
   @media (min-width: 768px) {
     .brands-track {
+      display: flex;
       gap: 3.5rem;
+      width: max-content;
+      padding: 0;
+      animation: scroll-brands 30s linear infinite;
+    }
+
+    .brand-item {
+      flex-shrink: 0;
+      text-align: left;
+    }
+
+    .brand-item:nth-child(n + 6) {
+      display: block;
     }
     
     .brand-text {
       font-size: 1.25rem;
+      letter-spacing: 0.05em;
     }
   }
   
