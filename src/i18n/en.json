@@ -50,8 +50,8 @@
       "description": "Availability and delivery details are confirmed in Telegram"
     },
     "discreet": {
-      "title": "Payment Options",
-      "description": "Cash on delivery or bank transfer, subject to confirmation"
+      "title": "Payment",
+      "description": "Cash on delivery only"
     }
   },
   "strengthGuide": {
@@ -99,7 +99,7 @@
       },
       {
         "question": "How do I place an order?",
-        "answer": "Click the 'Order in Telegram' button and send your request. Product availability, payment, and delivery details are subject to confirmation."
+        "answer": "Simply click the 'Order in Telegram' button. Our manager will instantly contact you to clarify the details."
       },
       {
         "question": "Do you offer pickup?",
@@ -120,7 +120,7 @@
     "deliveryTitle": "Delivery",
     "deliveryText": "Delivery in Chișinău in 1-2 hours after confirmation. We also deliver across Moldova.",
     "paymentTitle": "Payment",
-    "paymentText": "Cash on delivery or bank transfer. Payment details provided upon order confirmation.",
+    "paymentText": "Cash on delivery only.",
     "areasTitle": "Delivery Areas",
     "areasText": "We deliver in Chișinău and across Moldova."
   },
@@ -128,7 +128,7 @@
     "title": "About Us",
     "text": "Pauch is an online catalog for adult customers in Moldova. Orders are placed through Telegram and remain subject to confirmation.",
     "authenticityTitle": "Delivery and Payment",
-    "authenticityText": "Chișinău delivery is usually 1-2 hours after confirmation. Nationwide delivery, cash on delivery, and bank transfer are available subject to confirmation."
+    "authenticityText": "Chișinău delivery is usually 1-2 hours after confirmation. Nationwide delivery is available, and payment is cash on delivery only."
   },
   "footer": {
     "telegram": "Order via Telegram",

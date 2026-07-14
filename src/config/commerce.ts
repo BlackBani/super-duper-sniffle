@@ -14,12 +14,12 @@ export const commerce = {
     ro: 'Livrare în Chișinău în 1–2 ore după confirmare. Livrarea este disponibilă și în toată Moldova.',
     ru: 'Доставка по Кишинёву в течение 1–2 часов после подтверждения. Доставка также доступна по всей Молдове.',
   } satisfies Record<SiteLocale, string>,
-  paymentMethods: ['cash-on-delivery', 'bank-transfer'] as const,
+  paymentMethods: ['cash-on-delivery'] as const,
   showPrices: false,
   showAvailability: false,
   enableOfferSchema: false,
   currency: 'MDL' as const,
-  dataRevision: '2026-07-14-repository-baseline',
+  dataRevision: '2026-07-14-cash-only',
 } as const;
 
 export function validateCommerceConfig(): string[] {

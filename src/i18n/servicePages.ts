@@ -31,7 +31,7 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'what-we-do', title: 'What we do', paragraphs: ['Pauch is an online catalog of nicotine pouches for adults in Moldova. Customers browse the catalog on this site and send order requests through Telegram.'] },
         { id: 'ordering', title: 'Ordering', paragraphs: ['Product availability, payment, and delivery details are confirmed in Telegram before an order proceeds.'] },
-        { id: 'delivery', title: 'Delivery and payment', paragraphs: ['Delivery in Chișinău is usually 1-2 hours after confirmation. Delivery across Moldova is also available. Payment may be made by cash on delivery or bank transfer, subject to confirmation.'] },
+        { id: 'delivery', title: 'Delivery and payment', paragraphs: ['Delivery in Chișinău is usually 1-2 hours after confirmation. Delivery across Moldova is also available. Payment is cash on delivery only.'] },
       ],
     },
     contact: {
@@ -39,15 +39,15 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'telegram', title: 'Telegram', paragraphs: ['Use the Telegram button on this page for order requests and questions about an existing order.'] },
         { id: 'order-details', title: 'What to include', paragraphs: ['To help confirm an order, include the product, quantity, and delivery area in your message.'] },
-        { id: 'confirmation', title: 'Confirmation', paragraphs: ['Availability, payment method, and delivery details are confirmed in Telegram.'] },
+        { id: 'confirmation', title: 'Confirmation', paragraphs: ['Availability and delivery details are confirmed in Telegram. Payment is cash on delivery only.'] },
       ],
     },
     'shipping-payment': {
-      title: 'Shipping & Payment', description: 'Delivery areas, expected Chișinău delivery time, and payment methods for Pauch orders.', home: 'Home', onThisPage: 'On this page', orderCta: 'Order via Telegram',
+      title: 'Shipping & Payment', description: 'Delivery areas, expected Chișinău delivery time, and cash-on-delivery payment for Pauch orders.', home: 'Home', onThisPage: 'On this page', orderCta: 'Order via Telegram',
       sections: [
         { id: 'chisinau', title: 'Chișinău delivery', paragraphs: ['Delivery in Chișinău is usually 1-2 hours after the order is confirmed in Telegram.'] },
         { id: 'moldova', title: 'Delivery across Moldova', paragraphs: ['Nationwide delivery is available. The delivery details are provided when the order is confirmed.'] },
-        { id: 'payment', title: 'Payment', paragraphs: ['Payment is available by cash on delivery or bank transfer. The applicable method and payment details are confirmed with the order.'] },
+        { id: 'payment', title: 'Payment', paragraphs: ['Payment is cash on delivery only.'] },
       ],
     },
     'how-to-order': {
@@ -55,7 +55,7 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'choose', title: '1. Choose a product', paragraphs: ['Browse the catalog and note the product and strength you want.'] },
         { id: 'message', title: '2. Send a Telegram message', paragraphs: ['Open Telegram from an order button and include the product, quantity, and delivery area.'] },
-        { id: 'confirm', title: '3. Confirm the order', paragraphs: ['Availability, payment method, and delivery details are confirmed in Telegram before delivery.'] },
+        { id: 'confirm', title: '3. Confirm the order', paragraphs: ['Availability and delivery details are confirmed in Telegram before delivery. Payment is cash on delivery only.'] },
         { id: 'delivery', title: '4. Delivery', paragraphs: ['Chișinău delivery is usually 1-2 hours after confirmation. Nationwide delivery is also available.'] },
       ],
     },
@@ -82,7 +82,7 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'what-we-do', title: 'Ce facem', paragraphs: ['Pauch este un catalog online de pliculețe cu nicotină pentru adulți din Moldova. Clienții consultă catalogul pe site și trimit solicitările de comandă prin Telegram.'] },
         { id: 'ordering', title: 'Comenzi', paragraphs: ['Disponibilitatea produselor, plata și detaliile livrării sunt confirmate în Telegram înainte de procesarea comenzii.'] },
-        { id: 'delivery', title: 'Livrare și plată', paragraphs: ['Livrarea în Chișinău durează de obicei 1-2 ore după confirmare. Este disponibilă și livrarea în toată Moldova. Plata se poate face în numerar la livrare sau prin transfer bancar, sub rezerva confirmării.'] },
+        { id: 'delivery', title: 'Livrare și plată', paragraphs: ['Livrarea în Chișinău durează de obicei 1-2 ore după confirmare. Este disponibilă și livrarea în toată Moldova. Plata se face numai în numerar la livrare.'] },
       ],
     },
     contact: {
@@ -90,15 +90,15 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'telegram', title: 'Telegram', paragraphs: ['Folosește butonul Telegram de pe această pagină pentru solicitări de comandă și întrebări despre o comandă existentă.'] },
         { id: 'order-details', title: 'Ce să incluzi', paragraphs: ['Pentru confirmarea comenzii, include produsul, cantitatea și zona de livrare în mesaj.'] },
-        { id: 'confirmation', title: 'Confirmare', paragraphs: ['Disponibilitatea, metoda de plată și detaliile livrării sunt confirmate în Telegram.'] },
+        { id: 'confirmation', title: 'Confirmare', paragraphs: ['Disponibilitatea și detaliile livrării sunt confirmate în Telegram. Plata se face numai în numerar la livrare.'] },
       ],
     },
     'shipping-payment': {
-      title: 'Livrare și plată', description: 'Zonele de livrare, timpul estimat în Chișinău și metodele de plată pentru comenzile Pauch.', home: 'Acasă', onThisPage: 'Pe această pagină', orderCta: 'Comandă prin Telegram',
+      title: 'Livrare și plată', description: 'Zonele de livrare, timpul estimat în Chișinău și plata în numerar la livrare pentru comenzile Pauch.', home: 'Acasă', onThisPage: 'Pe această pagină', orderCta: 'Comandă prin Telegram',
       sections: [
         { id: 'chisinau', title: 'Livrare în Chișinău', paragraphs: ['Livrarea în Chișinău durează de obicei 1-2 ore după confirmarea comenzii în Telegram.'] },
         { id: 'moldova', title: 'Livrare în toată Moldova', paragraphs: ['Este disponibilă livrarea la nivel național. Detaliile livrării sunt comunicate la confirmarea comenzii.'] },
-        { id: 'payment', title: 'Plată', paragraphs: ['Plata se poate face în numerar la livrare sau prin transfer bancar. Metoda aplicabilă și detaliile de plată sunt confirmate odată cu comanda.'] },
+        { id: 'payment', title: 'Plată', paragraphs: ['Plata se face numai în numerar la livrare.'] },
       ],
     },
     'how-to-order': {
@@ -106,7 +106,7 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'choose', title: '1. Alege un produs', paragraphs: ['Consultă catalogul și notează produsul și tăria dorite.'] },
         { id: 'message', title: '2. Trimite un mesaj în Telegram', paragraphs: ['Deschide Telegram dintr-un buton de comandă și include produsul, cantitatea și zona de livrare.'] },
-        { id: 'confirm', title: '3. Confirmă comanda', paragraphs: ['Disponibilitatea, metoda de plată și detaliile livrării sunt confirmate în Telegram înainte de livrare.'] },
+        { id: 'confirm', title: '3. Confirmă comanda', paragraphs: ['Disponibilitatea și detaliile livrării sunt confirmate în Telegram înainte de livrare. Plata se face numai în numerar la livrare.'] },
         { id: 'delivery', title: '4. Livrare', paragraphs: ['Livrarea în Chișinău durează de obicei 1-2 ore după confirmare. Este disponibilă și livrarea în toată țara.'] },
       ],
     },
@@ -133,7 +133,7 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'what-we-do', title: 'Что мы делаем', paragraphs: ['Pauch — онлайн-каталог никотиновых паучей для совершеннолетних покупателей в Молдове. Покупатели выбирают товар на сайте и отправляют запрос на заказ через Telegram.'] },
         { id: 'ordering', title: 'Заказы', paragraphs: ['Наличие товара, оплата и детали доставки подтверждаются в Telegram до выполнения заказа.'] },
-        { id: 'delivery', title: 'Доставка и оплата', paragraphs: ['Доставка по Кишинёву обычно занимает 1-2 часа после подтверждения. Также доступна доставка по всей Молдове. Оплата возможна наличными при получении или банковским переводом после подтверждения.'] },
+        { id: 'delivery', title: 'Доставка и оплата', paragraphs: ['Доставка по Кишинёву обычно занимает 1-2 часа после подтверждения. Также доступна доставка по всей Молдове. Оплата только наличными при получении.'] },
       ],
     },
     contact: {
@@ -141,15 +141,15 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'telegram', title: 'Telegram', paragraphs: ['Используйте кнопку Telegram на этой странице для заказа и вопросов по существующему заказу.'] },
         { id: 'order-details', title: 'Что указать', paragraphs: ['Для подтверждения заказа укажите в сообщении товар, количество и район доставки.'] },
-        { id: 'confirmation', title: 'Подтверждение', paragraphs: ['Наличие, способ оплаты и детали доставки подтверждаются в Telegram.'] },
+        { id: 'confirmation', title: 'Подтверждение', paragraphs: ['Наличие и детали доставки подтверждаются в Telegram. Оплата только наличными при получении.'] },
       ],
     },
     'shipping-payment': {
-      title: 'Доставка и оплата', description: 'Зоны доставки, срок доставки по Кишинёву и способы оплаты заказов Pauch.', home: 'Главная', onThisPage: 'На этой странице', orderCta: 'Заказать через Telegram',
+      title: 'Доставка и оплата', description: 'Зоны доставки, срок доставки по Кишинёву и оплата наличными при получении заказов Pauch.', home: 'Главная', onThisPage: 'На этой странице', orderCta: 'Заказать через Telegram',
       sections: [
         { id: 'chisinau', title: 'Доставка по Кишинёву', paragraphs: ['Доставка по Кишинёву обычно занимает 1-2 часа после подтверждения заказа в Telegram.'] },
         { id: 'moldova', title: 'Доставка по Молдове', paragraphs: ['Доступна доставка по всей стране. Детали доставки сообщаются при подтверждении заказа.'] },
-        { id: 'payment', title: 'Оплата', paragraphs: ['Доступна оплата наличными при получении или банковским переводом. Способ и реквизиты подтверждаются вместе с заказом.'] },
+        { id: 'payment', title: 'Оплата', paragraphs: ['Оплата только наличными при получении.'] },
       ],
     },
     'how-to-order': {
@@ -157,7 +157,7 @@ const pages: Record<Language, Record<ServicePageSlug, ServicePageContent>> = {
       sections: [
         { id: 'choose', title: '1. Выберите товар', paragraphs: ['Просмотрите каталог и запомните нужный товар и крепость.'] },
         { id: 'message', title: '2. Напишите в Telegram', paragraphs: ['Откройте Telegram с помощью кнопки заказа и укажите товар, количество и район доставки.'] },
-        { id: 'confirm', title: '3. Подтвердите заказ', paragraphs: ['Наличие, способ оплаты и детали доставки подтверждаются в Telegram до доставки.'] },
+        { id: 'confirm', title: '3. Подтвердите заказ', paragraphs: ['Наличие и детали доставки подтверждаются в Telegram до доставки. Оплата только наличными при получении.'] },
         { id: 'delivery', title: '4. Доставка', paragraphs: ['Доставка по Кишинёву обычно занимает 1-2 часа после подтверждения. Также доступна доставка по всей стране.'] },
       ],
     },

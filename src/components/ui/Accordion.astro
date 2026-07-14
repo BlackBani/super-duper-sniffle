@@ -11,6 +11,12 @@ interface Props {
 
 const { items, class: className = '' } = Astro.props;
 
+function answerParts(answer: string) {
+  return answer.split(/(https?:\/\/[^\s]+)/g).filter(Boolean).map((value) => ({
+    value,
+    isLink: /^https?:\/\//.test(value),
+  }));
+}
 ---
 
 <div class={`accordion space-y-2 ${className}`} role="region">
@@ -38,7 +44,11 @@ const { items, class: className = '' } = Astro.props;
         aria-labelledby={`accordion-trigger-${index}`}
         role="region"
       >
-        <div class="px-4 pt-4 pb-4 text-small text-muted leading-relaxed whitespace-pre-line">{item.answer}</div>
+        <div class="px-4 pt-4 pb-4 text-small text-muted leading-relaxed whitespace-pre-line">
+          {answerParts(item.answer).map((part) => part.isLink ? (
+            <a href={part.value} target="_blank" rel="noopener noreferrer" class="text-accent hover:underline break-all">{part.value}</a>
+          ) : part.value)}
+        </div>
       </div>
     </div>
   ))}
