@@ -11,9 +11,9 @@
 
 The supplied folder had no Git metadata. A local `main` repository was initialized and the untouched tree committed before functional work, then `seo/commerce-foundation` was created. No remote was invented.
 
-## D-003 — Production pipeline assumption
+## D-003 — Production pipeline
 
-Until live provider ownership can be verified, Netlify is treated as the deploy-ready production configuration because it already contains host-level redirect behavior. GitHub Pages publication will be converted to validation-only so two repository pipelines cannot publish production. DNS and live-provider confirmation remain external.
+The owner confirmed GitHub Pages as production. Repository Pages settings confirm workflow-based publishing for the `pauch.vip` custom domain with enforced HTTPS. Pull requests validate without deployment; pushes to `main` validate, upload `dist`, and deploy through the `github-pages` environment. The obsolete Netlify configuration was removed.
 
 ## D-004 — Supported framework baseline
 

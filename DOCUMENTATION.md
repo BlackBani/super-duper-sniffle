@@ -36,7 +36,7 @@ Source assets keep their stable public paths. Responsive WebP derivatives and th
 
 ## Deployment
 
-`.github/workflows/deploy.yml` is validation-only. `netlify.toml` runs the complete CI command, publishes `dist`, sets security headers, and redirects `/sitemap.xml` to the generated sitemap index. Netlify is an assumption until live DNS and provider ownership are confirmed.
+GitHub Pages hosts the custom production domain `pauch.vip` with enforced HTTPS. `.github/workflows/deploy.yml` runs the complete CI command for pull requests. Pushes to `main` run the same checks, upload `dist` as the Pages artifact, and deploy through the `github-pages` environment.
 
 ## Development and release checks
 

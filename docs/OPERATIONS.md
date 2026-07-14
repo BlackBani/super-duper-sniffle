@@ -2,9 +2,9 @@
 
 ## Production and deployment
 
-The repository treats Netlify as the sole production publisher pending owner confirmation. GitHub Actions validates builds but has no Pages deployment permission or deploy job. Production builds run `npm run ci`; deploy previews run the same gates. `https://pauch.vip/build-info.json` identifies the commit/environment/content and commerce revisions after deployment.
+GitHub Pages is the production publisher for `pauch.vip`. Pull requests run `npm run ci` without deploying. A push to `main` repeats the complete suite, uploads `dist`, and deploys it through the `github-pages` environment. `https://pauch.vip/build-info.json` identifies the commit/environment/content and commerce revisions after deployment.
 
-Before deployment, confirm that Netlify owns `pauch.vip`, HTTP redirects to HTTPS, the `www` choice is permanent, and alternate hosting domains are redirected or noindexed. No deployment was performed by this implementation.
+Repository Pages settings report workflow-based publishing, the `pauch.vip` custom domain, and enforced HTTPS. Before merging, review the pull-request checks and representative routes locally; after merging, verify the Pages job and the live custom domain.
 
 ## Commerce updates
 
@@ -27,7 +27,7 @@ Run `npm ci && npm run ci`. The CI sequence covers Astro diagnostics, TypeScript
 ## Rollback
 
 1. Identify the last good deploy commit from `/build-info.json` or the provider log.
-2. Re-deploy that immutable commit through the selected production provider; do not rewrite Git history.
+2. Revert the faulty change through a reviewed pull request or re-run the last known-good GitHub Pages workflow; do not rewrite shared Git history.
 3. If only commerce data is wrong, revert the single configuration commit, increment `dataRevision`, run `npm run ci`, and deploy.
 4. Verify `/`, each locale home, one product, one article, `/image-sitemap.xml`, `/sitemap-index.xml`, `robots.txt`, and the Telegram destination.
 5. Record the rollback and affected URLs in `docs/execution/CHANGELOG.md`.

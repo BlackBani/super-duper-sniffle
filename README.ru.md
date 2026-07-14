@@ -123,12 +123,11 @@
 
 ## 10. Деплой
 
-GitHub Actions только проверяет сборку и не публикует GitHub Pages:
+GitHub Pages — production-хост для `pauch.vip`:
 
-- Проверка GitHub Actions: `.github/workflows/deploy.yml`
-- Конфигурация Netlify: `netlify.toml`
+- Проверка и деплой GitHub Pages: `.github/workflows/deploy.yml`
 
-Netlify подготовлен как единственный production-провайдер, но перед релизом нужно подтвердить, что именно он обслуживает `pauch.vip`.
+Pull request проходит проверку без деплоя. После объединения в `main` workflow повторяет все проверки и публикует `dist` в GitHub Pages.
 
 ## 11. Чек-лист перед коммитом
 

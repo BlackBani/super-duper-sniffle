@@ -18,7 +18,7 @@ The repository is locally implementation-complete against the supplied PAUCH exe
 - Added data-led editorial hubs and a sourced nicotine-pouch versus snus explainer.
 - Optimized legacy assets, generated responsive WebP variants, replaced the invalid default social image, and added deterministic image inventory checks.
 - Upgraded the supported platform to Astro 7, Node 22, Content Layer loaders, and Tailwind via PostCSS.
-- Converted GitHub Actions to validation-only and prepared Netlify as the assumed sole production publisher pending live ownership confirmation.
+- Configured GitHub Actions to validate pull requests and deploy validated `main` builds to GitHub Pages at `pauch.vip`.
 
 ## Reviewable commits
 
@@ -43,18 +43,18 @@ The repository is locally implementation-complete against the supplied PAUCH exe
 
 Final checks: Astro diagnostics 0 errors, 0 warnings, 0 hints; TypeScript pass; 9/9 tests pass; content validation pass; build pass; SEO validation pass; generated-output validation pass; high-severity audit pass; image inventory pass.
 
-Automated browser QA was attempted but the local browser runtime could not initialize. Generated social/editorial images were visually inspected; static and output validators passed. Responsive browser, keyboard, screen-reader, and live-order journeys still require deploy-preview acceptance.
+Automated browser QA was attempted but the local browser runtime could not initialize. Generated social/editorial images were visually inspected; static and output validators passed. Responsive browser, keyboard, screen-reader, and live-order journeys still require pre-merge acceptance.
 
 ## Publication state
 
-The local folder began without Git metadata or a remote. GitHub CLI is now installed and authenticated, `origin` targets `BlackBani/super-duper-sniffle`, and the implementation branch is based on the repository's actual `main`. Publication uses `seo/commerce-foundation` and a draft pull request. Do not merge before provider and deploy-preview verification.
+The local folder began without Git metadata or a remote. GitHub CLI is now installed and authenticated, `origin` targets `BlackBani/super-duper-sniffle`, and the implementation branch is based on the repository's actual `main`. Publication uses `seo/commerce-foundation` and a draft pull request. GitHub Pages deploys the validated artifact after merge to `main`.
 
 ## Release and rollback
 
 1. Run `npm ci && npm run ci` and `node scripts/image-inventory.mjs --check` from a clean checkout.
-2. Confirm Netlify owns `pauch.vip`, canonical HTTPS/www redirects, and the production environment.
-3. Review the draft PR and deploy preview across locales, representative products/articles, age denial, and Telegram ordering.
-4. Merge through review, observe the production deployment, and verify `/build-info.json`, both sitemaps, `robots.txt`, and priority pages.
+2. Review the draft PR checks across locales, representative products/articles, age denial, and Telegram ordering.
+3. Merge through review and observe the GitHub Pages deployment.
+4. Verify `https://pauch.vip/build-info.json`, both sitemaps, `robots.txt`, and priority pages.
 5. Roll back by redeploying the last known-good immutable commit; do not rewrite shared history. The detailed procedure is in `docs/OPERATIONS.md`.
 
 ## Measurement cadence
@@ -64,4 +64,4 @@ The local folder began without Git metadata or a remote. GitHub CLI is now insta
 - Day 28: review locale and template cohorts; fix only evidence-backed crawl, metadata, or content gaps.
 - Day 90: assess durable query/page growth and decide the next sourced content, brand, and image investments.
 
-Search Console, analytics/consent, legal operator details, maintained product feeds, author/reviewer identities, image rights metadata, and live provider access remain owner-supplied dependencies. See `docs/execution/BLOCKERS.md`.
+Search Console, analytics/consent, legal operator details, maintained product feeds, author/reviewer identities, image rights metadata, and live post-deploy acceptance remain owner-supplied dependencies. See `docs/execution/BLOCKERS.md`.

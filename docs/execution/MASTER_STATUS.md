@@ -5,7 +5,7 @@ Updated: 2026-07-14
 | Work item | Status | Owner | Commit | Validation | Dependencies / blockers |
 |---|---|---|---|---|---|
 | P0-01 baseline | complete | lead | `c1fd15f` | 73-route baseline, online audit | none |
-| P0-02 production ownership | deferred-external | lead | `75ec2db` | GitHub deploy disabled; Netlify deploy-ready | live DNS/provider confirmation |
+| P0-02 production ownership | complete | lead | current hosting correction | GitHub Pages workflow, custom domain, and enforced HTTPS confirmed | merge and live post-deploy verification |
 | P0-03–06 commerce and services | complete | commerce agent + lead | `75ec2db` | build/content/SEO/dist checks pass | private missing facts omitted |
 | ENG/SEC/AGE foundations | complete | security agent + lead | `75ec2db` | Astro check, typecheck, 9 tests pass | native/manual assistive-tech review recommended |
 | SEO/identity/validators | complete | lead | `75ec2db` | SEO validator passes on 127 HTML pages | live Search Console external |

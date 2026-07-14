@@ -50,6 +50,6 @@ The suite checks Astro diagnostics, TypeScript, Node tests, content, builds, can
 
 ## Publishing
 
-The GitHub workflow validates `main`; it does not publish GitHub Pages. `netlify.toml` is the deploy-ready production configuration pending confirmation that Netlify owns `pauch.vip`. Review `docs/OPERATIONS.md` before deployment and verify `/build-info.json` after release.
+GitHub Pages is the production host for `pauch.vip`. `.github/workflows/deploy.yml` validates pull requests and, after a push to `main`, validates again before uploading and deploying the `dist` artifact. Review `docs/OPERATIONS.md` before merging and verify `/build-info.json` after release.
 
-For browser-only editorial changes, open a pull request, wait for validation, obtain review, merge, and verify the connected production provider. Do not bypass review by committing content directly to `main`.
+For browser-only editorial changes, open a pull request, wait for validation, obtain review, merge, and verify the GitHub Pages deployment. Do not bypass review by committing content directly to `main`.

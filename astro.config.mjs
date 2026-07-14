@@ -10,12 +10,12 @@ export default defineConfig({
     }),
   ],
   i18n: {
-    // Romanian is the fallback locale for root redirect and x-default.
+    // Localized routes remain prefixed; root is the neutral x-default selector.
     defaultLocale: 'ro',
     locales: ['en', 'ru', 'ro'],
     routing: {
       prefixDefaultLocale: true,
-      // Keep custom / index.astro locale redirect logic active.
+      // Preserve the custom language-neutral / page.
       redirectToDefaultLocale: false,
     },
   },
