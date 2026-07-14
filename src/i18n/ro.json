@@ -50,8 +50,8 @@
       "description": "Disponibilitatea și detaliile livrării se confirmă în Telegram"
     },
     "discreet": {
-      "title": "Opțiuni de plată",
-      "description": "Numerar la livrare sau transfer bancar, sub rezerva confirmării"
+      "title": "Plată",
+      "description": "Plată numai în numerar la livrare"
     }
   },
   "strengthGuide": {
@@ -99,7 +99,7 @@
       },
       {
         "question": "Cum plasez o comandă?",
-        "answer": "Apasă butonul «Comandă în Telegram» și trimite solicitarea. Disponibilitatea, plata și livrarea se stabilesc la confirmare."
+        "answer": "Apasă butonul «Comandă în Telegram». Managerul nostru te va contacta instantaneu pentru a clarifica detaliile."
       },
       {
         "question": "Aveți ridicare personală?",
@@ -120,7 +120,7 @@
     "deliveryTitle": "Livrare",
     "deliveryText": "Livrare în Chișinău în 1-2 ore după confirmare. Livrăm și în toată Moldova.",
     "paymentTitle": "Plată",
-    "paymentText": "Numerar la livrare sau transfer bancar. Detaliile de plată sunt furnizate la confirmarea comenzii.",
+    "paymentText": "Plata se face numai în numerar la livrare.",
     "areasTitle": "Zone de Livrare",
     "areasText": "Livrăm în Chișinău și în toată Moldova."
   },
@@ -128,7 +128,7 @@
     "title": "Despre Noi",
     "text": "Pauch este un catalog online pentru clienți adulți din Moldova. Comenzile se plasează prin Telegram și sunt supuse confirmării.",
     "authenticityTitle": "Livrare și plată",
-    "authenticityText": "Livrarea în Chișinău durează de obicei 1-2 ore după confirmare. Livrarea națională, numerarul la livrare și transferul bancar sunt disponibile sub rezerva confirmării."
+    "authenticityText": "Livrarea în Chișinău durează de obicei 1-2 ore după confirmare. Livrarea națională este disponibilă, iar plata se face numai în numerar la livrare."
   },
   "footer": {
     "telegram": "Comandă prin Telegram",
