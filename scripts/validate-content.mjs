@@ -45,7 +45,7 @@ for (const locale of locales) {
 const commerceSource = readFileSync(join(root, 'src/config/commerce.ts'), 'utf8');
 if (!/enabled:\s*true/.test(commerceSource)) errors.push('commerce.ts: commerce must remain enabled');
 const orderUrl = commerceSource.match(/orderUrl:\s*'([^']+)'/)?.[1];
-if (!orderUrl || !/^https:\/\/t\.me\//.test(orderUrl)) errors.push('commerce.ts: missing valid HTTPS Telegram URL');
+if (!orderUrl || !/^https:\/\/telegram\.me\/m\//.test(orderUrl)) errors.push('commerce.ts: missing valid HTTPS Telegram business URL');
 if (/\b(?:Pouch Moldova|name:\s*['"]Pouch['"])/i.test(readFileSync(join(root, 'src/config/site.ts'), 'utf8'))) {
   errors.push('site.ts: forbidden replacement brand name');
 }

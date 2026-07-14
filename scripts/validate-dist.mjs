@@ -5,13 +5,13 @@ import { bytes, dist, failIf, htmlFiles, routeForFile, walk } from './lib/site-f
 const errors = [];
 const warnings = [];
 const inactive = /\b(?:paused|temporarily closed|orders unavailable)\b/i;
-const orderUrl = 'https://t.me/m/8ebhN3f-MDMy';
+const orderUrl = 'https://telegram.me/m/8ebhN3f-MDMy';
 
 for (const file of htmlFiles()) {
   const html = readFileSync(file, 'utf8');
   const route = routeForFile(file);
   if (inactive.test(html)) errors.push(`${route}: inactive-commerce copy`);
-  for (const match of html.matchAll(/https:\/\/t\.me\/[^"'<>\s]+/g)) {
+  for (const match of html.matchAll(/https:\/\/(?:telegram\.me|t\.me)\/[^"'<>\s]+/g)) {
     if (match[0] !== orderUrl && !match[0].includes('PauchRecenzii')) errors.push(`${route}: unexpected Telegram order URL ${match[0]}`);
   }
 }

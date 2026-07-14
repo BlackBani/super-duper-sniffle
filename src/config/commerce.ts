@@ -3,7 +3,7 @@ import type { SiteLocale } from './site';
 export const commerce = {
   enabled: true,
   orderChannel: 'telegram' as const,
-  orderUrl: 'https://t.me/m/8ebhN3f-MDMy',
+  orderUrl: 'https://telegram.me/m/8ebhN3f-MDMy',
   deliveryEnabled: true,
   deliveryAreas: {
     chisinau: true,
@@ -28,8 +28,8 @@ export function validateCommerceConfig(): string[] {
   if (commerce.enabled) {
     try {
       const url = new URL(commerce.orderUrl);
-      if (url.protocol !== 'https:' || url.hostname !== 't.me') {
-        errors.push('The active order URL must be an HTTPS t.me URL.');
+      if (url.protocol !== 'https:' || url.hostname !== 'telegram.me') {
+        errors.push('The active order URL must be an HTTPS telegram.me URL.');
       }
     } catch {
       errors.push('Commerce is enabled but orderUrl is invalid.');
