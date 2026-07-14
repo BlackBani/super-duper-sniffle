@@ -22,10 +22,10 @@ The repository is locally implementation-complete against the supplied PAUCH exe
 
 ## Reviewable commits
 
-- `9ab6792` — untouched supplied repository baseline on `main`
-- `ac741f9` — execution ledger and reproducible baseline
-- `24374c1` — commerce, security, SEO, content, and image foundations
-- `bd174f3` — Astro 7 and Content Layer upgrade
+- `c349377` — target repository `main` at publication preparation
+- `c1fd15f` — execution ledger and reproducible baseline
+- `75ec2db` — commerce, security, SEO, content, and image foundations
+- `e30d044` — Astro 7 and Content Layer upgrade
 - Final documentation reconciliation — this report's commit
 
 ## Evidence
@@ -45,9 +45,9 @@ Final checks: Astro diagnostics 0 errors, 0 warnings, 0 hints; TypeScript pass; 
 
 Automated browser QA was attempted but the local browser runtime could not initialize. Generated social/editorial images were visually inspected; static and output validators passed. Responsive browser, keyboard, screen-reader, and live-order journeys still require deploy-preview acceptance.
 
-## Publishing blocker
+## Publication state
 
-The local folder began without Git metadata or a remote. The target GitHub repository is now known, but `gh` is not installed/authenticated in this environment. Install and authenticate GitHub CLI with repository write access, then push `seo/commerce-foundation` and open a draft pull request. Do not merge before provider and deploy-preview verification.
+The local folder began without Git metadata or a remote. GitHub CLI is now installed and authenticated, `origin` targets `BlackBani/super-duper-sniffle`, and the implementation branch is based on the repository's actual `main`. Publication uses `seo/commerce-foundation` and a draft pull request. Do not merge before provider and deploy-preview verification.
 
 ## Release and rollback
 

@@ -4,7 +4,6 @@ These do not block independent repository work.
 
 | Missing input/action | Affected work | Minimum owner action |
 |---|---|---|
-| Authenticated GitHub CLI is not installed; local repository has no remote | Publish `seo/commerce-foundation` to `BlackBani/super-duper-sniffle` | Install `gh`, authenticate an account with repository write access, then add/push the target remote and open a draft PR |
 | Confirm actual production provider and DNS/redirect ownership | P0-02 live acceptance | Name Netlify or GitHub Pages and provide provider access for live verification |
 | Search Console exports and URL inspection access | P0-06/07, measurement | Export requested 16-month/90-day/28-day Web and Image datasets or grant access |
 | Analytics/consent requirements and production ID | Analytics hooks | Supply approved provider, ID, and consent/privacy decision |

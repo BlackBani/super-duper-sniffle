@@ -24,4 +24,4 @@
 - Reduced the dependency audit from 10 baseline findings to zero.
 - Passed Astro diagnostics with zero errors/warnings/hints, TypeScript, nine tests, source validation, a 127-page build, SEO/output validation, and the 177-asset image inventory check.
 - Replaced machine-specific and obsolete deployment documentation.
-- The owner supplied `BlackBani/super-duper-sniffle` as the publication repository; publishing remains blocked by unavailable authenticated GitHub CLI tooling.
+- The owner supplied `BlackBani/super-duper-sniffle` as the publication repository; the local implementation was rebased onto its actual `main` history for a mergeable review branch.

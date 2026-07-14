@@ -25,4 +25,4 @@ Generated image assets received direct visual review. Automated browser acceptan
 
 ## D-006 — Publication target
 
-The owner identified `BlackBani/super-duper-sniffle` as the final GitHub repository. No remote is configured in the supplied folder, and authenticated GitHub CLI tooling is unavailable locally, so no remote state was changed. Publication must preserve the isolated implementation branch and its reviewable commits.
+The owner identified `BlackBani/super-duper-sniffle` as the final GitHub repository. The supplied folder initially had no remote and its locally initialized baseline had unrelated history but content-equivalent files with different mode metadata. A backup was preserved locally and the four implementation commits were rebased onto the repository's actual `main` before publication.
