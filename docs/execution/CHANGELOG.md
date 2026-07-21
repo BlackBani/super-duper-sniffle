@@ -31,3 +31,13 @@
 - Confirmed through repository settings that GitHub Pages publishes `pauch.vip` via Actions with enforced HTTPS.
 - Restored Pages artifact upload and deployment after the full CI gate; added pull-request validation without deployment.
 - Removed the obsolete Netlify configuration and corrected all operational and release documentation.
+
+## 2026-07-21 — Indexing and image-discovery follow-up
+
+- Added `/llms.txt` with canonical localized resources and only the verified cash-on-delivery, Telegram, and delivery facts already used by the site.
+- Added the image sitemap to the submitted sitemap index and release-dated materially changed sitemap entries.
+- Removed image-sitemap tags deprecated by Google while preserving every existing image URL.
+- Added responsive dimensions, `srcset`, `sizes`, descriptive localized alt text, and crawlable product-page links to homepage catalog images.
+- Rendered the existing related-article and hub relationships on all localized article pages.
+- Used only the current image inventory; no new photography or generated imagery was introduced.
+- Updated Astro from 7.0.9 to 7.1.3 to remove the newly reported reflected-XSS advisory.

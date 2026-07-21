@@ -60,3 +60,32 @@ test('canonical organization name is Pauch', () => {
   assert.match(source, /name:\s*'Pauch'/);
   assert.doesNotMatch(source, /name:\s*'Pouch'/);
 });
+
+test('llms.txt exposes only verified service facts and canonical discovery URLs', () => {
+  const source = readFileSync(new URL('../public/llms.txt', import.meta.url), 'utf8');
+  assert.match(source, /^# Pauch/m);
+  assert.match(source, /https:\/\/telegram\.me\/m\/8ebhN3f-MDMy/);
+  assert.match(source, /Payment: cash on delivery only\./);
+  assert.match(source, /https:\/\/pauch\.vip\/sitemap-index\.xml/);
+  assert.match(source, /https:\/\/pauch\.vip\/image-sitemap\.xml/);
+  assert.doesNotMatch(source, /bank transfer|card payment|transfer bancar|\u0431\u0430\u043d\u043a\u043e\u0432\u0441\u043a/i);
+});
+
+test('catalog packshots use responsive crawlable image markup', () => {
+  const source = readFileSync(new URL('../src/components/product/ProductLineCard.astro', import.meta.url), 'utf8');
+  assert.match(source, /getPublicImageMetadata/);
+  assert.match(source, /getResponsiveImageData/);
+  assert.match(source, /width=\{imageMetadata\.width\}/);
+  assert.match(source, /height=\{imageMetadata\.height\}/);
+  assert.match(source, /srcset=\{responsiveImage\.srcset/);
+  assert.match(source, /sizes="\(min-width: 1280px\)/);
+  assert.match(source, /class="product-destination-link product-image-link/);
+});
+
+test('main sitemap index includes the standards-compliant image sitemap', () => {
+  const config = readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
+  const imageSitemap = readFileSync(new URL('../src/pages/image-sitemap.xml.ts', import.meta.url), 'utf8');
+  assert.match(config, /customSitemaps:\s*\['https:\/\/pauch\.vip\/image-sitemap\.xml'\]/);
+  assert.doesNotMatch(imageSitemap, /image:(?:caption|geo_location|title|license)/);
+  assert.match(imageSitemap, /<image:loc>/);
+});

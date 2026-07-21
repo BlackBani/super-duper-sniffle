@@ -13,6 +13,8 @@ Pauch is a static multilingual Astro site for adults 18+, with English, Romanian
 - Shared interface copy: `src/i18n/en.json`, `src/i18n/ro.json`, `src/i18n/ru.json`
 - Product and blog images: `public/images/products/`, `public/images/blog/`
 - Commerce and Telegram settings: `src/config/commerce.ts`
+- LLM-facing canonical resource guide: `public/llms.txt`
+- Significant SEO release date: `src/config/seo-release.json`
 
 Only content records are rendered. Adding an image without a corresponding content record does not publish a product or article.
 

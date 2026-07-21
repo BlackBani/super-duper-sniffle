@@ -19,6 +19,8 @@ Repository Pages settings report workflow-based publishing, the `pauch.vip` cust
 - Brands: `src/content/brands/*.json`; detailed facts require official sources and a verification date.
 - Articles/hubs: `src/content/blog` and `src/content/hubs`; health-adjacent copy requires named editorial ownership, sources, and qualified review where appropriate.
 - Images: preserve existing URLs, run `node scripts/optimize-images.mjs`, `node scripts/generate-responsive-images.mjs`, and `node scripts/image-inventory.mjs --write`.
+- Search discovery: `public/llms.txt` lists verified canonical resources for language-model consumers. Keep it factual and update all affected locale links together.
+- Significant page, structured-data, or internal-link releases must update `src/config/seo-release.json`. The build uses that date for affected sitemap entries and the sitemap index; do not advance it for cosmetic or documentation-only edits.
 
 ## Validation
 
@@ -29,5 +31,5 @@ Run `npm ci && npm run ci`. The CI sequence covers Astro diagnostics, TypeScript
 1. Identify the last good deploy commit from `/build-info.json` or the provider log.
 2. Revert the faulty change through a reviewed pull request or re-run the last known-good GitHub Pages workflow; do not rewrite shared Git history.
 3. If only commerce data is wrong, revert the single configuration commit, increment `dataRevision`, run `npm run ci`, and deploy.
-4. Verify `/`, each locale home, one product, one article, `/image-sitemap.xml`, `/sitemap-index.xml`, `robots.txt`, and the Telegram destination.
+4. Verify `/`, each locale home, one product, one article, `/llms.txt`, `/image-sitemap.xml`, `/sitemap-index.xml`, `robots.txt`, and the Telegram destination.
 5. Record the rollback and affected URLs in `docs/execution/CHANGELOG.md`.

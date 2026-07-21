@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import { getLocalizedPath, type Language } from '@i18n/index';
+
+interface Props {
+  lang: Language;
+  currentPostId: string;
+  relatedPostIds?: string[];
+  hubId: string;
+}
+
+const { lang, currentPostId, relatedPostIds = [], hubId } = Astro.props;
+const [posts, hubs] = await Promise.all([getCollection('blog'), getCollection('hubs')]);
+const postsById = new Map(posts.map(({ data }) => [data.postId, data]));
+const relatedPosts = relatedPostIds
+  .filter((postId) => postId !== currentPostId)
+  .map((postId) => postsById.get(postId))
+  .filter((post) => post !== undefined)
+  .slice(0, 3);
+const hub = hubs.find(({ data }) => data.hubId === hubId)?.data;
+
+const labels = {
+  en: {
+    heading: 'Continue reading',
+    guidePrefix: 'Explore the complete guide:',
+    allArticles: 'View all Pauch articles',
+  },
+  ro: {
+    heading: 'Continuă lectura',
+    guidePrefix: 'Explorează ghidul complet:',
+    allArticles: 'Vezi toate articolele Pauch',
+  },
+  ru: {
+    heading: 'Читать дальше',
+    guidePrefix: 'Полный гид по теме:',
+    allArticles: 'Все статьи Pauch',
+  },
+}[lang];
+---
+
+{(relatedPosts.length > 0 || hub) && (
+  <aside class="article-related" aria-labelledby="related-reading-heading">
+    <h2 id="related-reading-heading" class="article-related-title">{labels.heading}</h2>
+    {relatedPosts.length > 0 && (
+      <ul class="article-related-list">
+        {relatedPosts.map((relatedPost) => (
+          <li>
+            <a href={getLocalizedPath(`/blog/${relatedPost.translations[lang].slug}/`, lang)}>
+              {relatedPost.translations[lang].title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+    <div class="article-related-footer">
+      {hub && (
+        <a href={getLocalizedPath(`/guides/${hub.translations[lang].slug}/`, lang)}>
+          {labels.guidePrefix} {hub.translations[lang].title}
+        </a>
+      )}
+      <a href={getLocalizedPath('/blog/', lang)}>{labels.allArticles}</a>
+    </div>
+  </aside>
+)}
+
+<style>
+  .article-related {
+    margin-top: 2.5rem;
+    padding: 1.25rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.875rem;
+    background: #fff;
+  }
+
+  .article-related-title {
+    color: #111;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .article-related-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .article-related-list a,
+  .article-related-footer a {
+    color: #0066cc;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 102, 204, 0.3);
+    text-underline-offset: 3px;
+  }
+
+  .article-related-list a:hover,
+  .article-related-footer a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .article-related-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1.125rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e5e5;
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 640px) {
+    .article-related { padding: 1.5rem; }
+    .article-related-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>

@@ -4,6 +4,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import { useTranslations, getLocalizedPath, type Language } from '@i18n/index';
 import { renderSafeMarkdown } from '../../../lib/content/safeMarkdown.mjs';
 import { getResponsiveImageData } from '../../../lib/images/responsive';
+import RelatedArticles from '../../../components/content/RelatedArticles.astro';
 
 const lang = 'en';
 const t = useTranslations(lang);
@@ -160,6 +161,13 @@ const faqSchema = translation.faq && translation.faq.length > 0 ? {
             </div>
           </div>
         )}
+
+        <RelatedArticles
+          lang={lang}
+          currentPostId={post.postId}
+          relatedPostIds={post.relatedPosts}
+          hubId={post.hub}
+        />
         
         <!-- Disclaimer -->
         <div class="blog-disclaimer">

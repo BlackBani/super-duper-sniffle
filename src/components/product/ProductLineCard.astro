@@ -1,5 +1,7 @@
 ---
 import { useTranslations, getLocalizedPath, getTelegramOrderLink, type Language } from '@i18n/index';
+import { getPublicImageMetadata } from '../../lib/images/metadata';
+import { getResponsiveImageData } from '../../lib/images/responsive';
 
 interface FlavorVariant {
   slug: string;
@@ -42,9 +44,32 @@ const strengthLabels: Record<string, string> = {
 const title = `${productLine.brand} ${strengthLabels[productLine.strengthCategory]}`;
 
 const defaultFlavor = productLine.flavors[0];
-const imageSrc = withBase(defaultFlavor?.image || productLine.image);
-const imageAlt = title;
+const defaultImagePath = defaultFlavor?.image || productLine.image;
+const imageSrc = withBase(defaultImagePath);
+const imageMetadata = getPublicImageMetadata(defaultImagePath);
+const responsiveImage = getResponsiveImageData(defaultImagePath, [320, 480, 640]);
+const imageContext = {
+  en: 'nicotine pouch can, product packaging',
+  ro: 'cutie de pliculețe cu nicotină, ambalajul produsului',
+  ru: 'банка никотиновых паучей, упаковка товара',
+}[lang];
+const imageAlt = `${title} — ${imageContext}`;
 const placeholderSrc = `${baseClean}/images/products/placeholder.svg`;
+const defaultProductHref = getLocalizedPath(`/product/${defaultFlavor?.slug || ''}`, lang);
+
+const flavors = productLine.flavors.map((flavor) => {
+  const metadata = getPublicImageMetadata(flavor.image);
+  const responsive = getResponsiveImageData(flavor.image, [320, 480, 640]);
+  return {
+    ...flavor,
+    src: withBase(flavor.image),
+    srcset: responsive.srcset,
+    width: metadata.width,
+    height: metadata.height,
+    href: getLocalizedPath(`/product/${flavor.slug}`, lang),
+    alt: `${productLine.brand} ${flavor.flavorName} ${strengthLabels[productLine.strengthCategory]} — ${imageContext}`,
+  };
+});
 
 const telegramOrderLink = getTelegramOrderLink(lang);
 ---
@@ -54,17 +79,28 @@ const telegramOrderLink = getTelegramOrderLink(lang);
   data-strength={productLine.strengthCategory}
   data-line-id={productLine.id}
   data-default-image={imageSrc}
+  data-default-srcset={responsiveImage.srcset}
+  data-default-width={imageMetadata.width}
+  data-default-height={imageMetadata.height}
   data-default-alt={imageAlt}
+  data-default-href={defaultProductHref}
 >
   <!-- Product Image -->
   <div class="product-image-shell relative aspect-square mb-3 overflow-hidden rounded-lg md:rounded-xl">
-    <img
-      class="product-line-image w-full h-full object-contain p-3 md:p-4 transition-transform duration-300 group-hover:scale-105"
-      src={imageSrc}
-      alt={imageAlt}
-      loading="lazy"
-      onerror={`this.src='${placeholderSrc}'`}
-    />
+    <a class="product-destination-link product-image-link block w-full h-full" href={defaultProductHref}>
+      <img
+        class="product-line-image w-full h-full object-contain p-3 md:p-4 transition-transform duration-300 group-hover:scale-105"
+        src={imageSrc}
+        alt={imageAlt}
+        width={imageMetadata.width}
+        height={imageMetadata.height}
+        srcset={responsiveImage.srcset || undefined}
+        sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 72vw"
+        loading="lazy"
+        decoding="async"
+        onerror={`this.removeAttribute('srcset');this.src='${placeholderSrc}'`}
+      />
+    </a>
     <!-- Strength Badge -->
     <span class="absolute top-2 right-2 px-2 py-0.5 md:px-2.5 md:py-1 bg-white text-[10px] md:text-xs font-semibold text-primary rounded-full shadow-md border border-gray-100">
       {strengthLabels[productLine.strengthCategory]}
@@ -74,7 +110,9 @@ const telegramOrderLink = getTelegramOrderLink(lang);
   <!-- Product Info -->
   <div class="flex-1 flex flex-col min-w-0">
     <span class="text-[10px] md:text-xs text-muted mb-0.5">{productLine.brand}</span>
-    <h3 class="text-xs md:text-sm font-semibold text-primary mb-2">{title}</h3>
+    <h3 class="text-xs md:text-sm font-semibold text-primary mb-2">
+      <a class="product-destination-link hover:text-accent transition-colors" href={defaultProductHref}>{title}</a>
+    </h3>
     
     <!-- Flavor Selection (optional) -->
     {productLine.flavors.length > 1 && (
@@ -83,15 +121,19 @@ const telegramOrderLink = getTelegramOrderLink(lang);
           {lang === 'ru' ? 'Вкус (опц.):' : lang === 'ro' ? 'Aromă (opț.):' : 'Flavor (opt.):'}
         </p>
         <div class="flavor-chips flex flex-wrap gap-1">
-          {productLine.flavors.map((flavor) => (
+          {flavors.map((flavor) => (
             <button
               type="button"
               class="flavor-chip px-2 py-0.5 md:px-2.5 md:py-1 text-[10px] md:text-xs rounded-full bg-white border border-gray-200 text-muted hover:border-accent hover:text-accent transition-all"
               data-flavor={flavor.flavorCategory}
               data-slug={flavor.slug}
-              data-image={withBase(flavor.image)}
+              data-image={flavor.src}
+              data-srcset={flavor.srcset}
+              data-width={flavor.width}
+              data-height={flavor.height}
+              data-href={flavor.href}
               data-flavor-name={flavor.flavorName}
-              data-alt={`${title} ${flavor.flavorName}`}
+              data-alt={flavor.alt}
             >
               {flavor.flavorName}
             </button>
@@ -114,8 +156,8 @@ const telegramOrderLink = getTelegramOrderLink(lang);
         {t.catalog.orderButton}
       </a>
       <a
-        href={getLocalizedPath(`/product/${productLine.flavors[0]?.slug || ''}`, lang)}
-        class="details-btn text-center px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium text-muted hover:text-primary transition-colors"
+        href={defaultProductHref}
+        class="product-destination-link details-btn text-center px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium text-muted hover:text-primary transition-colors"
       >
         {t.catalog.detailsButton}
       </a>
@@ -144,11 +186,28 @@ const telegramOrderLink = getTelegramOrderLink(lang);
       card.setAttribute('data-js-initialized', 'true');
 
       const flavorChips = card.querySelectorAll('.flavor-chip');
-      const detailsBtn = card.querySelector('.details-btn') as HTMLAnchorElement;
+      const destinationLinks = card.querySelectorAll('.product-destination-link');
       const productImage = card.querySelector('.product-line-image') as HTMLImageElement;
-      const originalDetailsHref = detailsBtn?.getAttribute('href') || '';
       const defaultImage = card.getAttribute('data-default-image') || '';
+      const defaultSrcset = card.getAttribute('data-default-srcset') || '';
+      const defaultWidth = card.getAttribute('data-default-width') || '';
+      const defaultHeight = card.getAttribute('data-default-height') || '';
       const defaultAlt = card.getAttribute('data-default-alt') || '';
+      const defaultHref = card.getAttribute('data-default-href') || '';
+
+      const updateDestinations = (href: string) => {
+        destinationLinks.forEach((link) => link.setAttribute('href', href));
+      };
+
+      const updateImage = (image: string, srcset: string, alt: string, width: string, height: string) => {
+        if (!productImage || !image) return;
+        productImage.src = image;
+        if (srcset) productImage.srcset = srcset;
+        else productImage.removeAttribute('srcset');
+        productImage.alt = alt || defaultAlt;
+        if (width) productImage.width = Number(width);
+        if (height) productImage.height = Number(height);
+      };
       
       flavorChips.forEach((chip) => {
         chip.addEventListener('click', () => {
@@ -159,32 +218,20 @@ const telegramOrderLink = getTelegramOrderLink(lang);
           
           if (isCurrentlySelected) {
             // Toggle off - deselect the chip
-            // Reset details link to first flavor
-            if (detailsBtn) {
-              detailsBtn.setAttribute('href', originalDetailsHref);
-            }
-
-            if (productImage && defaultImage) {
-              productImage.src = defaultImage;
-              productImage.alt = defaultAlt;
-            }
+            updateDestinations(defaultHref);
+            updateImage(defaultImage, defaultSrcset, defaultAlt, defaultWidth, defaultHeight);
           } else {
             // Select this chip
             chip.classList.add('selected');
-            
-            // Update details link to selected flavor
-            const slug = chip.getAttribute('data-slug') || '';
-            if (detailsBtn && slug) {
-              const basePath = originalDetailsHref.substring(0, originalDetailsHref.lastIndexOf('/product/') + 9);
-              detailsBtn.setAttribute('href', basePath + slug);
-            }
 
-            if (productImage) {
-              const image = chip.getAttribute('data-image') || '';
-              const alt = chip.getAttribute('data-alt') || '';
-              if (image) productImage.src = image;
-              productImage.alt = alt || defaultAlt;
-            }
+            updateDestinations(chip.getAttribute('data-href') || defaultHref);
+            updateImage(
+              chip.getAttribute('data-image') || defaultImage,
+              chip.getAttribute('data-srcset') || '',
+              chip.getAttribute('data-alt') || defaultAlt,
+              chip.getAttribute('data-width') || '',
+              chip.getAttribute('data-height') || '',
+            );
           }
         });
       });
